@@ -5,8 +5,9 @@ import com.medclic.med.model.Message;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {UserMapper.class})
 public interface MessageMapper {
+
     @Mapping(source = "sender.id", target = "senderId")
     @Mapping(source = "receiver.id", target = "receiverId")
     MessageDTO toDTO(Message message);

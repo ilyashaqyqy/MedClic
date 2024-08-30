@@ -7,9 +7,14 @@ import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public interface UserMapper {
-    @Mapping(source = "role", target = "role")
+
+    @Mapping(target = "notifications", ignore = true)
+    @Mapping(target = "sentMessages", ignore = true)
+    @Mapping(target = "receivedMessages", ignore = true)
     UserDTO toDTO(User user);
 
-    @Mapping(source = "role", target = "role")
+    @Mapping(target = "notifications", ignore = true)
+    @Mapping(target = "sentMessages", ignore = true)
+    @Mapping(target = "receivedMessages", ignore = true)
     User toEntity(UserDTO userDTO);
 }

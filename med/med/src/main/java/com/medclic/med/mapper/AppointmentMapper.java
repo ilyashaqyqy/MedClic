@@ -5,7 +5,7 @@ import com.medclic.med.model.Appointment;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {PatientMapper.class, DoctorMapper.class})
 public interface AppointmentMapper {
     @Mapping(source = "patient.id", target = "patientId")
     @Mapping(source = "doctor.id", target = "doctorId")
@@ -15,4 +15,3 @@ public interface AppointmentMapper {
     @Mapping(source = "doctorId", target = "doctor.id")
     Appointment toEntity(AppointmentDTO appointmentDTO);
 }
-

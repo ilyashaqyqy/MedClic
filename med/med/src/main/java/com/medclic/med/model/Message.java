@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 
@@ -18,7 +19,7 @@ public class Message {
 
     private String content;
 
-    private Date timestamp;
+    private LocalDateTime timestamp;
 
     private Boolean isRead;
 

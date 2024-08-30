@@ -5,14 +5,13 @@ import com.medclic.med.model.Doctor;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {UserMapper.class})
 public interface DoctorMapper {
-    @Mapping(source = "specialty", target = "specialty")
-    @Mapping(source = "location", target = "location")
+    @Mapping(target = "appointments", ignore = true)
+    @Mapping(target = "schedule", ignore = true)
     DoctorDTO toDTO(Doctor doctor);
 
-    @Mapping(source = "specialty", target = "specialty")
-    @Mapping(source = "location", target = "location")
+    @Mapping(target = "appointments", ignore = true)
+    @Mapping(target = "schedule", ignore = true)
     Doctor toEntity(DoctorDTO doctorDTO);
 }
-

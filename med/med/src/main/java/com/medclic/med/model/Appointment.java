@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.sql.Time;
 import java.util.Date;
 import java.util.Set;
 
@@ -19,7 +20,7 @@ public class Appointment {
 
     private Date date;
 
-    private String time;
+    private Time time;
 
     private String status;
 

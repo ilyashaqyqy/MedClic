@@ -7,9 +7,10 @@ import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public interface SpecializationMapper {
-    @Mapping(source = "name", target = "name")
+
+    @Mapping(target = "doctors", ignore = true)
     SpecializationDTO toDTO(Specialization specialization);
 
-    @Mapping(source = "name", target = "name")
+    @Mapping(target = "doctors", ignore = true)
     Specialization toEntity(SpecializationDTO specializationDTO);
 }
