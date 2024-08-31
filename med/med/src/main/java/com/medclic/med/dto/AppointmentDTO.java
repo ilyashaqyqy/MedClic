@@ -1,6 +1,7 @@
 package com.medclic.med.dto;
 
 
+import com.medclic.med.model.AppointmentStatus;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,7 +16,7 @@ public class AppointmentDTO {
     private Long doctorId;
     private Date date;
     private Time time;
-    private String status;
+    private AppointmentStatus status;
     private String notes;
     private String appointmentType;
     private String appointmentReason;

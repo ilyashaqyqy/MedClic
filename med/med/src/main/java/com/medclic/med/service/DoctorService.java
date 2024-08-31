@@ -10,6 +10,6 @@ public interface DoctorService {
     DoctorDTO updateDoctor(DoctorDTO doctorDTO);
     void deleteDoctor(Long doctorId);
     List<DoctorDTO> getAllDoctors();
-    List<DoctorDTO> searchDoctors(String specialization, String location);
+//    List<DoctorDTO> searchDoctors(String specialization, String location);
 }
 

@@ -8,7 +8,6 @@ import java.sql.Time;
 import java.util.Date;
 import java.util.Set;
 
-
 @Getter
 @Setter
 @Entity
@@ -22,7 +21,8 @@ public class Appointment {
 
     private Time time;
 
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private AppointmentStatus status;
 
     private String notes;
 
@@ -40,7 +40,4 @@ public class Appointment {
 
     @OneToMany(mappedBy = "appointment", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Reminder> reminders;
-
-
 }
-
