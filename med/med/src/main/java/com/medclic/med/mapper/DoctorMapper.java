@@ -8,10 +8,8 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring", uses = {UserMapper.class})
 public interface DoctorMapper {
     @Mapping(target = "appointments", ignore = true)
-    @Mapping(target = "schedule", ignore = true)
     DoctorDTO toDTO(Doctor doctor);
 
     @Mapping(target = "appointments", ignore = true)
-    @Mapping(target = "schedule", ignore = true)
     Doctor toEntity(DoctorDTO doctorDTO);
 }

@@ -10,6 +10,7 @@ import java.util.Set;
 @Setter
 @Getter
 @Entity
+@Table(name = "users")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class User {
 

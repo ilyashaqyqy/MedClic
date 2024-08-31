@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.Set;
 
 
 @Getter
@@ -14,5 +15,6 @@ public class PatientDTO extends UserDTO {
     private Date dateOfBirth;
     private String insuranceInfo;
     private String address;
+    private Set<AppointmentDTO> appointments;
 
 }

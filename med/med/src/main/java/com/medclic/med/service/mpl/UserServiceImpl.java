@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
+
     @Autowired
     private UserRepository userRepository;
 
@@ -36,6 +37,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDTO updateUser(UserDTO userDTO) {
+        if (!userRepository.existsById(userDTO.getId())) {
+            throw new UserNotFoundException("User not found");
+        }
         User user = userMapper.toEntity(userDTO);
         User updatedUser = userRepository.save(user);
         return userMapper.toDTO(updatedUser);
@@ -43,6 +47,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void deleteUser(Long userId) {
+        if (!userRepository.existsById(userId)) {
+            throw new UserNotFoundException("User not found");
+        }
         userRepository.deleteById(userId);
     }
 
