@@ -4,6 +4,7 @@ import com.medclic.med.dto.DoctorDTO;
 import com.medclic.med.exception.DoctorNotFoundException;
 import com.medclic.med.mapper.DoctorMapper;
 import com.medclic.med.model.Doctor;
+import com.medclic.med.model.Role;
 import com.medclic.med.repository.DoctorRepository;
 import com.medclic.med.service.DoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,7 @@ public class DoctorServiceImpl implements DoctorService {
 
     @Override
     public DoctorDTO createDoctor(DoctorDTO doctorDTO) {
+        doctorDTO.setRole(Role.DOCTOR); // Set the role explicitly
         Doctor doctor = doctorMapper.toEntity(doctorDTO);
         Doctor savedDoctor = doctorRepository.save(doctor);
         return doctorMapper.toDTO(savedDoctor);
@@ -36,6 +38,10 @@ public class DoctorServiceImpl implements DoctorService {
 
     @Override
     public DoctorDTO updateDoctor(DoctorDTO doctorDTO) {
+        if (!doctorRepository.existsById(doctorDTO.getId())) {
+            throw new DoctorNotFoundException("Doctor not found");
+        }
+        doctorDTO.setRole(Role.DOCTOR); // Ensure the role is set correctly
         Doctor doctor = doctorMapper.toEntity(doctorDTO);
         Doctor updatedDoctor = doctorRepository.save(doctor);
         return doctorMapper.toDTO(updatedDoctor);

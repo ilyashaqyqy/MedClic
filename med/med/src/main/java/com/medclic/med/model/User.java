@@ -27,7 +27,8 @@ public class User {
 
     private String phoneNumber;
 
-    private String role;
+    @Enumerated (EnumType.STRING)
+    private Role role;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Notification> notifications;

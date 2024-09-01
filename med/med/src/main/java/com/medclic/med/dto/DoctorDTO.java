@@ -1,7 +1,7 @@
 package com.medclic.med.dto;
 
 
-import com.medclic.med.model.Schedule;
+import com.medclic.med.model.Role;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,6 +18,8 @@ public class DoctorDTO extends UserDTO {
     private String education;
     private String certifications;
     private Set<AppointmentDTO> appointments;
+    private LocationDTO location;
+    private Set<SpecializationDTO> specializations;
 
 
 }

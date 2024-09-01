@@ -1,5 +1,6 @@
 package com.medclic.med.dto;
 
+import com.medclic.med.model.Role;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,7 +13,8 @@ public class UserDTO {
     private String name;
     private String email;
     private String phoneNumber;
-    private String role;
+    private Role role;
+    private String password;
     private Set<NotificationDTO> notifications;
     private Set<MessageDTO> sentMessages;
     private Set<MessageDTO> receivedMessages;

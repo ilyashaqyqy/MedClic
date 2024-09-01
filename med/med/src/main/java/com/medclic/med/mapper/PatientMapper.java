@@ -9,8 +9,10 @@ import org.mapstruct.Mapping;
 public interface PatientMapper {
 
     @Mapping(target = "appointments", ignore = true)
+    @Mapping(target = "password", source = "password") /////////////////
     PatientDTO toDTO(Patient patient);
 
     @Mapping(target = "appointments", ignore = true)
+    @Mapping(target = "password", source = "password") /////////////////
     Patient toEntity(PatientDTO patientDTO);
 }
