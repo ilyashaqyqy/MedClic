@@ -2,7 +2,7 @@ package com.medclic.med.model;
 
 public enum Role {
 
-    ADMIN,
+    RADMIN,
     PATIENT,
     DOCTOR
 }
