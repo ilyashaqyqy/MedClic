@@ -22,8 +22,8 @@ export class AuthService {
   }
 
 
-  login(username: string, password: string): Observable<any> {
-    return this.http.post<{ token: string; userId: number }>(`${this.apiUrl}/authenticate`, { username, password }).pipe(
+  login(email: string, password: string): Observable<any> {
+    return this.http.post<{ token: string; userId: number }>(`${this.apiUrl}/authenticate`, { email, password }).pipe(
       tap(response => {
         this.saveToken(response.token);
         this.userId = response.userId;
@@ -32,6 +32,7 @@ export class AuthService {
       })
     );
   }
+  
 
   
 
@@ -86,14 +87,14 @@ export class AuthService {
   }
 
   getRole(): string | null {
-    if (!this.role) {
-      const token = this.getToken();
-      if (token) {
-        this.role = this.decodeToken(token).roles || [];
-      }
+    const token = this.getToken(); // Assuming getToken() retrieves the JWT
+    if (token) {
+      const decodedToken = this.decodeToken(token); // Decode the token
+      return decodedToken.roles || null; // Adjust based on your token structure
     }
-    return Array.isArray(this.role) && this.role.length > 0 ? this.role[0] : null;
+    return null;
   }
+  
 
   logout(): void {
     localStorage.removeItem('authToken');

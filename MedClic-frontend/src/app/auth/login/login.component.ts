@@ -25,15 +25,15 @@ export class LoginComponent {
         this.authService.saveToken(response.token);
         const role = this.authService.getRole();
         console.log('Role after login:', role);
-        if (role === 'ROLE_ADMIN') {
-          console.log('Navigating to dashboard');
-          this.router.navigate(['/dashboard']);
-        } else if (role === 'ROLE_TECHNICIEN') {
-          console.log('Navigating to technician dashboard');
-          this.router.navigate(['/technician-dashboard']);
+        if (role === 'ADMIN') {
+          console.log('Navigating to admin dashboard');
+          this.router.navigate(['/admin-dashboard']);
+        } else if (role === 'DOCTOR') {
+          console.log('Navigating to doctor dashboard');
+          this.router.navigate(['/doctor-dashboard']);
         } else {
-          console.log('Navigating to home');
-          this.router.navigate(['/create-ticket']);
+          console.log('Navigating to User Patient Dashboard');
+          this.router.navigate(['/user-dashboard']);
         }
       },
       (error: any) => {

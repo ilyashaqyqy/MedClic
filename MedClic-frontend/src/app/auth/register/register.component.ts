@@ -17,14 +17,15 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     this.registerForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      username: ['', [Validators.required, Validators.minLength(4)]],
+      name: ['', [Validators.required, Validators.minLength(4)]], // Updated from username to name
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
 
   register(): void {
     if (this.registerForm.valid) {
-      this.authService.register(this.registerForm.value).subscribe({
+      const request: RegisterRequest = this.registerForm.value;
+      this.authService.register(request).subscribe({
         next: (response) => {
           console.log('Registration successful', response);
           this.router.navigate(['/login']); // Redirect to login
@@ -42,8 +43,8 @@ export class RegisterComponent implements OnInit {
     return this.registerForm.get('email');
   }
 
-  get username() {
-    return this.registerForm.get('username');
+  get name() {
+    return this.registerForm.get('name'); // Updated from username to name
   }
 
   get password() {
