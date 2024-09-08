@@ -5,6 +5,7 @@ import { RegisterComponent } from './auth/register/register.component';
 import { DoctorDashboardComponent } from './doctor/components/doctor-dashboard/doctor-dashboard.component';
 import { AdminDashboardComponent } from './admin/components/admin-dashboard/admin-dashboard.component';
 import { UserDashboardComponent } from './user/components/user-dashboard/user-dashboard.component';
+import { ManageDoctorsComponent } from './admin/components/manage-doctors/manage-doctors.component';
 
 const routes: Routes = [
 
@@ -13,7 +14,11 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'doctor-dashboard' , component: DoctorDashboardComponent },
   { path: 'admin-dashboard' , component: AdminDashboardComponent },
-{ path: 'user-dashboard' , component: UserDashboardComponent}
+  { path: 'user-dashboard' , component: UserDashboardComponent},
+
+  {path: 'manage-doctors' , component: ManageDoctorsComponent},
+
+
 ];
 
 @NgModule({

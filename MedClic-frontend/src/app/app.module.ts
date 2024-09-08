@@ -3,6 +3,20 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+
+
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSnackBarModule } from '@angular/material/snack-bar'; 
+import { MatInputModule } from '@angular/material/input';
+
+
+
+
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -14,6 +28,8 @@ import { ManageUsersComponent } from './admin/components/manage-users/manage-use
 import { ManageDoctorsComponent } from './admin/components/manage-doctors/manage-doctors.component';
 import { UserDashboardComponent } from './user/components/user-dashboard/user-dashboard.component';
 import { DoctorDashboardComponent } from './doctor/components/doctor-dashboard/doctor-dashboard.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DoctorDialogComponent } from './admin/components/doctor-dialog/doctor-dialog.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +41,7 @@ import { DoctorDashboardComponent } from './doctor/components/doctor-dashboard/d
     LoginComponent,
     RegisterComponent,
     DoctorDashboardComponent,
+    DoctorDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,6 +49,20 @@ import { DoctorDashboardComponent } from './doctor/components/doctor-dashboard/d
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+
+
+    BrowserAnimationsModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatSnackBarModule,
+    MatInputModule
+
+    
+
  
   ],
   providers: [

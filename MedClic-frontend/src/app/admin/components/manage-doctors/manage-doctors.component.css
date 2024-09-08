@@ -1,0 +1,7 @@
+img {
+    height: 60px;
+    width: 60px;
+    object-fit: cover; /* Ensures the image fits the container without stretching */
+    border-radius: 50%; /* Make it circular */
+  }
+  

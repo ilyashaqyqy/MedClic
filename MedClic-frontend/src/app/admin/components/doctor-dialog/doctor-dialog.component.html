@@ -1,0 +1,54 @@
+<h2 mat-dialog-title>{{ doctor.id ? 'Edit Doctor' : 'Add Doctor' }}</h2>
+<mat-dialog-content>
+  <form>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input matInput [(ngModel)]="doctor.name" name="lastName" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput [(ngModel)]="doctor.email" name="email" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Specialization</mat-label>
+      <input matInput [(ngModel)]="doctor.specialization" name="specialization" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Years of Experience</mat-label>
+      <input matInput [(ngModel)]="doctor.yearsOfExperience" name="yearsOfExperience" type="number" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Consultation Fee</mat-label>
+      <input matInput [(ngModel)]="doctor.consultationFee" name="consultationFee" type="number" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Profile Photo URL</mat-label>
+      <input matInput [(ngModel)]="doctor.profilePhoto" name="profilePhoto">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Bio</mat-label>
+      <textarea matInput [(ngModel)]="doctor.bio" name="bio"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Education</mat-label>
+      <input matInput [(ngModel)]="doctor.education" name="education">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Certifications</mat-label>
+      <input matInput [(ngModel)]="doctor.certifications" name="certifications">
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-button color="primary" (click)="onSave()">Save</button>
+</mat-dialog-actions>
