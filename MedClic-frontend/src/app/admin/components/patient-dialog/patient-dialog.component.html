@@ -1,0 +1,40 @@
+<h2 mat-dialog-title>{{ patient.id ? 'Edit Patient' : 'Add Patient' }}</h2>
+<mat-dialog-content>
+  <form>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input matInput [(ngModel)]="patient.name" name="name" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput [(ngModel)]="patient.email" name="email" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Date of Birth</mat-label>
+      <input matInput [(ngModel)]="patient.dateOfBirth" name="dateOfBirth" type="date" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Medical History</mat-label>
+      <textarea matInput [(ngModel)]="patient.medicalHistory" name="medicalHistory"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Insurance Info</mat-label>
+      <input matInput [(ngModel)]="patient.insuranceInfo" name="insuranceInfo">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Address</mat-label>
+      <input matInput [(ngModel)]="patient.address" name="address">
+    </mat-form-field>
+
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-button color="primary" (click)="onSave()">Save</button>
+</mat-dialog-actions>

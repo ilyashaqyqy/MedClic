@@ -14,6 +14,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar'; 
 import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+
 
 
 
@@ -32,6 +34,7 @@ import { DoctorDashboardComponent } from './doctor/components/doctor-dashboard/d
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DoctorDialogComponent } from './admin/components/doctor-dialog/doctor-dialog.component';
 import { ManagePatientComponent } from './admin/components/manage-patient/manage-patient.component';
+import { PatientDialogComponent } from './admin/components/patient-dialog/patient-dialog.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +48,7 @@ import { ManagePatientComponent } from './admin/components/manage-patient/manage
     DoctorDashboardComponent,
     DoctorDialogComponent,
     ManagePatientComponent,
+    PatientDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,6 +67,7 @@ import { ManagePatientComponent } from './admin/components/manage-patient/manage
     MatSelectModule,
     MatSnackBarModule,
     MatInputModule,
+    MatIconModule,
 
     FontAwesomeModule
 

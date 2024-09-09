@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 import { DoctorService } from '../../../services/doctor.service';
+import { PatientService } from '../../../services/patient.service';
 import { faTachometerAlt, faUserMd, faCalendarAlt, faUsers, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 
@@ -31,18 +32,20 @@ export class AdminDashboardComponent implements OnInit {
   // Dashboard Cards (summary data)
   dashboardCards = [
     { title: 'Total Doctors', value: '0', link: 'doctors', linkText: 'Manage Doctors', icon: faUserMd },
-    { title: 'Total Appointments', value: '120', link: 'appointments', linkText: 'Manage Appointments', icon: faCalendarAlt },
-    { title: 'Total Patients', value: '300', link: 'patients', linkText: 'Manage Patients', icon: faUsers }
+    { title: 'Total Appointments', value: '*_*', link: 'appointments', linkText: 'Manage Appointments', icon: faCalendarAlt },
+    { title: 'Total Patients', value: '00', link: 'patients', linkText: 'Manage Patients', icon: faUsers }
   ];
 
   constructor(
     private authService: AuthService,
     private router: Router,
-    private doctorService: DoctorService
+    private doctorService: DoctorService,
+    private patientService: PatientService
   ) {}
 
   ngOnInit(): void {
     this.loadDoctorCount();
+    this.loadPatientCount();
   }
 
   logout(): void {
@@ -67,4 +70,12 @@ export class AdminDashboardComponent implements OnInit {
       error => console.error('Error fetching doctor count', error)
     );
   }
+
+  loadPatientCount(): void {
+    this.patientService.getPatientCount().subscribe(
+      (count: number) => this.dashboardCards[2].value = count.toString(), 
+      error => console.error('Error fetching patient count', error)
+    );
+  }
+  
 }
