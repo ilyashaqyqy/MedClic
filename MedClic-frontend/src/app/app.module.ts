@@ -31,6 +31,7 @@ import { UserDashboardComponent } from './user/components/user-dashboard/user-da
 import { DoctorDashboardComponent } from './doctor/components/doctor-dashboard/doctor-dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DoctorDialogComponent } from './admin/components/doctor-dialog/doctor-dialog.component';
+import { ManagePatientComponent } from './admin/components/manage-patient/manage-patient.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { DoctorDialogComponent } from './admin/components/doctor-dialog/doctor-d
     RegisterComponent,
     DoctorDashboardComponent,
     DoctorDialogComponent,
+    ManagePatientComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,8 +65,6 @@ import { DoctorDialogComponent } from './admin/components/doctor-dialog/doctor-d
     MatInputModule,
 
     FontAwesomeModule
-
-    
 
  
   ],

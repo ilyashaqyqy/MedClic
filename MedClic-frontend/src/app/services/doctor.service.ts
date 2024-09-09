@@ -25,6 +25,10 @@ export class DoctorService {
     });
   }
 
+  getDoctorCount(): Observable<number> {
+    return this.http.get<number>(`${this.apiUrl}/count`);
+  }
+
   updateDoctor(doctor: Doctor): Observable<Doctor> {
     return this.http.put<Doctor>(`${this.apiUrl}/${doctor.id}`, doctor, {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
