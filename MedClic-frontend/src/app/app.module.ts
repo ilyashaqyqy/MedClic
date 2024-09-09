@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -59,7 +60,9 @@ import { DoctorDialogComponent } from './admin/components/doctor-dialog/doctor-d
     MatButtonModule,
     MatSelectModule,
     MatSnackBarModule,
-    MatInputModule
+    MatInputModule,
+
+    FontAwesomeModule
 
     
 

@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 export class ManageDoctorsComponent implements OnInit {
   doctors: Doctor[] = [];
   errorMessage: string | null = null;
+  searchTerm: string = '';
 
   constructor(private doctorService: DoctorService, private dialog: MatDialog) { }
 
@@ -49,4 +50,17 @@ export class ManageDoctorsComponent implements OnInit {
       );
     }
   }
+
+  // Filter doctors based on the search term
+  filteredDoctors(): Doctor[] {
+    if (!this.searchTerm) {
+      return this.doctors;
+    }
+    
+    return this.doctors.filter(doctor => 
+      doctor.name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+      doctor.specialization.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
+  }
+
 }
