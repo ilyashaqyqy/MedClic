@@ -27,6 +27,7 @@ export class DoctorService {
 
   getDoctorCount(): Observable<number> {
     return this.http.get<number>(`${this.apiUrl}/count`);
+    
   }
 
   updateDoctor(doctor: Doctor): Observable<Doctor> {
