@@ -55,5 +55,10 @@ export class ManagePatientComponent {
       patient.name.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
   }
+
+    // Method to extract the first letter of the patient's name
+    getInitial(name: string): string {
+      return name ? name.charAt(0).toUpperCase() : ''; // Returns the first letter of the name
+    }
 }
 

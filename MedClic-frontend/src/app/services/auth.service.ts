@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
 import { jwtDecode}  from 'jwt-decode';
+import { User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ export class AuthService {
   private userId: number | null = null;
   private username: string | null = null;
   private role: string[] | null = null;
+  private currentUser: User | null = null;
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -28,13 +30,21 @@ export class AuthService {
         this.saveToken(response.token);
         this.userId = response.userId;
         localStorage.setItem('userId', this.userId.toString());
+        localStorage.setItem('email', email);
         console.log('User ID stored:', this.userId);
+    
       })
     );
   }
   
 
-  
+  setCurrentUser(user: User): void {
+    this.currentUser = user;
+  }
+
+  getCurrentUser(): User | null {
+    return this.currentUser;
+  }
 
 
   saveToken(token: string): void {
@@ -42,12 +52,6 @@ export class AuthService {
     this.setUserDataFromToken(token);
   }
 
-  // setUserDataFromToken(token: string): void {
-  //   const decodedToken: any = this.decodeToken(token);
-  //   this.username = decodedToken.sub;
-  //   this.role = decodedToken.roles;
-  //   this.userId = decodedToken.idUser || null;
-  // }
 
   setUserDataFromToken(token: string): void {
     const decodedToken: any = this.decodeToken(token);

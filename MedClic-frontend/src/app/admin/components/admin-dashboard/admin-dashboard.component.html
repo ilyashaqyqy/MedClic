@@ -1,103 +1,101 @@
 <div class="min-h-screen flex flex-col lg:flex-row bg-gray-50">
-    <!-- Sidebar (hidden on mobile, shown on larger screens) -->
-    <div class="hidden lg:block lg:w-64 bg-white shadow-lg">
-      <div class="p-6">
-        <h2 class="text-2xl font-bold mb-8 text-gray-800">Admin Panel</h2>
-        <nav>
-          <ul class="space-y-2">
-            <li *ngFor="let item of menuItems">
-              <a (click)="loadContent(item.section)" 
-                 class="flex items-center p-3 rounded-lg transition-all duration-200 hover:bg-gray-100 cursor-pointer group"
-                 [ngClass]="{'bg-gray-100': currentSection === item.section}">
-                <fa-icon [icon]="item.icon" class="mr-3 text-gray-400 group-hover:text-indigo-500"></fa-icon>
-                <span class="text-gray-700 group-hover:text-indigo-500" 
-                      [ngClass]="{'text-indigo-500 font-semibold': currentSection === item.section}">
-                  {{item.label}}
-                </span>
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-  
-    <!-- Main Content -->
-    <div class="flex-1 overflow-hidden">
-      <!-- Mobile Header with Menu Toggle -->
-      <div class="lg:hidden bg-white shadow-sm">
-        <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 flex justify-between items-center">
-          <button (click)="toggleMobileMenu()" class="text-gray-500 hover:text-gray-600">
-            <fa-icon [icon]="'bars'" class="text-2xl"></fa-icon>
-          </button>
-          <h1 class="text-xl font-semibold text-gray-800">{{currentSection | titlecase}}</h1>
-          <button (click)="logout()" class="bg-gradient-to-r from-blue-600 to-blue-400 text-white px-3 py-1 rounded-full hover:from-blue-700 hover:to-blue-500 transition duration-300 shadow-lg transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50">
-            Logout
-          </button>
-        </div>
-      </div>
-  
-      <!-- Mobile Menu (hidden by default) -->
-      <div *ngIf="isMobileMenuOpen" class="lg:hidden bg-white shadow-lg">
-        <nav class="p-4">
-          <ul class="space-y-2">
-            <li *ngFor="let item of menuItems">
-              <a (click)="loadContent(item.section); toggleMobileMenu()" 
-                 class="flex items-center p-3 rounded-lg transition-all duration-200 hover:bg-gray-100 cursor-pointer">
-                <fa-icon [icon]="item.icon" class="mr-3 text-gray-400"></fa-icon>
-                <span class="text-gray-700">{{item.label}}</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-  
-      <!-- Desktop Header (hidden on mobile) -->
-      <div class="hidden lg:block bg-white shadow-sm">
-        <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-          <h1 class="text-2xl font-semibold text-gray-800">{{currentSection | titlecase}}</h1>
-          <button (click)="logout()" class="bg-gradient-to-r from-blue-600 to-blue-400 text-white px-3 py-1 rounded-full hover:from-blue-700 hover:to-blue-500 transition duration-300 shadow-lg transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50">
-            Logout
-          </button>
-        </div>
-      </div>
-  
-      <main class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-        <div class="py-6">
-          <!-- Dashboard Cards -->
-          <div *ngIf="currentSection === 'dashboard'" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div *ngFor="let card of dashboardCards" 
-                 class="bg-white p-6 rounded-lg shadow-md border border-gray-200 transition-all duration-200 hover:shadow-lg">
-              <div class="flex items-center">
-                <fa-icon [icon]="card.icon" class="text-gray-400 text-2xl mr-4"></fa-icon>
-                <h3 class="text-lg font-semibold mb-2 text-gray-800">{{card.title}}</h3>
-              </div>
-              <p class="text-gray-600 mb-4 text-3xl font-bold">{{card.value}}</p>
-              <a (click)="loadContent(card.link)" 
-                 class="text-indigo-600 font-medium cursor-pointer hover:text-indigo-800 transition-colors duration-200">
-                
-                 {{card.linkText}} →
-              </a>
-            </div>
-          </div>
-  
-          <!-- Section Views -->
-          <div *ngIf="currentSection === 'doctors'">
-            <app-manage-doctors></app-manage-doctors>
-          </div>
-  
-          <div *ngIf="currentSection === 'patients'">
-            <!-- <app-patient-management></app-patient-management> -->
-          </div>
-  
-          <div *ngIf="currentSection === 'appointments'">
-            <!-- <app-appointment-management></app-appointment-management> -->
-          </div>
-  
-          <div *ngIf="currentSection === 'notifications'">
-            <!-- <app-notification-management></app-notification-management> -->
-          </div>
-        </div>
-      </main>
+  <!-- Sidebar (hidden on mobile, shown on larger screens) -->
+  <div class="hidden lg:block lg:w-64 bg-white shadow-lg">
+    <div class="p-6">
+      <h2 class="text-2xl font-bold mb-8 text-gray-800">Admin Panel</h2>
+      <nav>
+        <ul class="space-y-2">
+          <li *ngFor="let item of menuItems">
+            <a (click)="loadContent(item.section)" 
+               class="flex items-center p-3 rounded-lg transition-all duration-200 hover:bg-gray-100 cursor-pointer group"
+               [ngClass]="{'bg-gray-100': currentSection === item.section}">
+              <fa-icon [icon]="item.icon" class="mr-3 text-gray-400 group-hover:text-indigo-500"></fa-icon>
+              <span class="text-gray-700 group-hover:text-indigo-500" 
+                    [ngClass]="{'text-indigo-500 font-semibold': currentSection === item.section}">
+                {{item.label}}
+              </span>
+            </a>
+          </li>
+        </ul>
+      </nav>
     </div>
   </div>
-  
+
+  <!-- Main Content -->
+  <div class="flex-1 overflow-hidden">
+    <!-- Mobile Header with Menu Toggle -->
+    <div class="lg:hidden bg-white shadow-sm">
+      <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 flex justify-between items-center">
+        <button (click)="toggleMobileMenu()" class="text-gray-500 hover:text-gray-600">
+          <fa-icon [icon]="'bars'" class="text-2xl"></fa-icon>
+        </button>
+        <h1 class="text-xl font-semibold text-gray-800">{{currentSection | titlecase}}</h1>
+        <button (click)="logout()" class="bg-gradient-to-r from-blue-600 to-blue-400 text-white px-3 py-1 rounded-full hover:from-blue-700 hover:to-blue-500 transition duration-300 shadow-lg transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50">
+          Logout
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu (hidden by default) -->
+    <div *ngIf="isMobileMenuOpen" class="lg:hidden bg-white shadow-lg">
+      <nav class="p-4">
+        <ul class="space-y-2">
+          <li *ngFor="let item of menuItems">
+            <a (click)="loadContent(item.section); toggleMobileMenu()" 
+               class="flex items-center p-3 rounded-lg transition-all duration-200 hover:bg-gray-100 cursor-pointer">
+              <fa-icon [icon]="item.icon" class="mr-3 text-gray-400"></fa-icon>
+              <span class="text-gray-700">{{item.label}}</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Desktop Header (hidden on mobile) -->
+    <div class="hidden lg:block bg-white shadow-sm">
+      <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+        <h1 class="text-2xl font-semibold text-gray-800">{{currentSection | titlecase}}</h1>
+        <button (click)="logout()" class="bg-gradient-to-r from-blue-600 to-blue-400 text-white px-3 py-1 rounded-full hover:from-blue-700 hover:to-blue-500 transition duration-300 shadow-lg transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50">
+          Logout
+        </button>
+      </div>
+    </div>
+
+    <main class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+      <div class="py-6">
+        <!-- Dashboard Cards -->
+        <div *ngIf="currentSection === 'dashboard'" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div *ngFor="let card of dashboardCards" 
+               class="bg-white p-6 rounded-lg shadow-md border border-gray-200 transition-all duration-200 hover:shadow-lg">
+            <div class="flex items-center">
+              <fa-icon [icon]="card.icon" class="text-gray-400 text-2xl mr-4"></fa-icon>
+              <h3 class="text-lg font-semibold mb-2 text-gray-800">{{card.title}}</h3>
+            </div>
+            <p class="text-gray-600 mb-4 text-3xl font-bold">{{card.value}}</p>
+            <a (click)="loadContent(card.link)" 
+               class="text-indigo-600 font-medium cursor-pointer hover:text-indigo-800 transition-colors duration-200">
+              {{card.linkText}} →
+            </a>
+          </div>
+        </div>
+
+        <!-- Section Views -->
+        <div *ngIf="currentSection === 'doctors'">
+          <app-manage-doctors></app-manage-doctors>
+        </div>
+
+        <div *ngIf="currentSection === 'patients'">
+          <app-manage-patient></app-manage-patient>
+        </div>
+
+        <div *ngIf="currentSection === 'appointments'">
+          <!-- <app-appointment-management></app-appointment-management> -->
+        </div>
+
+        <div *ngIf="currentSection === 'notifications'">
+          <!-- <app-notification-management></app-notification-management> -->
+        </div>
+      </div>
+    </main>
+  </div>
+</div>

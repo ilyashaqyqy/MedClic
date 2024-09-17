@@ -1,0 +1,176 @@
+<div class="flex h-screen bg-gray-50">
+  <!-- Sidebar -->
+  <aside class="w-64 bg-white shadow-md hidden md:block transition-all duration-300"
+         [class.hidden]="!sidebarOpen">
+    <div class="p-4">
+      <!-- Logo -->
+      <img src="assets/logo.png" alt="Healthcare Logo" class="h-8 mb-4">
+
+      <div class="flex flex-col items-center mb-6">
+        <!-- Profile Image -->
+        <div class="relative mb-2">
+          <!-- <img *ngIf="user?.profileImageUrl; else defaultProfileImage" 
+               [src]="user?.profileImageUrl" 
+               alt="Profile Image" 
+               class="w-24 h-24 rounded-full object-cover border-2 border-blue-200 shadow-md"> -->
+          <!-- <ng-template #defaultProfileImage>
+            <div class="w-24 h-24 bg-gray-300 rounded-full border-2 border-blue-200 flex items-center justify-center text-gray-600 text-xl font-semibold">
+              {{ user?.name?.charAt(0) || 'U' }}
+            </div>
+          </ng-template> -->
+
+          <div class="w-24 h-24 bg-blue-100 rounded-full border-2 border-blue-400 flex items-center justify-center text-gray-600 text-xl font-semibold">
+            {{ user?.name?.charAt(0) || 'U' }}
+          </div>
+        </div>
+
+        <!-- User Name -->
+        <h2 class="text-lg font-semibold text-gray-800">
+          {{ user?.name || 'Default Name' }}
+        </h2>
+      </div>
+
+      <!-- Navigation -->
+      <nav>
+        <a *ngFor="let item of navItems" 
+           [routerLink]="item.route" 
+           routerLinkActive="text-blue-600 bg-blue-100" 
+           class="block py-2 px-4 text-gray-700 hover:bg-blue-50 rounded">
+          {{ item.label }}
+        </a>
+      </nav>
+
+          <!-- Button to Find Doctors -->
+    <div class="mt-4">
+        <button (click)="findDoctors()" class="w-full py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-600">
+          Find Doctors
+        </button>
+      </div>
+    </div>
+  </aside>
+  
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col overflow-hidden">
+      <!-- Top Navigation -->
+      <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
+          <div class="flex items-center justify-between">
+            <button class="md:hidden text-gray-500 hover:text-gray-700" (click)="toggleSidebar()">
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+            <nav class="hidden md:flex space-x-8">
+            </nav>
+            <div class="flex items-center">
+              <button class="text-gray-500 hover:text-gray-700 mr-4" (click)="toggleNotifications()">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                </svg>
+              </button>
+              <button class="text-gray-500 hover:text-gray-700 mr-4" (click)="toggleMessages()">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </button>
+              <div class="relative">
+                <button class="flex items-center focus:outline-none" (click)="toggleProfileMenu()">
+                  <svg class="ml-2 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                </button>
+                <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1" [class.hidden]="!showProfileMenu">
+                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a>
+                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
+                  <button (click)="logout()" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+  
+      <!-- Dashboard Content -->
+      <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-50">
+        <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+          <h1 class="text-2xl font-semibold text-gray-800 mb-6">Dashboard</h1>
+          
+          <!-- Patient Information -->
+          <div class="bg-white overflow-hidden shadow-md sm:rounded-lg mb-6">
+            <div class="p-6">
+              <h2 class="text-lg font-semibold text-gray-800 mb-4">Patient Information</h2>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <p class="text-sm text-gray-600">Name</p>
+                  <p class="text-md font-semibold">{{ patient?.name || 'N/A' }}</p>
+                </div>
+                <div>
+                  <p class="text-sm text-gray-600">Date of Birth</p>
+                  <p class="text-md font-semibold">{{ patient?.dateOfBirth | date:'mediumDate' || 'N/A' }}</p>
+                </div>
+                <div>
+                  <p class="text-sm text-gray-600">Email</p>
+                  <p class="text-md font-semibold">{{ patient?.email || 'N/A' }}</p>
+                </div>
+                <div>
+                  <p class="text-sm text-gray-600">Phone Number</p>
+                  <p class="text-md font-semibold">{{ patient?.phoneNumber || 'N/A' }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Health Records -->
+          <div class="bg-white overflow-hidden shadow-md sm:rounded-lg mb-6">
+            <div class="p-6">
+              <h2 class="text-lg font-semibold text-gray-800 mb-4">Health Records</h2>
+              <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
+                <div class="p-4 bg-gray-100 rounded-md shadow-sm">
+                  <p class="text-sm text-gray-600">Medical History</p>
+                  <p class="text-md font-semibold">{{ patient?.medicalHistory || 'N/A' }}</p>
+                </div>
+                <div class="p-4 bg-gray-100 rounded-md shadow-sm">
+                  <p class="text-sm text-gray-600">Insurance Info</p>
+                  <p class="text-md font-semibold">{{ patient?.insuranceInfo || 'N/A' }}</p>
+                </div>
+                <div class="p-4 bg-gray-100 rounded-md shadow-sm">
+                  <p class="text-sm text-gray-600">Address</p>
+                  <p class="text-md font-semibold">{{ patient?.address || 'N/A' }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Appointments and Analytics -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Appointments -->
+            <div class="bg-white overflow-hidden shadow-md sm:rounded-lg">
+              <div class="p-6">
+                <h2 class="text-lg font-semibold text-gray-800 mb-4">Appointments</h2>
+                <!-- Add appointment calendar component here -->
+                <p class="text-gray-600">No upcoming appointments</p>
+              </div>
+            </div>
+            
+            <!-- Analytics -->
+            <div class="bg-white overflow-hidden shadow-md sm:rounded-lg">
+              <div class="p-6">
+                <h2 class="text-lg font-semibold text-gray-800 mb-4">Analytics</h2>
+                <!-- Add analytics chart component here -->
+                <p class="text-gray-600">No analytics data available</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Find Doctors -->
+          <div class="mt-6 bg-white overflow-hidden shadow-md sm:rounded-lg">
+            <div class="p-6">
+              <h2 class="text-lg font-semibold text-gray-800 mb-4">Find Doctors</h2>
+              <!-- Add doctor search and listing component here -->
+              <p class="text-gray-600">Doctor search functionality coming soon</p>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>

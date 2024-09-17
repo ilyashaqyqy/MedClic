@@ -12,13 +12,20 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) { }
+  constructor(
+    private fb: FormBuilder, 
+    private authService: AuthService, 
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      name: ['', [Validators.required, Validators.minLength(4)]], // Updated from username to name
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      name: ['', [Validators.required, Validators.minLength(4)]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      dateOfBirth: ['', Validators.required],
+      address: ['', Validators.required],
+      phone: ['', Validators.required],
     });
   }
 
@@ -28,7 +35,7 @@ export class RegisterComponent implements OnInit {
       this.authService.register(request).subscribe({
         next: (response) => {
           console.log('Registration successful', response);
-          this.router.navigate(['/login']); // Redirect to login
+          this.router.navigate(['/login']); // Redirect to login page after success
         },
         error: (error) => {
           console.error('Registration failed', error);
@@ -44,10 +51,22 @@ export class RegisterComponent implements OnInit {
   }
 
   get name() {
-    return this.registerForm.get('name'); // Updated from username to name
+    return this.registerForm.get('name');
   }
 
   get password() {
     return this.registerForm.get('password');
+  }
+
+  get dateOfBirth() {
+    return this.registerForm.get('dateOfBirth');
+  }
+
+  get address() {
+    return this.registerForm.get('address');
+  }
+
+  get phoneNumber() {
+    return this.registerForm.get('phoneNumber');
   }
 }

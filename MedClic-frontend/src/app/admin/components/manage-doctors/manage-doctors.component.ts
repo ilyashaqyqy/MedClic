@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DoctorService } from '../../../services/doctor.service';
 import { Doctor } from '../../../models/doctor.model';
 import { DoctorDialogComponent } from '../../../admin/components/doctor-dialog/doctor-dialog.component'; 
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+
 
 
 @Component({
@@ -12,9 +14,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./manage-doctors.component.css']
 })
 export class ManageDoctorsComponent implements OnInit {
+  displayedColumns: string[] = ['profilePhoto', 'name', 'specialization', 'yearsOfExperience', 'consultationFee', 'actions'];
   doctors: Doctor[] = [];
+  dataSource: MatTableDataSource<Doctor> = new MatTableDataSource<Doctor>([]);
   errorMessage: string | null = null;
   searchTerm: string = '';
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(private doctorService: DoctorService, private dialog: MatDialog) { }
 
@@ -24,7 +30,11 @@ export class ManageDoctorsComponent implements OnInit {
 
   loadDoctors(): void {
     this.doctorService.getDoctors().subscribe(
-      (data: Doctor[]) => this.doctors = data,
+      (data: Doctor[]) => {
+        this.doctors = data;
+        this.dataSource = new MatTableDataSource<Doctor>(this.doctors);
+        this.dataSource.paginator = this.paginator;
+      },
       error => this.errorMessage = 'Error loading doctors'
     );
   }
@@ -32,7 +42,9 @@ export class ManageDoctorsComponent implements OnInit {
   openDialog(doctor: Doctor | null = null): void {
     const dialogRef = this.dialog.open(DoctorDialogComponent, {
       width: '500px',
-      data: { doctor: doctor || { id: 0, firstName: '', lastName: '', email: '', specialization: '', yearsOfExperience: 0, consultationFee: 0, profilePhoto: '', bio: '', education: '', certifications: '' } }
+      data: { 
+        doctor: doctor || { id: 0, firstName: '', lastName: '', email: '', specialization: '', yearsOfExperience: 0, consultationFee: 0, profilePhoto: '', bio: '', education: '', certifications: '' } 
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -51,16 +63,12 @@ export class ManageDoctorsComponent implements OnInit {
     }
   }
 
-  // Filter doctors based on the search term
-  filteredDoctors(): Doctor[] {
-    if (!this.searchTerm) {
-      return this.doctors;
-    }
-    
-    return this.doctors.filter(doctor => 
-      doctor.name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-      doctor.specialization.toLowerCase().includes(this.searchTerm.toLowerCase())
-    );
-  }
+  applyFilter(event: Event): void {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
 
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
 }

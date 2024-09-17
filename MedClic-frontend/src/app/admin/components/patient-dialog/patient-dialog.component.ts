@@ -10,6 +10,7 @@ import { Patient } from '../../../models/patient.model';
 })
 export class PatientDialogComponent {
   patient: Patient;
+  
 
   constructor(
     public dialogRef: MatDialogRef<PatientDialogComponent>,

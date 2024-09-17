@@ -19,8 +19,10 @@ export class LoginComponent {
       return;
     }
 
-    const { username, password } = form.value;
-    this.authService.login(username, password).subscribe(
+    const { email, password } = form.value;
+    console.log('Email:', email);
+    console.log('Password:', password);
+    this.authService.login(email, password).subscribe(
       (response: { token: string; userId: number; }) => {
         this.authService.saveToken(response.token);
         const role = this.authService.getRole();
@@ -33,7 +35,7 @@ export class LoginComponent {
           this.router.navigate(['/doctor-dashboard']);
         } else {
           console.log('Navigating to User Patient Dashboard');
-          this.router.navigate(['/user-dashboard']);
+          this.router.navigate(['/patient-dashboard']);
         }
       },
       (error: any) => {

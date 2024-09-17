@@ -36,5 +36,8 @@ export class PatientService {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 
+  // getPatientByUserId(userId: number): Observable<Patient> {
+  //   return this.http.get<Patient>(`${this.apiUrl}/users/${userId}`);
+  // }
 
 }
