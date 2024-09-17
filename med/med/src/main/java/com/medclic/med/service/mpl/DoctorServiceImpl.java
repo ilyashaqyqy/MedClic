@@ -59,12 +59,9 @@ public class DoctorServiceImpl implements DoctorService {
                 .collect(Collectors.toList());
     }
 
-//    @Override
-//    public List<DoctorDTO> searchDoctors(String specialization, String location) {
-//        // Implement search logic based on specialization and location
-//        return doctorRepository.searchDoctors(specialization, location).stream()
-//                .map(doctorMapper::toDTO)
-//                .collect(Collectors.toList());
-//    }
+    public long countDoctors() {
+        return doctorRepository.count();
+    }
+
 }
 

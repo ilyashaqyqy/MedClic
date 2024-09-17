@@ -3,6 +3,7 @@ package com.medclic.med.auth;
 import com.medclic.med.config.JwtService;
 import com.medclic.med.exception.EmailAlreadyExistsException;
 import com.medclic.med.exception.InvalidCredentialsException;
+import com.medclic.med.model.Patient;
 import com.medclic.med.model.Role;
 import com.medclic.med.model.User;
 import com.medclic.med.repository.UserRepository;
@@ -29,25 +30,30 @@ public class AuthenticationService {
             throw new EmailAlreadyExistsException("Email is already registered: " + request.getEmail());
         }
 
-        Role userRole = Role.PATIENT; // Default to ROLE_PATIENT
+        // Determine the role and create appropriate User or Patient entity
+        Role userRole = request.getRole() != null ? request.getRole() : Role.PATIENT;
 
-        if (request.getRole() != null) {
-            try {
-                userRole = Role.valueOf(request.getRole().toString());
-            } catch (IllegalArgumentException e) {
-                // Invalid role provided, keep the default ROLE_PATIENT
-                throw new IllegalArgumentException("Invalid role provided");
-            }
+        User newUser;
+        if (userRole == Role.PATIENT) {
+            // Create a new Patient instance and populate the fields
+            Patient newPatient = new Patient();
+            newPatient.setDateOfBirth(request.getDateOfBirth());
+            newPatient.setAddress(request.getAddress());
+            newPatient.setPhoneNumber(request.getPhone());
+            newUser = newPatient;
+        } else {
+            // Create a standard User for other roles
+            newUser = new User();
         }
 
-        User newUser = new User();
-        newUser.setEmail(request.getEmail()); // Email as username
+        newUser.setEmail(request.getEmail());
         newUser.setName(request.getName());
         newUser.setPassword(passwordEncoder.encode(request.getPassword()));
         newUser.setRole(userRole);
+
         User savedUser = userRepository.save(newUser);
 
-        // Convert User to UserDetails if needed
+        // Generate JWT token
         String jwtToken = jwtService.generateToken(savedUser, savedUser.getId());
 
         return AuthenticationResponse.builder()

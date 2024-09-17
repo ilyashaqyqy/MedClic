@@ -5,6 +5,7 @@ package com.medclic.med.controller;
 import com.medclic.med.dto.PatientDTO;
 
 import com.medclic.med.service.PatientService;
+import com.medclic.med.service.mpl.PatientServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,8 @@ public class PatientController {
 
     @Autowired
     private PatientService patientService;
+    @Autowired
+    private PatientServiceImpl patientServiceImpl;
 
     @GetMapping("/{id}")
     public ResponseEntity<PatientDTO> getPatientById(@PathVariable Long id) {
@@ -51,5 +54,22 @@ public class PatientController {
         List<PatientDTO> patients = patientService.getAllPatients();
         return new ResponseEntity<>(patients, HttpStatus.OK);
     }
+
+    @GetMapping("/count")
+    public ResponseEntity<Long> getPatientCount() {
+        long count = patientServiceImpl.countPtient();
+        return new ResponseEntity<>(count, HttpStatus.OK);
+    }
+
+
+    @GetMapping("/email/{email}/id")
+    public ResponseEntity<Long> getPatientIdByEmail(@PathVariable String email) {
+        Long patientId = patientService.findPatientIdByEmail(email);
+        if (patientId != null) {
+            return ResponseEntity.ok(patientId);
+        }
+        return ResponseEntity.notFound().build();
+    }
+
 }
 

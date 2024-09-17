@@ -4,6 +4,7 @@ import com.medclic.med.dto.PatientDTO;
 import com.medclic.med.exception.PatientNotFoundException;
 import com.medclic.med.mapper.PatientMapper;
 import com.medclic.med.model.Patient;
+import com.medclic.med.model.User;
 import com.medclic.med.repository.PatientRepository;
 import com.medclic.med.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,4 +53,18 @@ public class PatientServiceImpl implements PatientService {
                 .map(patientMapper::toDTO)
                 .collect(Collectors.toList());
     }
+
+
+
+    public long countPtient() {
+        return patientRepository.count();
+    }
+
+
+    public Long findPatientIdByEmail(String email) {
+        return patientRepository.findByEmail(email)
+                .map(Patient::getId)
+                .orElse(null);
+    }
+
 }

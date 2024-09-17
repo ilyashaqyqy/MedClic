@@ -10,5 +10,7 @@ public interface PatientService {
     PatientDTO updatePatient(PatientDTO patientDTO);
     void deletePatient(Long patientId);
     List<PatientDTO> getAllPatients();
+    Long findPatientIdByEmail(String email);
+
 }
 
