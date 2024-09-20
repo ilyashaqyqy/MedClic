@@ -6,6 +6,7 @@ import { DoctorDashboardComponent } from './doctor/components/doctor-dashboard/d
 import { AdminDashboardComponent } from './admin/components/admin-dashboard/admin-dashboard.component';
 import { PatientDashboardComponent } from './patient/patient-dashboard/patient-dashboard.component';
 import { FindDoctorsComponent } from './patient/find-doctors/find-doctors.component';
+import { DoctorDetailsComponent } from './doctor/components/doctor-details/doctor-details.component';
 
 import { ManageDoctorsComponent } from './admin/components/manage-doctors/manage-doctors.component';
 import { ManagePatientComponent } from './admin/components/manage-patient/manage-patient.component';
@@ -27,6 +28,7 @@ const routes: Routes = [
   // Patient routes
   { path: 'patient-dashboard' , component: PatientDashboardComponent , canActivate: [AuthGuard]},
   { path: 'find-doctors' , component: FindDoctorsComponent , canActivate: [AuthGuard]},
+  { path: 'doctor-details/:id' , component: DoctorDetailsComponent , canActivate: [AuthGuard]},
 
 
   // Admin routes

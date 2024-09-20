@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DoctorService } from '../../services/doctor.service';
 import { Doctor } from '../../models/doctor.model';
 
@@ -12,7 +13,10 @@ export class FindDoctorsComponent implements OnInit {
   doctors: Doctor[] = [];
   filteredDoctors: Doctor[] = [];
 
-  constructor(private doctorService: DoctorService) { }
+  constructor(
+    private doctorService: DoctorService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.loadDoctors();
@@ -32,7 +36,12 @@ export class FindDoctorsComponent implements OnInit {
 
   filterDoctors(): void {
     this.filteredDoctors = this.doctors.filter(doctor =>
-      doctor.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+      doctor.name.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+      doctor.specialization.toLowerCase().includes(this.searchQuery.toLowerCase())
     );
+  }
+
+  navigateToDoctorProfile(doctorId: number): void {
+    this.router.navigate(['/doctor-details', doctorId]);
   }
 }
