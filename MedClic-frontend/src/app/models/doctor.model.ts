@@ -17,4 +17,5 @@ export interface Doctor extends User {
   location: Location;
   appointments: Appointment[];
   specializations: Specialization[];
+  locationId?: number;
 }

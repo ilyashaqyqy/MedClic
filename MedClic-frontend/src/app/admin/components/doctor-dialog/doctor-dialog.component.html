@@ -1,15 +1,19 @@
-<h2 mat-dialog-title>{{ doctor.id ? 'Edit Doctor' : 'Add Doctor' }}</h2>
+<h2 mat-dialog-title>{{ doctor.id ? 'Edit Doctor' : 'Register Doctor' }}</h2>
 <mat-dialog-content>
-  <form>
-
+  <form #doctorForm="ngForm">
     <mat-form-field appearance="fill">
       <mat-label>Name</mat-label>
-      <input matInput [(ngModel)]="doctor.name" name="lastName" required>
+      <input matInput [(ngModel)]="doctor.name" name="name" required>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Email</mat-label>
       <input matInput [(ngModel)]="doctor.email" name="email" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input matInput [(ngModel)]="doctor.password" name="password" type="password" required>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
@@ -25,6 +29,15 @@
     <mat-form-field appearance="fill">
       <mat-label>Consultation Fee</mat-label>
       <input matInput [(ngModel)]="doctor.consultationFee" name="consultationFee" type="number" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Location</mat-label>
+      <mat-select [(ngModel)]="doctor.locationId" name="locationId" required>
+        <mat-option *ngFor="let location of locations" [value]="location.id">
+          {{ location.name }}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
@@ -46,11 +59,9 @@
       <mat-label>Certifications</mat-label>
       <input matInput [(ngModel)]="doctor.certifications" name="certifications">
     </mat-form-field>
-
-
   </form>
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-button (click)="onCancel()">Cancel</button>
-  <button mat-button color="primary" (click)="onSave()">Save</button>
+  <button mat-button color="primary" (click)="onSave()" [disabled]="!doctorForm.valid">Save</button>
 </mat-dialog-actions>

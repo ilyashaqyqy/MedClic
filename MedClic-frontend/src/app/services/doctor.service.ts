@@ -8,6 +8,7 @@ import { Doctor } from '../models/doctor.model';
 })
 export class DoctorService {
   private apiUrl = 'http://localhost:8080/api/doctors'; 
+  private authUrl = 'http://localhost:8080/api/v1/auth';
 
   constructor(private http: HttpClient) { }
 
@@ -19,15 +20,10 @@ export class DoctorService {
     return this.http.get<Doctor>(`${this.apiUrl}/${id}`);
   }
 
-  createDoctor(doctor: Doctor): Observable<Doctor> {
-    return this.http.post<Doctor>(this.apiUrl, doctor, {
+  registerDoctor(doctor: Doctor): Observable<any> {
+    return this.http.post<any>(`${this.authUrl}/register/doctor`, doctor, {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     });
-  }
-
-  getDoctorCount(): Observable<number> {
-    return this.http.get<number>(`${this.apiUrl}/count`);
-    
   }
 
   updateDoctor(doctor: Doctor): Observable<Doctor> {
@@ -38,5 +34,11 @@ export class DoctorService {
 
   deleteDoctor(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+
+
+  getDoctorCount(): Observable<number> {
+    return this.http.get<number>(`${this.apiUrl}/count`);
+    
   }
 }
