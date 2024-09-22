@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common'; 
+
 
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -61,6 +63,8 @@ import { DoctorDetailsComponent } from './doctor/components/doctor-details/docto
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    CommonModule,
+    ReactiveFormsModule,
 
 
     BrowserAnimationsModule,

@@ -1,143 +1,110 @@
-<!-- home.component.html -->
-<nav class="bg-wite shadow-600 text-blue-400 p-4 shadow-lg">
-    <div class="container mx-auto flex justify-between items-center">
-      <a href="/" class="text-2xl font-bold">MedClic</a>
-      <div class="space-x-4">
-        <a href="/find-doctor" class="hover:text-blue-500 transition duration-300">Find Doctor</a>
-        <a routerLink="/login" class="hover:text-blue-500 transition duration-300">Log In</a>
-        <a routerLink="/register" class="bg-blue-400 text-white px-4 py-2 rounded-full hover:bg-blue-500 transition duration-300">Sign Up</a>
-      </div>
+<nav class="bg-white shadow-lg text-blue-400 p-4">
+  <div class="container mx-auto flex justify-between items-center">
+    <a routerLink="/" class="text-2xl font-bold">MedClic</a>
+    <div class="space-x-4">
+      <a href="/find-doctor" class="hover:text-blue-500 transition duration-300">Find Doctor</a>
+      <a href="/login" class="hover:text-blue-500 transition duration-300">Log In</a>
+      <a href="/register" class="bg-blue-400 text-white px-4 py-2 rounded-full hover:bg-blue-500 transition duration-300">Sign Up</a>
     </div>
-  </nav>
-  
-  <header class="bg-blue-500 text-white py-40  "style="background-image: url('https://img.freepik.com/free-photo/young-professional-woman-doctor-medical-worker-showing-okay-ok-zero-gesture-smiling-satisfied-re_1258-126945.jpg?t=st=1726002225~exp=1726005825~hmac=46c4fd304a5f50350ef9cd8f9f59fe3b8a16312391d337104583112d62e51eec&w=1060'); background-size: cover; background-position: center ">
-    <div class="container mx-auto text-center px-4">
-      <h1 class="text-4xl md:text-5xl font-bold mb-4 leading-tight">Book Appointments with Top Doctors in Your Area</h1>
-      <p class="text-xl mb-8">Easily find specialized doctors and schedule appointments online.</p>
-      <div class="max-w-2xl mx-auto mb-10"></div>
-        <input type="text" placeholder="Find a Cardiologist in New York" class="w-full p-4 rounded-full shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300">
-      </div>
+  </div>
+</nav>
 
-  </header>
-  
-  <!-- <section class="py-10 bg-gray-100">
-    <div class="container mx-auto px-4">
-      <div class="max-w-2xl mx-auto">
-        <input type="text" placeholder="Find a Cardiologist in New York" class="w-full p-4 rounded-full shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300">
+<header class="bg-blue-500 text-white py-40" style="background-image: url('https://img.freepik.com/free-photo/young-professional-woman-doctor-medical-worker-showing-okay-ok-zero-gesture-smiling-satisfied-re_1258-126945.jpg?t=st=1726002225~exp=1726005825~hmac=46c4fd304a5f50350ef9cd8f9f59fe3b8a16312391d337104583112d62e51eec&w=1060'); background-size: cover; background-position: center;">
+  <div class="container mx-auto text-center px-4">
+    <h1 class="text-4xl md:text-5xl font-bold mb-4 leading-tight">Book Appointments with Top Doctors in Your Area</h1>
+    <p class="text-xl mb-8">Easily find specialized doctors and schedule appointments online.</p>
+    <div class="max-w-2xl mx-auto mb-10">
+      <input type="text" placeholder="Find a Cardiologist in New York" class="w-full p-4 rounded-full shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300">
+    </div>
+  </div>
+</header>
+
+<section class="py-16">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-12">How It Works</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div *ngFor="let step of howItWorks" class="text-center">
+        <div class="bg-blue-100 rounded-full p-6 w-24 h-24 flex items-center justify-center mx-auto mb-4">
+          <i [class]="step.icon" class="text-3xl text-blue-600"></i>
+        </div>
+        <h3 class="font-semibold mb-2">{{ step.title }}</h3>
+        <p class="text-gray-600">{{ step.description }}</p>
       </div>
     </div>
-  </section> -->
-  
-  <section class="py-16">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-12">How It Works</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div *ngFor="let step of howItWorks" class="text-center">
-          <div class="bg-blue-100 rounded-full p-6 w-24 h-24 flex items-center justify-center mx-auto mb-4">
-            <i [class]="step.icon" class="text-3xl text-blue-600"></i>
-          </div>
-          <h3 class="font-semibold mb-2">{{ step.title }}</h3>
-          <p class="text-gray-600">{{ step.description }}</p>
+  </div>
+</section>
+
+<section class="py-16 bg-gray-100">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-12">Featured Doctors</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div *ngFor="let doctor of featuredDoctors" class="bg-white rounded-lg shadow-lg overflow-hidden transition duration-300 transform hover:scale-105">
+        <img [src]="doctor.image" [alt]="doctor.name" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h3 class="font-bold text-xl mb-2">{{ doctor.name }}</h3>
+          <p class="text-gray-600 mb-4">{{ doctor.specialization }}</p>
+          <button class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition duration-300">View Profile</button>
         </div>
       </div>
     </div>
-  </section>
-  
-  <section class="py-16 bg-gray-100">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-12">Featured Doctors</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div *ngFor="let doctor of featuredDoctors" class="bg-white rounded-lg shadow-lg overflow-hidden transition duration-300 transform hover:scale-105">
-          <img src="https://img.freepik.com/free-photo/doctor-offering-medical-teleconsultation_23-2149329007.jpg" [alt]="doctor.name" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h3 class="font-bold text-xl mb-2">{{ doctor.name }}</h3>
-            <p class="text-gray-600 mb-4">{{ doctor.specialization }}</p>
-            <button class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition duration-300">View Profile</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-  <section class="py-16">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-12">What Our Patients Say</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div *ngFor="let testimonial of testimonials" class="bg-white p-6 rounded-lg shadow-lg">
-          <div class="flex items-center mb-4">
-            <img [src]="testimonial.image" [alt]="testimonial.name" class="w-12 h-12 rounded-full mr-4">
-            <div>
-              <h3 class="font-semibold">{{ testimonial.name }}</h3>
-              <div class="text-yellow-400">
-                <i class="fas fa-star" *ngFor="let star of [1,2,3,4,5]"></i>
-              </div>
+  </div>
+</section>
+
+<section class="py-16">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-12">What Our Patients Say</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div *ngFor="let testimonial of testimonials" class="bg-white p-6 rounded-lg shadow-lg">
+        <div class="flex items-center mb-4">
+          <img [src]="testimonial.image" [alt]="testimonial.name" class="w-12 h-12 rounded-full mr-4">
+          <div>
+            <h3 class="font-semibold">{{ testimonial.name }}</h3>
+            <div class="text-yellow-400">
+              <i class="fas fa-star" *ngFor="let star of [1, 2, 3, 4, 5]"></i>
             </div>
           </div>
-          <p class="text-gray-600">{{ testimonial.comment }}</p>
         </div>
+        <p class="text-gray-600">{{ testimonial.comment }}</p>
       </div>
     </div>
-  </section>
-  
-  <section class="py-16 bg-gray-100">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-12">Benefits of Using MedClic</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div *ngFor="let benefit of benefits" class="text-center">
-          <div class="bg-white rounded-full p-6 w-24 h-24 flex items-center justify-center mx-auto mb-4 shadow-lg">
-            <i [class]="benefit.icon" class="text-3xl text-blue-600"></i>
-          </div>
-          <h3 class="font-semibold mb-2">{{ benefit.title }}</h3>
-          <p class="text-gray-600">{{ benefit.description }}</p>
+  </div>
+</section>
+
+<section class="py-16 bg-gray-100">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-12">Benefits of Using MedClic</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div *ngFor="let benefit of benefits" class="text-center">
+        <div class="bg-white rounded-full p-6 w-24 h-24 flex items-center justify-center mx-auto mb-4 shadow-lg">
+          <i [class]="benefit.icon" class="text-3xl text-blue-600"></i>
         </div>
-      </div>
-      <div class="text-center mt-12">
-        <button class="bg-blue-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-600 transition duration-300 shadow-lg">Why Choose MedClic?</button>
+        <h3 class="font-semibold mb-2">{{ benefit.title }}</h3>
+        <p class="text-gray-600">{{ benefit.description }}</p>
       </div>
     </div>
-  </section>
-  
-  <section class="py-20 bg-blue-500 text-white text-center">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl md:text-4xl font-bold mb-8">Ready to Schedule an Appointment?</h2>
-      <button (click)="findDoctor()" class="bg-white text-blue-600 px-8 py-4 rounded-full font-semibold text-xl hover:bg-blue-100 transition duration-300 shadow-lg">Find Your Doctor Today!</button>
+    <div class="text-center mt-12">
+      <button class="bg-blue-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-600 transition duration-300 shadow-lg">Why Choose MedClic?</button>
     </div>
-  </section>
-  
-  <footer class="bg-gray-800 text-white py-12">
-    <div class="container mx-auto px-4">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div>
-          <h3 class="text-xl font-semibold mb-4">MedClic</h3>
-          <p>Book medical appointments online with ease.</p>
-        </div>
-        <div>
-          <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
-          <ul class="space-y-2">
-            <li><a href="/about" class="hover:text-blue-300 transition duration-300">About Us</a></li>
-            <li><a href="/contact" class="hover:text-blue-300 transition duration-300">Contact Us</a></li>
-            <li><a href="/faq" class="hover:text-blue-300 transition duration-300">FAQs</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="text-xl font-semibold mb-4">Legal</h3>
-          <ul class="space-y-2">
-            <li><a href="/privacy" class="hover:text-blue-300 transition duration-300">Privacy Policy</a></li>
-            <li><a href="/terms" class="hover:text-blue-300 transition duration-300">Terms of Service</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="text-xl font-semibold mb-4">Follow Us</h3>
-          <div class="flex space-x-4">
-            <a href="#" class="text-2xl hover:text-blue-300 transition duration-300"><i class="fab fa-facebook"></i></a>
-            <a href="#" class="text-2xl hover:text-blue-300 transition duration-300"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="text-2xl hover:text-blue-300 transition duration-300"><i class="fab fa-instagram"></i></a>
-          </div>
-        </div>
-      </div>
-      <div class="mt-8 pt-8 border-t border-gray-700 text-center">
-        <p>&copy; 2023 MedClic. All rights reserved.</p>
-      </div>
+  </div>
+</section>
+
+<section class="py-20 bg-blue-500 text-white text-center">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl md:text-4xl font-bold mb-8">Ready to Schedule an Appointment?</h2>
+    <button (click)="findDoctor()" class="bg-white text-blue-600 px-8 py-4 rounded-full font-semibold text-xl hover:bg-gray-200 transition duration-300">Find a Doctor</button>
+    <div class="mt-4">
+      <button (click)="signUp()" class="bg-yellow-400 text-white px-8 py-4 rounded-full font-semibold text-xl hover:bg-yellow-500 transition duration-300">Sign Up</button>
     </div>
-  </footer>
-  
+  </div>
+</section>
+
+<footer class="bg-gray-800 text-white py-8">
+  <div class="container mx-auto text-center">
+    <p>&copy; 2023 MedClic. All rights reserved.</p>
+    <div class="mt-4">
+      <a routerLink="/terms" class="text-gray-400 hover:text-white transition duration-300">Terms of Service</a>
+      <span class="mx-2">|</span>
+      <a routerLink="/privacy" class="text-gray-400 hover:text-white transition duration-300">Privacy Policy</a>
+    </div>
+  </div>
+</footer>

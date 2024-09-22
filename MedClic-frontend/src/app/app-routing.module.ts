@@ -13,6 +13,7 @@ import { ManagePatientComponent } from './admin/components/manage-patient/manage
 import { HomeComponent } from './public/home/home.component';
 import { AuthGuard } from './guards/auth.guard';
 import { AdminGuard } from './guards/admin.guard';
+import { RoleGuard } from './guards/role.guard';
 
 const routes: Routes = [
 
@@ -23,10 +24,10 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
 
  // Doctor routes
-  { path: 'doctor-dashboard' , component: DoctorDashboardComponent }, 
+  { path: 'doctor-dashboard' , component: DoctorDashboardComponent, canActivate: [AuthGuard ] } , 
 
   // Patient routes
-  { path: 'patient-dashboard' , component: PatientDashboardComponent , canActivate: [AuthGuard]},
+  { path: 'patient-dashboard' , component: PatientDashboardComponent , canActivate: [AuthGuard , RoleGuard] , data: { roles: ['PATIENT'] } } ,
   { path: 'find-doctors' , component: FindDoctorsComponent , canActivate: [AuthGuard]},
   { path: 'doctor-details/:id' , component: DoctorDetailsComponent , canActivate: [AuthGuard]},
 
