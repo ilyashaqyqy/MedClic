@@ -22,6 +22,20 @@ public class RegisterRequest {
     private String password;
     private Role role;
     private Date dateOfBirth;
+
+
+
     private String address;
-    private String phone;
+    private String phoneNumber;
+    private String specialization;
+    private int yearsOfExperience;
+    private double consultationFee;
+    private String profilePhoto;
+    private String bio;
+    private String education;
+    private String certifications;
+    private Long locationId;
+    private String locationName;
+
+
 }

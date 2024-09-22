@@ -23,6 +23,11 @@ public class AuthenticationController {
         return ResponseEntity.ok(service.authenticate(request));
     }
 
+    @PostMapping("/register/doctor") // New endpoint for doctor registration
+    public ResponseEntity<AuthenticationResponse> registerDoctor(@RequestBody RegisterRequest request) {
+        return ResponseEntity.ok(service.register(request));
+    }
+
 //    @GetMapping("/test")
 //    public ResponseEntity<String> testEndpoint() {
 //        return ResponseEntity.ok("Test endpoint working");

@@ -9,6 +9,7 @@ import java.util.Set;
 @Setter
 @Getter
 @Entity
+
 public class Doctor extends User {
 
     private String specialization;
