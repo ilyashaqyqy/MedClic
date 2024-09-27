@@ -20,8 +20,8 @@ export class LoginComponent {
     }
 
     const { email, password } = form.value;
-    console.log('Email:', email);
-    console.log('Password:', password);
+    // console.log('Email:', email);
+    // console.log('Password:', password);
     this.authService.login(email, password).subscribe(
       (response: { token: string; userId: number; }) => {
         this.authService.saveToken(response.token);

@@ -1,0 +1,29 @@
+/* Add these styles to your component's CSS file
+
+@media (max-width: 768px) {
+    .sidebar-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 40;
+      transition: opacity 0.3s ease-in-out;
+    }
+  
+    .sidebar-overlay.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+  
+  .profile-dropdown {
+    transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+  }
+  
+  .profile-dropdown.hidden {
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+  } */

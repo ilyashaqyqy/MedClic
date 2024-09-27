@@ -40,6 +40,8 @@ import { PatientDialogComponent } from './admin/components/patient-dialog/patien
 import { PatientDashboardComponent } from './patient/patient-dashboard/patient-dashboard.component';
 import { FindDoctorsComponent } from './patient/find-doctors/find-doctors.component';
 import { DoctorDetailsComponent } from './doctor/components/doctor-details/doctor-details.component';
+import { AppointmentDialogComponent } from './patient/appointment-dialog/appointment-dialog.component';
+import { AppointmentsComponent } from './appointments/appointments.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +58,8 @@ import { DoctorDetailsComponent } from './doctor/components/doctor-details/docto
     PatientDashboardComponent,
     FindDoctorsComponent,
     DoctorDetailsComponent,
+    AppointmentDialogComponent,
+    AppointmentsComponent,
   ],
   imports: [
     BrowserModule,

@@ -2,12 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Patient } from '../models/patient.model';
+import { Appointment } from '../models/appointment.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PatientService {
   private apiUrl = 'http://localhost:8080/api/patients';
+  private apiapointmentUrl = 'http://localhost:8080/api/appointments';
 
   constructor(private http: HttpClient) {}
 
@@ -34,6 +36,13 @@ export class PatientService {
 
   deletePatient(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+
+
+  //////////////////////////////////////////////////::::
+
+  getAppointments(userId: number): Observable<Appointment[]> {
+    return this.http.get<Appointment[]>(`${this.apiapointmentUrl}/patients/${userId}`);
   }
 
   // getPatientByUserId(userId: number): Observable<Patient> {

@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
+
+  constructor(private router: Router) {}
   howItWorks = [
     { icon: 'fas fa-search', title: 'Search for a Doctor', description: 'Select based on specialization, location, and time.' },
     { icon: 'fas fa-calendar-alt', title: 'Schedule an Appointment', description: 'Choose a suitable time and date.' },
@@ -33,9 +35,19 @@ export class HomeComponent {
     { icon: 'fas fa-bell', title: 'Get Reminders', description: 'Never miss an appointment with our reminder system.' }
   ];
 
-  findDoctor() {
-    // Implement navigation to doctor search page
+  categories = [
+    { id: 1, name: 'Catégorie 1', description: 'Description de la catégorie 1' },
+    { id: 2, name: 'Catégorie 2', description: 'Description de la catégorie 2' },
+    { id: 3, name: 'Catégorie 3', description: 'Description de la catégorie 3' },
+  ];
+
+  navigateToFindDoctor() {
     console.log('Navigating to doctor search page');
+    this.router.navigate(['/find-doctors']).then(success => {
+      console.log('Navigation successful:', success);
+    }).catch(err => {
+      console.error('Navigation error:', err);
+    });
   }
 
   signUp() {

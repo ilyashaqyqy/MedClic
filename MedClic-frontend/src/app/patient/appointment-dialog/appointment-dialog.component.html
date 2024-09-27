@@ -1,0 +1,49 @@
+<h2 mat-dialog-title>Schedule an Appointment</h2>
+<div mat-dialog-content>
+  <form [formGroup]="scheduleForm" (ngSubmit)="scheduleAppointment()">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+      <div>
+        <label for="appointmentDate" class="block text-sm font-medium">Date</label>
+        <input type="date" id="appointmentDate" formControlName="appointmentDate"
+               class="w-full px-3 py-2 border rounded-md">
+      </div>
+      <div>
+        <label for="appointmentTime" class="block text-sm font-medium">Time</label>
+        <input type="time" id="appointmentTime" formControlName="appointmentTime"
+               class="w-full px-3 py-2 border rounded-md">
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <label for="appointmentType" class="block text-sm font-medium">Appointment Type</label>
+      <select id="appointmentType" formControlName="appointmentType"
+              class="w-full px-3 py-2 border rounded-md">
+        <option value="" disabled>Select Appointment Type</option>
+        <option *ngFor="let type of appointmentTypes" [value]="type">{{ type }}</option>
+      </select>
+    </div>
+
+    <div class="mb-4">
+      <label for="appointmentReason" class="block text-sm font-medium">Reason</label>
+      <select id="appointmentReason" formControlName="appointmentReason"
+              class="w-full px-3 py-2 border rounded-md">
+        <option value="" disabled>Select Reason</option>
+        <option *ngFor="let reason of appointmentReasons" [value]="reason">{{ reason }}</option>
+      </select>
+    </div>
+
+    <div class="mb-4">
+      <label for="notes" class="block text-sm font-medium">Note</label>
+      <textarea id="notes" formControlName="notes" rows="3"
+                class="w-full px-3 py-2 border rounded-md"></textarea>
+    </div>
+
+    <button type="submit" [disabled]="scheduleForm.invalid"
+            class="w-full bg-blue-600 text-white py-2 rounded-md">
+      Schedule Appointment
+    </button>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onClose()">Close</button>
+</div>

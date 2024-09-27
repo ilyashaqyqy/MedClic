@@ -11,12 +11,13 @@ import { Doctor } from '../../models/doctor.model';
 export class FindDoctorsComponent implements OnInit {
   searchQuery: string = '';
   selectedLocation: string = ''; 
+
   selectedSpecialization: string = ''; 
+  specializations: string[] = []; // Available specializations
 
   doctors: Doctor[] = [];
   filteredDoctors: Doctor[] = [];
 
-  specializations: string[] = []; // Available specializations
   locations: string[] = []; // Available locations
 
   constructor(
@@ -28,13 +29,12 @@ export class FindDoctorsComponent implements OnInit {
     this.loadDoctors();
   }
 
-  // Load doctors and extract locations and specializations
   loadDoctors(): void {
     this.doctorService.getDoctors().subscribe(
       (doctors: Doctor[]) => {
         this.doctors = doctors;
         this.extractLocations(); // Extract unique locations
-        this.extractSpecializations(); // Extract unique specializations
+        this.extractSpecializations(); 
         this.filterDoctors();
       },
       (error) => {
@@ -43,27 +43,27 @@ export class FindDoctorsComponent implements OnInit {
     );
   }
 
-  // Extract unique specializations from doctors
-  extractSpecializations(): void {
-    this.specializations = Array.from(new Set(this.doctors.map(doctor => doctor.specialization).filter(Boolean)));
-  }
+
+  
+
+    // Extract unique specializations from doctors
+    extractSpecializations(): void {
+      this.specializations = Array.from(new Set(this.doctors.map(doctor => doctor.specialization).filter(Boolean)));
+    }
 
   // Extract unique locations from doctors
   extractLocations(): void {
     this.locations = Array.from(new Set(this.doctors.map(doctor => doctor.location?.name).filter(Boolean)));
   }
 
-  // Filter doctors based on search query, location, and specialization
   filterDoctors(): void {
     this.filteredDoctors = this.doctors.filter(doctor =>
       (doctor.name.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
       doctor.specialization.toLowerCase().includes(this.searchQuery.toLowerCase())) &&
-      (!this.selectedLocation || doctor.location?.name === this.selectedLocation) &&
-      (!this.selectedSpecialization || doctor.specialization === this.selectedSpecialization)
+      (!this.selectedLocation || doctor.location?.name === this.selectedLocation) // Filter by selected location
     );
   }
 
-  // Navigate to the doctor's profile
   navigateToDoctorProfile(doctorId: number): void {
     this.router.navigate(['/doctor-details', doctorId]);
   }

@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DoctorService } from '../../../services/doctor.service';
 import { AppointmentService } from '../../../services/appointment.service';
 import { Doctor } from '../../../models/doctor.model';
 import { Appointment } from '../../../models/appointment.model';
-import { Patient } from 'src/app/models/patient.model';
 import { AppointmentStatus } from 'src/app/models/appointment-status';
+import { MatDialog } from '@angular/material/dialog';
+import { AppointmentDialogComponent } from '../../../patient/appointment-dialog/appointment-dialog.component';
 
 @Component({
   selector: 'app-doctor-details',
@@ -17,23 +17,14 @@ export class DoctorDetailsComponent implements OnInit {
   doctor: Doctor | null = null;
   loading: boolean = true;
   error: string | null = null;
-  scheduleForm: FormGroup;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private doctorService: DoctorService,
-    private appointmentService: AppointmentService,
-    private fb: FormBuilder
-  ) {
-    this.scheduleForm = this.fb.group({
-      appointmentDate: ['', Validators.required],
-      appointmentTime: ['', Validators.required],
-      appointmentType: ['', Validators.required],
-      appointmentReason: ['', Validators.required],
-      comments: ['']
-    });
-  }
+    private dialog: MatDialog,
+    private appointmentService: AppointmentService
+  ) {}
 
   ngOnInit(): void {
     const doctorId = this.route.snapshot.paramMap.get('id');
@@ -59,68 +50,61 @@ export class DoctorDetailsComponent implements OnInit {
     );
   }
 
-  scheduleAppointment(): void {
-    if (this.scheduleForm.invalid || !this.doctor) {
-      console.log('Form is invalid or doctor is not loaded:', this.scheduleForm.errors);
-      return;
-    }
-
+  openAppointmentDialog(): void {
     const userId = localStorage.getItem('userId');
-    if (!userId) {
-      console.error('User ID not found in local storage. Please log in.');
+    if (!userId || !this.doctor) {
+      console.error('User ID or doctor data not found.');
       return;
     }
 
-    const { appointmentDate, appointmentTime, appointmentType, appointmentReason, comments } = this.scheduleForm.value;
+    const dialogRef = this.dialog.open(AppointmentDialogComponent, {
+      width: '400px',
+      data: { 
+        doctorId: this.doctor.id,
+        patientId: +userId
+      }
+    });
 
-    const appointmentData = {
-      date: appointmentDate,
-      time: `${appointmentTime}:00`,
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.scheduleAppointment(result);
+      }
+    });
+  }
+
+  scheduleAppointment(appointmentData: any): void {
+    const userId = localStorage.getItem('userId');
+    if (!userId || !this.doctor) {
+      console.error('User ID or doctor data not found.');
+      return;
+    }
+
+    const appointmentDetails: Appointment = {
+      date: appointmentData.appointmentDate,
+      time: appointmentData.appointmentTime + ':00',
       status: AppointmentStatus.SCHEDULED,
-      notes: comments,
-      appointmentType: appointmentType,
-      appointmentReason: appointmentReason,
+      notes: appointmentData.notes || '',
+      appointmentType: appointmentData.appointmentType,
+      appointmentReason: appointmentData.appointmentReason,
       patientId: +userId,
-      doctorId: this.doctor.id
+      doctorId: this.doctor.id,
+      reminders: [],
+      bookingDate: '',
+      bookingTime: ''
     };
 
-    this.appointmentService.createAppointment(appointmentData).subscribe(
+    console.log('Appointment details to be sent:', appointmentDetails);
+
+    this.appointmentService.createAppointment(appointmentDetails).subscribe(
       (response) => {
         console.log('Appointment created successfully:', response);
         this.router.navigate(['/find-doctors']);
       },
       (error) => {
         console.error('Error creating appointment:', error);
-        if (error.error) {
-          console.error('Error details:', error.error);
-        }
+        console.error('Error details:', JSON.stringify(error, null, 2));
+        // Handle error (show message to user, etc.)
       }
     );
   }
-
-  appointmentTypes = [
-    'Initial Consultation',
-    'Follow-up Appointment',
-    'Telemedicine Consultation',
-    'Routine Check-up',
-    'Specialist Consultation',
-    'Emergency Appointment',
-    'Pre-Operative Consultation',
-    'Post-Operative Follow-up',
-    'Medication Review',
-    'Vaccination Appointment'
-  ];
-
-  appointmentReasons = [
-    'General Health Check',
-    'Chronic Condition Management',
-    'Mental Health Evaluation',
-    'Routine Screening',
-    'Injury or Pain',
-    'Follow-up on Previous Issue',
-    'Medication Prescription/Refill',
-    'Physical Exam',
-    'Blood Test Results Discussion',
-    'Referral to a Specialist'
-  ];
 }

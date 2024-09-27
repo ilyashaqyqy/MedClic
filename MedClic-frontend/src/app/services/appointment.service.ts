@@ -11,20 +11,20 @@ export class AppointmentService {
 
   constructor(private http: HttpClient) {}
 
-  createAppointment(appointmentData: {
-    date: string;
-    time: string;
-    status: string;
-    notes: string;
-    appointmentType: string;
-    appointmentReason: string;
-    patientId: number;
-    doctorId: number;
-  }): Observable<Appointment> {
+  createAppointment(appointmentData: Appointment): Observable<Appointment> {
     return this.http.post<Appointment>(this.apiUrl, appointmentData);
   }
 
   getAppointmentById(id: number): Observable<Appointment> {
     return this.http.get<Appointment>(`${this.apiUrl}/${id}`);
+  }
+
+  getAllAppointmentsByDoctorId(userId: number): Observable<Appointment[]> {
+    return this.http.get<Appointment[]>(`${this.apiUrl}/doctors/${userId}`);
+  }
+
+
+  getAllAppointmentsByPatientId(userId: number): Observable<Appointment[]> {
+    return this.http.get<Appointment[]>(`${this.apiUrl}/patients/${userId}`);
   }
 }
