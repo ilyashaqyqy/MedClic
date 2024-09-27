@@ -11,6 +11,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -37,6 +41,8 @@ public class AppointmentServiceImpl implements AppointmentService {
     public AppointmentDTO createAppointment(AppointmentDTO appointmentDTO) {
         log.info("Creating new appointment for patient: {}", appointmentDTO.getPatientId());
         Appointment appointment = appointmentMapper.toEntity(appointmentDTO);
+        appointment.setBookingDate(LocalDate.now());
+        appointment.setBookingTime(LocalTime.now());
         Appointment savedAppointment = appointmentRepository.save(appointment);
         return appointmentMapper.toDTO(savedAppointment);
     }
