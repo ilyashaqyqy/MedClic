@@ -1,0 +1,13 @@
+.popup {
+    position: fixed;
+    top: 20px; /* Distance from top */
+    left: 50%;
+    transform: translateX(-50%); /* Center horizontally */
+    background-color: #4caf50; /* Green background */
+    color: white; /* White text */
+    padding: 16px; /* Padding */
+    border-radius: 4px; /* Rounded corners */
+    z-index: 1000; /* Ensure it's on top */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow */
+    transition: opacity 0.5s ease; /* Fade effect */
+}

@@ -24,8 +24,13 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'home', component: HomeComponent },
 
+
  // Doctor routes
-  { path: 'doctor-dashboard' , component: DoctorDashboardComponent, canActivate: [AuthGuard ] } , 
+
+  { path: 'doctor-dashboard' , component: DoctorDashboardComponent, canActivate: [AuthGuard] } , 
+  // { path: 'doctor-dashboard' , component: DoctorDashboardComponent, canActivate: [AuthGuard , RoleGuard] , data: { roles: ['DOCTOR'] }} , 
+
+
 
   // Patient routes
   { path: 'patient-dashboard' , component: PatientDashboardComponent , canActivate: [AuthGuard , RoleGuard] , data: { roles: ['PATIENT'] } } ,

@@ -23,6 +23,7 @@ import { MatTableModule } from '@angular/material/table';
 
 
 
+
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -42,6 +43,8 @@ import { FindDoctorsComponent } from './patient/find-doctors/find-doctors.compon
 import { DoctorDetailsComponent } from './doctor/components/doctor-details/doctor-details.component';
 import { AppointmentDialogComponent } from './patient/appointment-dialog/appointment-dialog.component';
 import { AppointmentsComponent } from './appointments/appointments.component';
+import { AppointmentSuccessPopupComponent } from './Appointment/appointment-success-popup/appointment-success-popup.component';
+import { DoctorAppointmentComponent } from './doctor/doctor-appointment/doctor-appointment.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +63,8 @@ import { AppointmentsComponent } from './appointments/appointments.component';
     DoctorDetailsComponent,
     AppointmentDialogComponent,
     AppointmentsComponent,
+    AppointmentSuccessPopupComponent,
+    DoctorAppointmentComponent,
   ],
   imports: [
     BrowserModule,

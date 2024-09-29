@@ -27,30 +27,32 @@ export class AppointmentsComponent implements OnInit {
 
   loadAppointments(): void {
     const userId = localStorage.getItem('userId');
-    
+
     if (userId) {
-      this.appointmentService.getAllAppointmentsByPatientId(Number(userId))
-        .pipe(
-          switchMap(appointments => {
-            const doctorObservables = appointments.map(appointment => 
-              this.doctorService.getDoctor(appointment.doctorId).pipe(
-                map(doctor => ({
-                  ...appointment,
-                  doctorName: doctor.name
-                }))
-              )
+        this.appointmentService.getAllAppointmentsByPatientId(Number(userId))
+            .pipe(
+                switchMap(appointments => {
+                    const doctorObservables = appointments.map(appointment => 
+                        this.doctorService.getDoctor(appointment.doctorId).pipe(
+                            map(doctor => ({
+                                ...appointment,
+                                doctorName: doctor.name,
+                                doctorSpecialization: doctor.specialization // Add specialization here
+                            }))
+                        )
+                    );
+                    return forkJoin(doctorObservables);
+                })
+            )
+            .subscribe(
+                (appointmentsWithDoctorNames) => {
+                    this.appointments = appointmentsWithDoctorNames;
+                },
+                (error) => {
+                    console.error('Failed to fetch appointments:', error);
+                }
             );
-            return forkJoin(doctorObservables);
-          })
-        )
-        .subscribe(
-          (appointmentsWithDoctorNames) => {
-            this.appointments = appointmentsWithDoctorNames;
-          },
-          (error) => {
-            console.error('Failed to fetch appointments:', error);
-          }
-        );
     }
-  }
+}
+
 }

@@ -20,4 +20,5 @@ import { AppointmentStatus } from './appointment-status';
     reminders: Reminder[];
     bookingDate: string;
     bookingTime: string;
+    doctorSpecialization?: string;
 }

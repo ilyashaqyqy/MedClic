@@ -18,4 +18,5 @@ export interface Doctor extends User {
   appointments: Appointment[];
   specializations: Specialization[];
   locationId?: number;
+  workHours?: { day: string; hours: string }[];
 }

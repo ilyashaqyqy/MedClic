@@ -7,4 +7,8 @@ export interface Patient extends User {
   insuranceInfo: string;
   address: string;
   appointments: Appointment[];
+  profilePhoto: string;
+
+
+
 }

@@ -20,11 +20,11 @@ interface NavItem {
 })
 export class PatientDashboardComponent implements OnInit {
   sidebarOpen = true;
-  showProfileMenu = false;
+
   user: User | null = null;
   patient: Patient | null = null;
   appointments: Appointment[] = [];
-  currentSection = 'dashboard';
+
 
 
   faEnvelope = faEnvelope; // Add this line
@@ -34,6 +34,8 @@ export class PatientDashboardComponent implements OnInit {
   faUser = faUser;
   faBars = faBars ;
 
+  showProfileMenu: boolean = false;
+  currentSection: string = 'dashboard';
 
 
   menuItems = [
@@ -119,7 +121,7 @@ export class PatientDashboardComponent implements OnInit {
     this.sidebarOpen = !this.sidebarOpen;
   }
 
-  toggleProfileMenu(): void {
+  toggleProfileMenu() {
     this.showProfileMenu = !this.showProfileMenu;
   }
 
@@ -139,4 +141,18 @@ export class PatientDashboardComponent implements OnInit {
     this.router.navigate(['/find-doctors']);
   }
 
+
+
+
+  handleMenuClick(section: string) {
+    this.currentSection = section; // Update the current section based on the clicked item
+    this.showProfileMenu = false;   // Close the dropdown menu
+    // Optionally, you could also load additional content here if needed
+  }
+
+  goToFindDoctors() {
+    this.currentSection = 'find-doctors'; // Update the current section to 'find-doctors'
+    this.router.navigate(['/find-doctors']); // Navigate to the Find Doctors page
+  }
+  
 }

@@ -17,6 +17,8 @@ export class DoctorDetailsComponent implements OnInit {
   doctor: Doctor | null = null;
   loading: boolean = true;
   error: string | null = null;
+  successMessage: string | null = null; 
+  fadeOut: boolean = false; // For fade-out effect
 
   constructor(
     private route: ActivatedRoute,
@@ -93,18 +95,31 @@ export class DoctorDetailsComponent implements OnInit {
       bookingTime: ''
     };
 
-    console.log('Appointment details to be sent:', appointmentDetails);
-
     this.appointmentService.createAppointment(appointmentDetails).subscribe(
       (response) => {
         console.log('Appointment created successfully:', response);
-        this.router.navigate(['/find-doctors']);
+        this.successMessage = 'Appointment scheduled successfully!';
+        this.startFadeOut(); // Call to start the fade-out effect
+        this.router.navigate(['/doctor-details', this.doctor?.id]);
       },
       (error) => {
         console.error('Error creating appointment:', error);
-        console.error('Error details:', JSON.stringify(error, null, 2));
         // Handle error (show message to user, etc.)
       }
     );
+  }
+
+  startFadeOut(): void {
+    setTimeout(() => {
+      this.fadeOut = true; // Start fade-out effect
+      this.hideSuccessMessage(); // Clear message after fading out
+    }, 4000); // Fade out after 3 seconds
+  }
+
+  hideSuccessMessage(): void {
+    setTimeout(() => {
+      this.successMessage = null; // Clear the success message
+      this.fadeOut = false; // Reset fade-out state
+    }, 500); // Allow fade-out effect time
   }
 }

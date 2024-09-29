@@ -1,0 +1,45 @@
+/* Hides the sidebar */
+.sidebar {
+    display: none; /* or visibility: hidden; */
+  }
+  
+  /* Optional: Add styles for the form container */
+  .form-container {
+    max-height: 600px; /* Set a maximum height for the form */
+    overflow-y: auto; /* Allow scrolling if the content exceeds the height */
+    margin-top: 20px; /* Space above the form */
+  }
+/* Hides the sidebar */
+.sidebar {
+    display: none; /* Adjust visibility of your sidebar */
+  }
+  
+  /* Container styles to limit height */
+  .flex {
+    height: auto; /* Ensure the flex container does not occupy the full height */
+    min-height: 50vh; /* Set a minimum height for better appearance */
+  }
+  
+  /* Optional: Style for the form container */
+  .bg-white {
+    max-height: 500px; /* Set a maximum height */
+    overflow-y: auto; /* Enable scrolling if needed */
+    margin-top: 20px; /* Space above the form */
+  }
+    
+
+  button.mat-button {
+    background-color: #e0e0e0; /* Light gray background */
+    color: #4a4a4a; /* Darker text color for contrast */
+    border-radius: 0.5rem; /* Rounded corners */
+    padding: 0.5rem; /* Vertical padding */
+    transition: background-color 0.2s, transform 0.2s;
+ /* Smooth transitions */
+  }
+  
+  button.mat-button:hover {
+    background-color: #d1d1d1; /* Slightly darker on hover */
+    transform: scale(1.02);
+    /* Scale effect on hover */
+  }
+
