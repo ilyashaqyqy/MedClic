@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { dateValidator } from 'src/app/appointment/date-validator/date-validator';
 
 @Component({
   selector: 'app-appointment-dialog',
@@ -18,7 +19,7 @@ export class AppointmentDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: { patientId: number; doctorId: number }
   ) {
     this.scheduleForm = this.fb.group({
-      appointmentDate: ['', Validators.required],
+     appointmentDate: ['', [Validators.required, dateValidator]],
       appointmentTime: ['', Validators.required],
       appointmentType: ['', Validators.required],
       appointmentReason: ['', Validators.required],

@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { DoctorService } from '../../../services/doctor.service';
 import { Doctor } from '../../../models/doctor.model';
 import { Appointment } from '../../../models/appointment.model';
-import { faUser, faCalendarAlt, faClipboard, faEnvelope, faBell, faBars, faStethoscope } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faCalendarAlt, faClipboard, faEnvelope, faBell, faBars, faStethoscope , faComments } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-doctor-dashboard',
@@ -12,6 +12,12 @@ import { faUser, faCalendarAlt, faClipboard, faEnvelope, faBell, faBars, faSteth
   styleUrls: ['./doctor-dashboard.component.css']
 })
 export class DoctorDashboardComponent implements OnInit {
+toggleNotificationMenu() {
+throw new Error('Method not implemented.');
+}
+toggleChatMenu() {
+throw new Error('Method not implemented.');
+}
   user: Doctor | null = null;
   doctor: Doctor | null = null;
   appointments: Appointment[] = [];
@@ -23,6 +29,8 @@ export class DoctorDashboardComponent implements OnInit {
   faUser = faUser;
   faStethoscope = faStethoscope;
   faBars = faBars;
+  faComments = faComments;
+ 
 
   showProfileMenu: boolean = false;
   isSidebarOpen: boolean = false; // Controls the burger menu for mobile
