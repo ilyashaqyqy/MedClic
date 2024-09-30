@@ -40,8 +40,9 @@ public class Appointment {
     @JoinColumn(name = "doctor_id")
     private Doctor doctor;
 
-
+    @Column(name = "booking_date")
     private LocalDate bookingDate;
+    @Column(name = "booking_time")
     private LocalTime bookingTime;
 
     @OneToMany(mappedBy = "appointment", cascade = CascadeType.ALL, fetch = FetchType.LAZY)

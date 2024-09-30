@@ -12,5 +12,9 @@ public interface AppointmentService {
     List<AppointmentDTO> getAppointmentsByPatientId(Long patientId);
     List<AppointmentDTO> getAppointmentsByDoctorId(Long doctorId);
     void confirmAppointment(Long appointmentId);
+    AppointmentDTO rescheduleAppointment(Long id, AppointmentDTO appointmentDTO);
+
+
+
 }
 

@@ -58,10 +58,22 @@ public class AppointmentController {
         return new ResponseEntity<>(appointments, HttpStatus.OK);
     }
 
+
     @PostMapping("/{id}/confirm")
     public ResponseEntity<Void> confirmAppointment(@PathVariable Long id) {
         appointmentService.confirmAppointment(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+
+    @PutMapping("/{id}/reschedule")
+    public ResponseEntity<AppointmentDTO> rescheduleAppointment(@PathVariable Long id, @RequestBody AppointmentDTO appointmentDTO) {
+        // Use the service to handle rescheduling
+        AppointmentDTO updatedAppointment = appointmentService.rescheduleAppointment(id, appointmentDTO);
+        return new ResponseEntity<>(updatedAppointment, HttpStatus.OK);
+    }
+
+
+
 }
 

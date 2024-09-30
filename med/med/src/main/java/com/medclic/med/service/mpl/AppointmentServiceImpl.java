@@ -16,6 +16,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -89,4 +90,33 @@ public class AppointmentServiceImpl implements AppointmentService {
         appointment.setStatus(AppointmentStatus.CONFIRMED);
         appointmentRepository.save(appointment);
     }
+
+    @Override
+    public AppointmentDTO rescheduleAppointment(Long id, AppointmentDTO appointmentDTO) {
+        // Fetch the existing appointment
+        Optional<Appointment> optionalAppointment = appointmentRepository.findById(id);
+
+        // Check if the appointment exists
+        if (optionalAppointment.isPresent()) {
+            Appointment existingAppointment = optionalAppointment.get();
+
+            // Update only the date and time fields
+            existingAppointment.setDate(appointmentDTO.getDate());
+            existingAppointment.setTime(appointmentDTO.getTime());
+
+            // Save the updated appointment back to the database
+            Appointment updatedAppointment = appointmentRepository.save(existingAppointment);
+
+            // Convert back to DTO using your mapper
+            return appointmentMapper.toDTO(updatedAppointment);
+        }
+
+        // Return null or handle the case when the appointment is not found
+        return null; // Or you could return a default AppointmentDTO if needed
+    }
+
+
+
+
+
 }
