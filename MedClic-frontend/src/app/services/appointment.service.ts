@@ -27,4 +27,17 @@ export class AppointmentService {
   getAllAppointmentsByPatientId(userId: number): Observable<Appointment[]> {
     return this.http.get<Appointment[]>(`${this.apiUrl}/patients/${userId}`);
   }
+
+  confirmAppointment(appointmentId: number): Observable<void> {
+    return this.http.post<void>(`${this.apiUrl}/${appointmentId}/confirm`, {});
+  }
+
+  cancelAppointment(appointmentId: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${appointmentId}`);
+  }
+
+  updateAppointment(appointment: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/${appointment.id}`, appointment);
+  }
+
 }

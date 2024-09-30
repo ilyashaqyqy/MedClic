@@ -25,6 +25,7 @@ export class DoctorDashboardComponent implements OnInit {
   faBars = faBars;
 
   showProfileMenu: boolean = false;
+  isSidebarOpen: boolean = false; // Controls the burger menu for mobile
   currentSection: string = 'dashboard';
   currentSectionLabel: string = 'Dashboard';
 
@@ -57,7 +58,7 @@ export class DoctorDashboardComponent implements OnInit {
       this.doctorService.getDoctor(doctorIdNum).subscribe(
         (doctor: Doctor) => {
           this.doctor = doctor;
-          this.user = doctor; // Assuming the user and doctor are the same
+          this.user = doctor;
         },
         (error) => {
           console.error('Failed to fetch doctor details:', error);
@@ -72,10 +73,17 @@ export class DoctorDashboardComponent implements OnInit {
     this.showProfileMenu = !this.showProfileMenu;
   }
 
+  toggleSidebar(): void {
+    this.isSidebarOpen = !this.isSidebarOpen;
+  }
+
   handleMenuClick(section: string): void {
     this.currentSection = section;
     const item = this.menuItems.find((menu) => menu.section === section);
-    this.currentSectionLabel = item ? item.label : 'Dashboard';
+    if (item) {
+      this.currentSectionLabel = item.label;
+    }
+    this.isSidebarOpen = false; // Close the sidebar after clicking in mobile
   }
 
   logout(): void {

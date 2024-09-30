@@ -1,0 +1,12 @@
+/* Add some left margin to the section title */
+.section-title {
+    margin-left: 20px; /* Adjust this value as needed */
+  }
+  
+  @media (max-width: 768px) {
+    /* For smaller screens, you might want to add more space */
+    .section-title {
+      margin-left: 50px; /* Increase margin for mobile */
+    }
+  }
+  
