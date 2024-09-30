@@ -40,4 +40,10 @@ export class AppointmentService {
     return this.http.put<any>(`${this.apiUrl}/${appointment.id}`, appointment);
   }
 
+  // appointment.service.ts
+rescheduleAppointment(id: number, appointmentDTO: Appointment): Observable<Appointment> {
+  return this.http.put<Appointment>(`${this.apiUrl}/${id}/reschedule`, appointmentDTO);
+}
+
+
 }

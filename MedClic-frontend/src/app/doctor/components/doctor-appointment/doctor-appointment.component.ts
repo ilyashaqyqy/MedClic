@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';  // Import MatDialog
 import { forkJoin } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { AppointmentService } from '../../../services/appointment.service';
 import { PatientService } from '../../../services/patient.service';
 import { Appointment } from '../../../models/appointment.model';
+import { RescheduleAppointmentDialogComponent } from 'src/app/appointment/reschedule-appointment-dialog/reschedule-appointment-dialog.component';
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
+import { faCheck, faTimes, faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-doctor-appointment',
@@ -15,9 +19,15 @@ export class DoctorAppointmentComponent implements OnInit {
   filteredAppointments: (Appointment & { patientName?: string })[] = [];
   searchTerm: string = '';
 
+
+  faCheck: IconDefinition = faCheck;
+  faTimes: IconDefinition = faTimes;
+  faCalendarAlt: IconDefinition = faCalendarAlt;
+
   constructor(
     private appointmentService: AppointmentService,
-    private patientService: PatientService
+    private patientService: PatientService,
+    private dialog: MatDialog // Inject MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -101,4 +111,34 @@ export class DoctorAppointmentComponent implements OnInit {
       );
     }
   }
-}
+
+  openRescheduleDialog(appointment: Appointment): void {
+    const dialogRef = this.dialog.open(RescheduleAppointmentDialogComponent, {
+      data: { appointmentDate: appointment.date, appointmentTime: appointment.time },
+      width: '400px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        const updatedAppointment: Appointment = {
+          ...appointment,
+          date: result.appointmentDate,
+          time: result.appointmentTime
+        };
+
+        this.appointmentService.rescheduleAppointment(appointment.id!, updatedAppointment).subscribe(
+          () => {
+            this.loadAppointments(); // Refresh the appointments list
+          },
+          (error) => {
+            console.error('Failed to reschedule appointment:', error);
+          }
+        );
+      }
+    });
+  }
+    }
+
+
+  
+

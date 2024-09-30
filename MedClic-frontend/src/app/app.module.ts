@@ -43,8 +43,8 @@ import { FindDoctorsComponent } from './patient/find-doctors/find-doctors.compon
 import { DoctorDetailsComponent } from './doctor/components/doctor-details/doctor-details.component';
 import { AppointmentDialogComponent } from './patient/appointment-dialog/appointment-dialog.component';
 import { AppointmentsComponent } from './appointments/appointments.component';
-import { AppointmentSuccessPopupComponent } from './Appointment/appointment-success-popup/appointment-success-popup.component';
 import { DoctorAppointmentComponent } from './doctor/components/doctor-appointment/doctor-appointment.component';
+import { RescheduleAppointmentDialogComponent } from './appointment/reschedule-appointment-dialog/reschedule-appointment-dialog.component';
 
 @NgModule({
   declarations: [
@@ -63,8 +63,8 @@ import { DoctorAppointmentComponent } from './doctor/components/doctor-appointme
     DoctorDetailsComponent,
     AppointmentDialogComponent,
     AppointmentsComponent,
-    AppointmentSuccessPopupComponent,
     DoctorAppointmentComponent,
+    RescheduleAppointmentDialogComponent,
   ],
   imports: [
     BrowserModule,
