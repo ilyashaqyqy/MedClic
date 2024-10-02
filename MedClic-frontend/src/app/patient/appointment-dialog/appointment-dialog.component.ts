@@ -2,6 +2,8 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { dateValidator } from 'src/app/appointment/date-validator/date-validator';
+import { AppointmentService } from 'src/app/services/appointment.service';
+import { Appointment } from 'src/app/models/appointment.model';
 
 @Component({
   selector: 'app-appointment-dialog',
@@ -13,10 +15,12 @@ export class AppointmentDialogComponent implements OnInit {
   appointmentTypes = ['Initial Consultation', 'Follow-up Appointment', 'Routine Check-up'];
   appointmentReasons = ['General Health Check', 'Follow-up on Previous Issue', 'Injury or Pain'];
 
+
   constructor(
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<AppointmentDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { patientId: number; doctorId: number }
+    @Inject(MAT_DIALOG_DATA) public data: { patientId: number; doctorId: number },
+    private appointmentService: AppointmentService 
   ) {
     this.scheduleForm = this.fb.group({
      appointmentDate: ['', [Validators.required, dateValidator]],
@@ -51,4 +55,21 @@ export class AppointmentDialogComponent implements OnInit {
   onClose(): void {
     this.dialogRef.close();
   }
+
+  autoScheduleAppointment(): void {
+    const { doctorId, patientId } = this.data;
+
+    const reason = this.scheduleForm.get('appointmentReason')?.value || ''; // Retrieve reason from the form
+
+    this.appointmentService.autoScheduleAppointment(doctorId, patientId, reason).subscribe(
+        (appointment: Appointment) => {
+            console.log('Auto-scheduled appointment:', appointment);
+            this.dialogRef.close(appointment); // Close dialog and return appointment data
+        },
+        (error: any) => {
+            console.error('Error auto-scheduling appointment:', error);
+        }
+    );
+}
+
 }

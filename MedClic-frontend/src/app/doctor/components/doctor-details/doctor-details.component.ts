@@ -52,13 +52,36 @@ export class DoctorDetailsComponent implements OnInit {
     );
   }
 
+  // openAppointmentDialog(): void {
+  //   const userId = localStorage.getItem('userId');
+  //   if (!userId || !this.doctor) {
+  //     console.error('User ID or doctor data not found.');
+  //     return;
+  //   }
+
+  //   const dialogRef = this.dialog.open(AppointmentDialogComponent, {
+  //     width: '400px',
+  //     data: { 
+  //       doctorId: this.doctor.id,
+  //       patientId: +userId
+  //     }
+  //   });
+
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     if (result) {
+  //       this.scheduleAppointment(result);
+  //     }
+  //   });
+  // }
+
+
   openAppointmentDialog(): void {
     const userId = localStorage.getItem('userId');
     if (!userId || !this.doctor) {
       console.error('User ID or doctor data not found.');
       return;
     }
-
+  
     const dialogRef = this.dialog.open(AppointmentDialogComponent, {
       width: '400px',
       data: { 
@@ -66,13 +89,14 @@ export class DoctorDetailsComponent implements OnInit {
         patientId: +userId
       }
     });
-
+  
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.scheduleAppointment(result);
       }
     });
   }
+  
 
   scheduleAppointment(appointmentData: any): void {
     const userId = localStorage.getItem('userId');
@@ -95,6 +119,7 @@ export class DoctorDetailsComponent implements OnInit {
       bookingTime: ''
     };
 
+    console.log('Appointment Details to be sent to the server:', appointmentDetails);
     this.appointmentService.createAppointment(appointmentDetails).subscribe(
       (response) => {
         console.log('Appointment created successfully:', response);

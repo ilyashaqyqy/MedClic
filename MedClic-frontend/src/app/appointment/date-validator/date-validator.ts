@@ -4,6 +4,10 @@ export function dateValidator(control: AbstractControl): ValidationErrors | null
   const today = new Date();
   const selectedDate = new Date(control.value);
 
+  // Normalize today and selectedDate by setting time to midnight (00:00:00)
+  today.setHours(0, 0, 0, 0);
+  selectedDate.setHours(0, 0, 0, 0);
+
   // Ensure the selected date is not in the past
   if (selectedDate < today) {
     return { pastDate: true };

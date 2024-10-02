@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Appointment } from '../models/appointment.model';
 
@@ -44,6 +44,18 @@ export class AppointmentService {
 rescheduleAppointment(id: number, appointmentDTO: Appointment): Observable<Appointment> {
   return this.http.put<Appointment>(`${this.apiUrl}/${id}/reschedule`, appointmentDTO);
 }
+
+
+autoScheduleAppointment(doctorId: number, patientId: number, reason: string): Observable<Appointment> {
+  const token = localStorage.getItem('jwtToken'); // Ensure you have the token
+  const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  
+  // Construct the URL with query parameters
+  const url = `${this.apiUrl}/auto-schedule?doctorId=${doctorId}&patientId=${patientId}&reason=${encodeURIComponent(reason)}`;
+
+  return this.http.post<Appointment>(url, null, { headers }); // Send null as body
+}
+
 
 
 }

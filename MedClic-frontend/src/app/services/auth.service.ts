@@ -16,6 +16,7 @@ export class AuthService {
   private username: string | null = null;
   private role: string[] | null = null;
   private currentUser: User | null = null;
+  private email: null | undefined;
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -100,13 +101,27 @@ export class AuthService {
   }
   
 
+
   logout(): void {
     localStorage.removeItem('authToken');
+    localStorage.removeItem('userId'); 
+    localStorage.removeItem('email');  
     this.username = null;
     this.role = null;
     this.userId = null;
     this.router.navigate(['/login']);
   }
+  
+
+
+
+  // logout(): void {
+  //   localStorage.removeItem('authToken');
+  //   this.username = null;
+  //   this.role = null;
+  //   this.userId = null;
+  //   this.router.navigate(['/login']);
+  // }
 
   isLoggedIn(): boolean {
     return !!this.getToken();
