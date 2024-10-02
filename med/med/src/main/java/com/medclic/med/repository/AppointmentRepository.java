@@ -1,7 +1,6 @@
 package com.medclic.med.repository;
 
 import com.medclic.med.model.Appointment;
-import com.medclic.med.model.AppointmentStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -21,4 +20,11 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
 
     @Query("SELECT a FROM Appointment a WHERE a.doctor.id = :doctorId AND a.date BETWEEN :startDate AND :endDate")
     List<Appointment> findByDoctorIdAndDateBetween(@Param("doctorId") Long doctorId, @Param("startDate") Date startDate, @Param("endDate") Date endDate);
+
+
+
+    Appointment findTopByDoctorIdAndDateOrderByTimeDesc(Long doctorId, java.sql.Date date);
+
+    List<Appointment> findByDoctorIdAndDate(Long doctorId, java.sql.Date appointmentDate);
+
 }

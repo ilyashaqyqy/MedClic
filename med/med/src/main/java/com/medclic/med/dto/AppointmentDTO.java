@@ -5,6 +5,7 @@ import com.medclic.med.model.AppointmentStatus;
 import lombok.Getter;
 import lombok.Setter;
 
+
 import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;

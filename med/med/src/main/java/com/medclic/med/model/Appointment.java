@@ -4,9 +4,14 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+//import java.sql.Time;
+//import java.sql.Date;
+
+
 import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
+
 import java.util.Date;
 import java.util.Set;
 
@@ -47,4 +52,5 @@ public class Appointment {
 
     @OneToMany(mappedBy = "appointment", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Reminder> reminders;
+
 }

@@ -74,6 +74,15 @@ public class AppointmentController {
     }
 
 
+    @PostMapping("/auto-schedule")
+    public ResponseEntity<AppointmentDTO> autoScheduleAppointment(
+            @RequestParam Long doctorId,
+            @RequestParam Long patientId,
+            @RequestParam String reason) {
+        AppointmentDTO appointmentDTO = appointmentService.autoScheduleAppointmentWithGap(doctorId, patientId, reason);
+        return ResponseEntity.ok(appointmentDTO);
+    }
+
 
 }
 
