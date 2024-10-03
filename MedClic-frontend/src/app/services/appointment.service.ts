@@ -58,4 +58,12 @@ autoScheduleAppointment(doctorId: number, patientId: number, reason: string): Ob
 
 
 
+checkAvailability(doctorId: number, appointmentDate: string): Observable<string[]> {
+  // Construct the URL with query parameters
+  const url = `${this.apiUrl}/check-availability?doctorId=${doctorId}&appointmentDate=${appointmentDate}`;
+
+  return this.http.get<string[]>(url);
+}
+
+
 }

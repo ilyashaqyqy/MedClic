@@ -4,27 +4,46 @@
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: #4caf50; /* Green background */
-    color: white; /* White text */
+    background: linear-gradient(135deg, #4caf50, #45a049);
+    color: white;
     padding: 15px 30px;
-    border-radius: 5px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
     z-index: 1000;
-    transition: opacity 0.5s ease;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     opacity: 1;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    text-align: center;
+    min-width: 200px;
   }
   
-  /* Optional: Fade out effect */
+  .success-message::before {
+    content: '✓';
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 1.2em;
+    animation: pulse 1.5s infinite;
+  }
+  
+  .success-message:hover {
+    transform: translateX(-50%) scale(1.05);
+  }
+  
   .success-message.fade-out {
     opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
   }
   
-  .success-message {
-    transition: opacity 0.5s ease;
-    opacity: 1; /* Fully visible */
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
   }
   
-  .fade-out {
-    opacity: 0; /* Fades out */
+  @media (max-width: 600px) {
+    .success-message {
+      width: 80%;
+      font-size: 14px;
+    }
   }
-  

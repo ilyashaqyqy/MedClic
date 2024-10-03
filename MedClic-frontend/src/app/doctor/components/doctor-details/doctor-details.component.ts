@@ -19,6 +19,7 @@ export class DoctorDetailsComponent implements OnInit {
   error: string | null = null;
   successMessage: string | null = null; 
   fadeOut: boolean = false; // For fade-out effect
+  
 
   constructor(
     private route: ActivatedRoute,
@@ -147,4 +148,6 @@ export class DoctorDetailsComponent implements OnInit {
       this.fadeOut = false; // Reset fade-out state
     }, 500); // Allow fade-out effect time
   }
+
+
 }

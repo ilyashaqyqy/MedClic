@@ -14,7 +14,7 @@ export class AppointmentDialogComponent implements OnInit {
   scheduleForm: FormGroup;
   appointmentTypes = ['Initial Consultation', 'Follow-up Appointment', 'Routine Check-up'];
   appointmentReasons = ['General Health Check', 'Follow-up on Previous Issue', 'Injury or Pain'];
-
+  successMessage: string | null = null;
 
   constructor(
     private fb: FormBuilder,
@@ -58,13 +58,18 @@ export class AppointmentDialogComponent implements OnInit {
 
   autoScheduleAppointment(): void {
     const { doctorId, patientId } = this.data;
+    
 
     const reason = this.scheduleForm.get('appointmentReason')?.value || ''; // Retrieve reason from the form
+    const notes = this.scheduleForm.get('notes')?.value || ''; // Retrieve notes from the form
+    const appointmentType = this.scheduleForm.get('appointmentType')?.value || ''; // Retrieve reason from the form
 
     this.appointmentService.autoScheduleAppointment(doctorId, patientId, reason).subscribe(
         (appointment: Appointment) => {
             console.log('Auto-scheduled appointment:', appointment);
-            this.dialogRef.close(appointment); // Close dialog and return appointment data
+            this.dialogRef.close({ success: true, message: 'Appointment auto-scheduled successfully!', appointment }); 
+            
+           
         },
         (error: any) => {
             console.error('Error auto-scheduling appointment:', error);

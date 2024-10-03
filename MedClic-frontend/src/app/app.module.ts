@@ -19,6 +19,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 
@@ -45,6 +46,7 @@ import { AppointmentDialogComponent } from './patient/appointment-dialog/appoint
 import { AppointmentsComponent } from './appointments/appointments.component';
 import { DoctorAppointmentComponent } from './doctor/components/doctor-appointment/doctor-appointment.component';
 import { RescheduleAppointmentDialogComponent } from './appointment/reschedule-appointment-dialog/reschedule-appointment-dialog.component';
+import { DoctorAvailabilityComponent } from './doctor/doctor-availability/doctor-availability.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +67,7 @@ import { RescheduleAppointmentDialogComponent } from './appointment/reschedule-a
     AppointmentsComponent,
     DoctorAppointmentComponent,
     RescheduleAppointmentDialogComponent,
+    DoctorAvailabilityComponent,
   ],
   imports: [
     BrowserModule,
@@ -88,6 +91,7 @@ import { RescheduleAppointmentDialogComponent } from './appointment/reschedule-a
     MatIconModule,
     MatPaginatorModule,
     MatTableModule,
+    MatTooltipModule,
 
     FontAwesomeModule
 

@@ -54,11 +54,14 @@
               class="w-full bg-blue-900 hover:bg-blue-950 text-white rounded-full py-3 px-4 bg-hover:from-sky-650 hover:to-blue-950 text-white shadow-lg ">
         Schedule Appointment
       </button>
-      
-<button type="button" (click)="autoScheduleAppointment()"
-class="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-full py-3 mt-4">
-Auto-Schedule Appointment
-</button>
+
+      <button type="button"
+      (click)="autoScheduleAppointment()"
+      matTooltip="This button automatically schedules an appointment at the first time and date available."
+      class="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-full py-3 mt-4">
+      Auto-Schedule Appointment
+     </button>
+
 
     </form>
     <div class="mt-6 text-center">
