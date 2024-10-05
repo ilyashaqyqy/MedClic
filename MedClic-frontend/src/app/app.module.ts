@@ -25,6 +25,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 
+
+
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -47,6 +49,7 @@ import { AppointmentsComponent } from './appointments/appointments.component';
 import { DoctorAppointmentComponent } from './doctor/components/doctor-appointment/doctor-appointment.component';
 import { RescheduleAppointmentDialogComponent } from './appointment/reschedule-appointment-dialog/reschedule-appointment-dialog.component';
 import { DoctorAvailabilityComponent } from './doctor/doctor-availability/doctor-availability.component';
+import { CalendarModule } from 'angular-calendar';
 
 @NgModule({
   declarations: [
@@ -92,6 +95,10 @@ import { DoctorAvailabilityComponent } from './doctor/doctor-availability/doctor
     MatPaginatorModule,
     MatTableModule,
     MatTooltipModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+   
 
     FontAwesomeModule
 

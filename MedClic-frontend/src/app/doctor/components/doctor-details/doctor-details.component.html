@@ -1,85 +1,126 @@
-<div class=" min-h-screen py-10 px-4 sm:px-6 lg:px-8">
+<div class="min-h-screen py-10 px-4 sm:px-6 lg:px-8">
   <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4">
-      <!-- Doctor Profile Card -->
-      <div class="bg-white shadow-lg rounded-lg overflow-hidden mb-4">
-          <div class="flex flex-col sm:flex-row items-center p-6 border-b border-gray-200">
-              <img [src]="doctor?.profilePhoto || '/api/placeholder/200/200'" alt="{{ doctor?.name }}"
-                   class="w-32 h-32 rounded-full object-cover mb-4 sm:mb-0 sm:mr-6 shadow">
-              <div class="flex-grow text-center sm:text-left">
-                  <h1 class="text-2xl font-bold text-gray-900">{{ doctor?.name }}</h1>
-                  <p class="text-lg text-blue-600 font-medium">{{ doctor?.specialization }}</p>
-                  <p class="text-sm text-gray-500">{{ doctor?.location?.name || "Location not specified" }}</p>
-              </div>
-          </div>
-
-          <div class="p-6">
-              <!-- Button placed above the About section -->
-              <div class="flex justify-end mb-4">
-                  <button (click)="openAppointmentDialog()" 
-                          class="bg-blue-900 hover:bg-blue-950 text-white rounded-full py-2 px-4  shadow-lg">
-                      Schedule Appointment
-                  </button>
-              </div>
-
-              <div class="mb-4">
-                  <h2 class="text-xl font-semibold text-gray-800">About</h2>
-                  <p class="text-gray-600">{{ doctor?.bio }}</p>
-              </div>
-
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-                  <div>
-                      <h2 class="text-xl font-semibold text-gray-800">Professional Details</h2>
-                      <ul class="space-y-2 text-gray-600">
-                          <li><strong>Education:</strong> {{ doctor?.education }}</li>
-                          <li><strong>Experience:</strong> {{ doctor?.yearsOfExperience }} years</li>
-                          <li><strong>Fee:</strong> ${{ doctor?.consultationFee }}</li>
-                      </ul>
-                  </div>
-                  <div>
-                      <h2 class="text-xl font-semibold text-gray-800">Specializations</h2>
-                      <div class="flex flex-wrap gap-2">
-                          <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">
-                              {{ doctor?.specialization }}
-                          </span>
-                      </div>
-                  </div>
-              </div>
-          </div>
+    <!-- Doctor Profile Card -->
+    <div class="bg-white shadow-lg rounded-lg overflow-hidden mb-4">
+      <div class="flex flex-col sm:flex-row items-center p-6 border-b border-gray-200">
+        <img [src]="doctor?.profilePhoto || '/api/placeholder/200/200'" alt="{{ doctor?.name }}"
+             class="w-32 h-32 rounded-full object-cover mb-4 sm:mb-0 sm:mr-6 shadow">
+        <div class="flex-grow text-center sm:text-left">
+          <h1 class="text-2xl font-bold text-gray-900">{{ doctor?.name }}</h1>
+          <p class="text-lg text-blue-600 font-medium">{{ doctor?.specialization }}</p>
+          <p class="text-sm text-gray-500">{{ doctor?.location?.name || "Location not specified" }}</p>
+        </div>
       </div>
 
-      <!-- Work Time and Location Cards -->
-      <div class="flex flex-col gap-2">
-          <!-- Work Time Card -->
-          <div class="bg-white shadow-lg rounded-lg overflow-hidden mb-2">
-              <div class="p-6 border-b border-gray-200">
-                  <h2 class="text-xl font-semibold text-gray-800">Work Hours</h2>
-                  <ul class="space-y-2 text-gray-600 mt-4">
-                      <li class="flex justify-between"><span>Monday:</span><span>9:00 AM - 5:00 PM</span></li>
-                      <li class="flex justify-between"><span>Tuesday:</span><span>9:00 AM - 5:00 PM</span></li>
-                      <li class="flex justify-between"><span>Wednesday:</span><span>9:00 AM - 5:00 PM</span></li>
-                      <li class="flex justify-between"><span>Thursday:</span><span>9:00 AM - 5:00 PM</span></li>
-                      <li class="flex justify-between"><span>Friday:</span><span>9:00 AM - 3:00 PM</span></li>
-                      <li class="flex justify-between"><span>Saturday:</span><span>Closed</span></li>
-                      <li class="flex justify-between"><span>Sunday:</span><span>Closed</span></li>
-                  </ul>
-              </div>
-          </div>
+      <div class="p-6">
+        <!-- Button placed above the About section -->
+        <div class="flex justify-end mb-4">
+          <button (click)="openAppointmentDialog()" 
+                  class="bg-blue-900 hover:bg-blue-950 text-white rounded-full py-2 px-4 shadow-lg">
+            Schedule Appointment
+          </button>
+        </div>
 
-          <!-- Location Card -->
-          <div class="bg-white shadow-lg rounded-lg overflow-hidden mb-2">
-              <div class="p-6">
-                  <h2 class="text-xl font-semibold text-gray-800">Location</h2>
-                  <div class="overflow-hidden rounded-lg shadow mt-4">
-                      <iframe 
-                          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345096323!2d144.95373531531584!3d-37.81720997975173!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0b43f8d5%3A0x5045675218cd2b9!2sYour+Doctor's+Clinic!5e0!3m2!1sen!2sus!4v1617017976865!5m2!1sen!2sus" 
-                          width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                  </div>
-              </div>
+        <div class="mb-4">
+          <h2 class="text-xl font-semibold text-gray-800">About</h2>
+          <p class="text-gray-600">{{ doctor?.bio }}</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+          <div>
+            <h2 class="text-xl font-semibold text-gray-800">Professional Details</h2>
+            <ul class="space-y-2 text-gray-600">
+              <li><strong>Education:</strong> {{ doctor?.education }}</li>
+              <li><strong>Experience:</strong> {{ doctor?.yearsOfExperience }} years</li>
+              <li><strong>Fee:</strong> ${{ doctor?.consultationFee }}</li>
+            </ul>
           </div>
+          <div>
+            <h2 class="text-xl font-semibold text-gray-800">Specializations</h2>
+            <div class="flex flex-wrap gap-2">
+              <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">
+                {{ doctor?.specialization }}
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
+    </div>
+
+    <!-- Work Time and Location Cards -->
+    <div class="flex flex-col gap-2">
+      <!-- Work Time Card -->
+      <div class="bg-white shadow-lg rounded-lg overflow-hidden mb-2">
+        <div class="p-6 border-b border-gray-200">
+          <h2 class="text-xl font-semibold text-gray-800">Work Hours</h2>
+          <ul class="space-y-2 text-gray-600 mt-4">
+            <li class="flex justify-between"><span>Monday:</span><span>9:00 AM - 5:00 PM</span></li>
+            <li class="flex justify-between"><span>Tuesday:</span><span>9:00 AM - 5:00 PM</span></li>
+            <li class="flex justify-between"><span>Wednesday:</span><span>9:00 AM - 5:00 PM</span></li>
+            <li class="flex justify-between"><span>Thursday:</span><span>9:00 AM - 5:00 PM</span></li>
+            <li class="flex justify-between"><span>Friday:</span><span>9:00 AM - 3:00 PM</span></li>
+            <li class="flex justify-between"><span>Saturday:</span><span>Closed</span></li>
+            <li class="flex justify-between"><span>Sunday:</span><span>Closed</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Location Card -->
+      <div class="bg-white shadow-lg rounded-lg overflow-hidden mb-2">
+        <div class="p-6">
+          <h2 class="text-xl font-semibold text-gray-800">Location</h2>
+          <div class="overflow-hidden rounded-lg shadow mt-4">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345096323!2d144.95373531531584!3d-37.81720997975173!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0b43f8d5%3A0x5045675218cd2b9!2sYour+Doctor's+Clinic!5e0!3m2!1sen!2sus!4v1617017976865!5m2!1sen!2sus" 
+              width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Doctor Availability Component -->
+    <div *ngIf="doctor" class="p-6 bg-white shadow-lg rounded-lg mt-6 col-span-2 w-full">
+      <h2 class="text-2xl font-bold mb-4 text-gray-800">Available Appointments</h2>
+
+      <div *ngIf="getKeys(availableSlots).length > 0" class="space-y-6">
+        <div *ngFor="let date of getKeys(availableSlots).slice(0, displayedDays)" class="bg-gray-50 rounded-lg p-4 shadow-sm">
+          <h3 class="text-lg font-semibold mb-3 text-gray-700">{{ date | date:'fullDate' }}</h3>
+          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
+            <button *ngFor="let slot of availableSlots[date].slice(0, displayedSlots)"
+                    (click)="onSlotClick(date, slot)"
+                    class="py-2 px-4 bg-blue-100 hover:bg-blue-200 text-blue-800 rounded-lg transition-colors duration-200 text-sm font-medium">
+              {{ slot }}
+            </button>
+          </div>
+          <button *ngIf="availableSlots[date].length > displayedSlots"
+                  (click)="showMoreSlots(date)"
+                  class="mt-2 text-blue-600 hover:text-blue-800 text-sm font-medium">
+            Show More Slots
+          </button>
+        </div>
+      </div>
+
+      <button *ngIf="getKeys(availableSlots).length > displayedDays"
+              (click)="showMoreDays()"
+              class="mt-4 py-2 px-4 bg-blue-900 hover:bg-blue-600 text-white rounded-full transition-colors duration-200 text-sm font-medium">
+        Show More Days
+      </button>
+
+      <div *ngIf="getKeys(availableSlots).length === 0" class="text-red-600 mt-4">
+        No available slots for this doctor.
+      </div>
+
+      <div *ngIf="slotsLoading" class="mt-4 text-gray-600">
+        Loading available slots...
+      </div>
+
+      <div *ngIf="error" class="mt-4 text-red-600">
+        {{ error }}
+      </div>
+    </div>
   </div>
+
   <div *ngIf="successMessage" class="success-message">
     {{ successMessage }}
   </div>
 </div>
-
