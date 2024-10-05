@@ -5,12 +5,16 @@ import com.medclic.med.dto.AppointmentDTO;
 
 import com.medclic.med.service.AppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/appointments")
@@ -18,7 +22,6 @@ public class AppointmentController {
 
     @Autowired
     private AppointmentService appointmentService;
-
 
 
     @GetMapping("/{id}")
@@ -84,5 +87,40 @@ public class AppointmentController {
     }
 
 
-}
 
+
+    @GetMapping("/doctor/{doctorId}/first-available")
+    public ResponseEntity<List<LocalTime>> findFirstAvailableSlots(@PathVariable Long doctorId) {
+        List<LocalTime> availableSlots = appointmentService.findFirstAvailableSlots(doctorId);
+
+        if (availableSlots.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(availableSlots);
+    }
+
+
+
+
+
+    @GetMapping("/available-slots")
+    public ResponseEntity<Map<LocalDate, List<LocalTime>>> getAvailableSlots(
+            @RequestParam Long doctorId,
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
+            @RequestParam(defaultValue = "7") int daysToCheck) {
+
+        Map<LocalDate, List<LocalTime>> availableSlots =
+                appointmentService.findAvailableSlotsFromDate(doctorId, startDate, daysToCheck);
+
+        if (availableSlots.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+
+        return ResponseEntity.ok(availableSlots);
+    }
+
+
+
+
+
+}

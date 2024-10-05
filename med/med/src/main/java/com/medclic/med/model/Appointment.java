@@ -8,12 +8,13 @@ import lombok.Setter;
 //import java.sql.Date;
 
 
+
 import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
-
 import java.util.Date;
 import java.util.Set;
+
 
 @Getter
 @Setter
@@ -25,8 +26,8 @@ public class Appointment {
     private Long id;
 
 
-    private Date date;
-    private Time time;
+    private Date date; //sheduele date
+    private Time time; //sheduele time
 
     @Enumerated(EnumType.STRING)
     private AppointmentStatus status;
@@ -52,5 +53,7 @@ public class Appointment {
 
     @OneToMany(mappedBy = "appointment", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Reminder> reminders;
+
+
 
 }

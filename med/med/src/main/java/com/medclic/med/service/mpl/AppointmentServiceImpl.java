@@ -16,12 +16,13 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
+
+
 import java.sql.Date;
 import java.sql.Time;
 import java.time.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -53,12 +54,25 @@ public class AppointmentServiceImpl implements AppointmentService {
     @Override
     public AppointmentDTO createAppointment(AppointmentDTO appointmentDTO) {
         log.info("Creating new appointment for patient: {}", appointmentDTO.getPatientId());
+
+        // Check if the requested date and time are available
+        List<Time> bookedSlots = appointmentRepository.findBookedSlotsByDoctorAndDate(
+                appointmentDTO.getDoctorId(), appointmentDTO.getDate());
+
+        // If the requested time is already booked, throw an exception or handle it accordingly
+        if (bookedSlots.contains(appointmentDTO.getTime())) {
+            throw new NoAvailableSlotException("The selected time slot is already booked.");
+        }
+
+        // Proceed to create the appointment
         Appointment appointment = appointmentMapper.toEntity(appointmentDTO);
         appointment.setBookingDate(LocalDate.now());
         appointment.setBookingTime(LocalTime.now());
         Appointment savedAppointment = appointmentRepository.save(appointment);
+
         return appointmentMapper.toDTO(savedAppointment);
     }
+
 
     @Override
     public AppointmentDTO updateAppointment(AppointmentDTO appointmentDTO) {
@@ -128,9 +142,6 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
 
-
-
-
     @Override
     public AppointmentDTO autoScheduleAppointmentWithGap(Long doctorId, Long patientId, String reason) {
         log.info("Auto-scheduling appointment for patient: {} with doctor: {}", patientId, doctorId);
@@ -188,51 +199,126 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
 
+
+
+
     @Override
-    public List<LocalTime> checkDoctorAvailability(Long doctorId, LocalDate appointmentDate) {
-        log.info("Checking availability for doctor: {} on date: {}", doctorId, appointmentDate);
+    public List<LocalTime> findFirstAvailableSlots(Long doctorId) {
+        // Define your working hours
+        LocalTime startTime = LocalTime.of(9, 0); // Start time
+        LocalTime endTime = LocalTime.of(17, 0); // End time
 
-        // Define the doctor's working hours (e.g., 9:00 AM to 5:00 PM)
-        LocalTime startOfDay = LocalTime.of(9, 0);
-        LocalTime endOfDay = LocalTime.of(17, 0);
+        LocalDate today = LocalDate.now();
+        LocalDate currentDate = today;
 
-        // Fetch all appointments for the doctor on the specified date
-        List<Appointment> appointments = appointmentRepository
-                .findByDoctorIdAndDate(doctorId, java.sql.Date.valueOf(appointmentDate));
+        while (true) {
+            // Fetch booked slots for the current date
+            List<LocalTime> bookedSlots = appointmentRepository.findBookedSlotsByDoctorAndDate(doctorId, currentDate);
 
-        // Create a list of all possible time slots
-        List<LocalTime> availableTimes = new ArrayList<>();
-        LocalTime currentTime = startOfDay;
+            // Initialize a list for available time slots
+            List<LocalTime> availableSlots = new ArrayList<>();
 
-        // Loop to generate all available slots for the day
-        while (currentTime.isBefore(endOfDay)) {
-            final LocalTime timeSlot = currentTime; // Create a new effectively final variable for lambda expression
-
-            // Check if any appointment exists at this time
-            boolean isTimeSlotTaken = appointments.stream()
-                    .anyMatch(appointment -> appointment.getTime().toLocalTime().equals(timeSlot));
-
-            // If the time slot is not taken, add it to the available times
-            if (!isTimeSlotTaken) {
-                availableTimes.add(timeSlot);
+            // Fill the availableSlots list with times from startTime to endTime
+            for (LocalTime time = startTime; time.isBefore(endTime); time = time.plusHours(1)) {
+                // If the time slot is not booked, add it to available slots
+                if (!bookedSlots.contains(time)) {
+                    availableSlots.add(time);
+                }
             }
 
-            // Increment the current time by 30 minutes
-            currentTime = currentTime.plusMinutes(30);
+            // If we found available slots, return them
+            if (!availableSlots.isEmpty()) {
+                return availableSlots;
+            }
+
+            // Move to the next date
+            currentDate = currentDate.plusDays(1);
+        }
+    }
+
+
+
+    @Override
+    public Map<LocalDate, List<LocalTime>> findAvailableSlotsFromDate(Long doctorId, LocalDate startDate, int daysToCheck) {
+        Map<LocalDate, List<LocalTime>> availableSlots = new LinkedHashMap<>();
+        LocalTime startTime = LocalTime.of(9, 0);
+        LocalTime endTime = LocalTime.of(17, 0);
+        Duration slotDuration = Duration.ofMinutes(30);
+
+        for (int i = 0; i < daysToCheck; i++) {
+            LocalDate currentDate = startDate.plusDays(i);
+
+            if (currentDate.getDayOfWeek() == DayOfWeek.SATURDAY || currentDate.getDayOfWeek() == DayOfWeek.SUNDAY) {
+                continue; // Skip weekends
+            }
+
+            // Convert LocalDate to java.util.Date for the repository method
+            Date sqlDate = java.sql.Date.valueOf(currentDate);
+            List<Time> bookedSlots = appointmentRepository.findBookedSlotsByDoctorAndDate(doctorId, sqlDate);
+
+//            // Log the booked slots retrieved from the database
+//            System.out.println("Booked slots for " + currentDate + ": " + bookedSlots);
+
+            List<LocalTime> availableSlotsForDay = new ArrayList<>();
+
+            // Generate available slots within working hours
+            for (LocalTime time = startTime; !time.isAfter(endTime.minus(slotDuration)); time = time.plus(slotDuration)) {
+                Time sqlTime = Time.valueOf(time);
+
+                // Convert booked slots to LocalTime for comparison
+                List<LocalTime> bookedLocalTimes = bookedSlots.stream()
+                        .map(Time::toLocalTime)
+                        .collect(Collectors.toList());
+
+//                // Log the current time being checked against booked slots
+//                System.out.println("Checking availability for time: " + time + ", Booked times: " + bookedLocalTimes);
+
+                // Check if the current time is not booked
+                if (!bookedLocalTimes.contains(time)) {
+                    availableSlotsForDay.add(time);
+                }
+            }
+
+//            // Log available slots for the day
+//            System.out.println("Available slots for " + currentDate + ": " + availableSlotsForDay);
+
+            if (!availableSlotsForDay.isEmpty()) {
+                availableSlots.put(currentDate, availableSlotsForDay);
+            }
         }
 
-        return availableTimes;
+        return availableSlots;
+    }
+
+    public List<Time> checkAvailability(Long doctorId, LocalDate date) {
+        List<Time> bookedTimes = appointmentRepository.findBookedTimes(doctorId, date);
+        List<Time> availableSlots = generateSlots( doctorId,  date); // Assuming you have a method to generate the slots
+
+        // Filter out booked times from available slots
+        availableSlots.removeAll(bookedTimes);
+
+        return availableSlots;
+    }
+
+    public List<Time> generateSlots(Long doctorId, LocalDate date) {
+        List<Time> bookedTimes = appointmentRepository.findBookedTimes(doctorId, date);
+        List<Time> availableSlots = new ArrayList<>();
+
+        // Define your working hours, for example, 9 AM to 5 PM
+        Time startTime = Time.valueOf("09:00:00");
+        Time endTime = Time.valueOf("17:00:00");
+        long slotDurationInMinutes = 30; // Slot duration
+
+        // Generate slots for the working hours
+        for (Time time = startTime; time.before(endTime); time = new Time(time.getTime() + slotDurationInMinutes * 60 * 1000)) {
+            if (!bookedTimes.contains(time)) {
+                availableSlots.add(time);
+            }
+        }
+        return availableSlots;
     }
 
 }
-
-
-
-
-
-
-
-
 
 
 

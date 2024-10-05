@@ -5,6 +5,7 @@ import com.medclic.med.dto.AppointmentDTO;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.Map;
 
 public interface AppointmentService {
     AppointmentDTO getAppointmentById(Long appointmentId);
@@ -19,7 +20,9 @@ public interface AppointmentService {
 
     AppointmentDTO autoScheduleAppointmentWithGap(Long doctorId, Long patientId, String reason);
 
-    List<LocalTime> checkDoctorAvailability(Long doctorId, LocalDate appointmentDate);
+    List<LocalTime> findFirstAvailableSlots(Long doctorId);
+
+    Map<LocalDate, List<LocalTime>> findAvailableSlotsFromDate(Long doctorId, LocalDate startDate, int daysToCheck);
 
 }
 
