@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders , HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Appointment } from '../models/appointment.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'
