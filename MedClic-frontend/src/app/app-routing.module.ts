@@ -9,6 +9,7 @@ import { FindDoctorsComponent } from './patient/find-doctors/find-doctors.compon
 import { DoctorDetailsComponent } from './doctor/components/doctor-details/doctor-details.component';
 import { AppointmentsComponent } from './appointments/appointments.component';
 import { DoctorAvailabilityComponent } from './doctor/doctor-availability/doctor-availability.component';
+import { DoctorPatientsComponent } from './doctor/components/doctor-patients/doctor-patients.component';
 
 import { ManageDoctorsComponent } from './admin/components/manage-doctors/manage-doctors.component';
 import { ManagePatientComponent } from './admin/components/manage-patient/manage-patient.component';
@@ -30,6 +31,7 @@ const routes: Routes = [
 
   { path: 'doctor-dashboard' , component: DoctorDashboardComponent, canActivate: [AuthGuard] } , 
   // { path: 'doctor-dashboard' , component: DoctorDashboardComponent, canActivate: [AuthGuard , RoleGuard] , data: { roles: ['DOCTOR'] }} , 
+  { path: 'doctor-patients' , component: DoctorPatientsComponent , canActivate: [AuthGuard]},
 
 
 
