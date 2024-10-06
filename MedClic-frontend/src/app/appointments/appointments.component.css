@@ -1,0 +1,5 @@
+.mat-toolbar.mat-warn {
+    background-color: #f44336 !important; /* Red background for error */
+    color: #ffffff !important; /* White text */
+  }
+  
