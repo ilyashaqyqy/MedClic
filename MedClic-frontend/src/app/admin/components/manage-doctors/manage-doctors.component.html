@@ -28,7 +28,11 @@
       <ng-container matColumnDef="profilePhoto">
         <th mat-header-cell *matHeaderCellDef> Profile </th>
         <td mat-cell *matCellDef="let doctor">
-          <img [src]="doctor.profilePhoto" alt="Doctor Profile Photo" class="h-10 w-10 rounded-full object-cover shadow-sm">
+  
+          <img [src]="doctor.profilePhoto || '/api/placeholder/150/150'" 
+               alt="Doctor's profile photo" 
+               class="w-full h-full object-cover rounded-full"
+               (error)="this.doctor.profilePhoto='assets/images/blank-profile.png';">
         </td>
       </ng-container>
 
