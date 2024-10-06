@@ -40,7 +40,7 @@ throw new Error('Method not implemented.');
   menuItems = [
     { section: 'dashboard', label: 'Dashboard', icon: faStethoscope },
     { section: 'appointments', label: 'My Appointments', icon: faCalendarAlt },
-    { section: 'patient-records', label: 'Patient Records', icon: faClipboard },
+    { section: 'patient', label: 'Patient', icon: faClipboard },
     { section: 'profile', label: 'Profile Settings', icon: faUser }
   ];
 
