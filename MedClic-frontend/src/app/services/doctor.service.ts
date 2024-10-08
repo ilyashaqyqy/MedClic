@@ -46,4 +46,9 @@ export class DoctorService {
   getPatientCountForDoctor(id: number): Observable<number> {
     return this.http.get<number>(`${this.apiUrl}/${id}/patient-count`);
   }
+
+
+  getAppointmentCountForDoctor(id: number): Observable<number> {
+    return this.http.get<number>(`${this.apiUrl}/${id}/appointment-count`);
+  }
 }
