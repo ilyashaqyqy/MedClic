@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { PatientService } from '../../services/patient.service';
 import { UserService } from '../../services/user.service';
 import { Patient } from '../../models/patient.model';
+import { AppointmentService } from 'src/app/services/appointment.service';
 import { User } from '../../models/user.model';
 import { Appointment } from '../../models/appointment.model';
 import { faUser, faCalendarAlt, faHeart, faEnvelope, faExclamationTriangle, faLaptop, faTachometerAlt, faTicketAlt, faUsers , faSearch  , faAngleDown, faBell , faBars} from '@fortawesome/free-solid-svg-icons';
@@ -24,6 +25,7 @@ export class PatientDashboardComponent implements OnInit {
   user: User | null = null;
   patient: Patient | null = null;
   appointments: Appointment[] = [];
+  appointmentCount: number | null = null;
 
 
 
@@ -63,6 +65,7 @@ export class PatientDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadUserAndPatientData();
+    this.loadAppointmentCount();
 
   }
 
@@ -97,6 +100,7 @@ export class PatientDashboardComponent implements OnInit {
         this.patient = patient;
         console.log('Patient data:', patient);
         this.loadAppointments(userId);
+        this.loadAppointmentCount(); 
       },
       (error) => {
         console.error('Failed to fetch patient details:', error);
@@ -116,6 +120,8 @@ export class PatientDashboardComponent implements OnInit {
       }
     );
   }
+
+  
 
   toggleSidebar(): void {
     this.sidebarOpen = !this.sidebarOpen;
@@ -154,5 +160,42 @@ export class PatientDashboardComponent implements OnInit {
     this.currentSection = 'find-doctors'; // Update the current section to 'find-doctors'
     this.router.navigate(['/find-doctors']); // Navigate to the Find Doctors page
   }
+
+
+  updateDashboardCards(): void {
+    this.dashboardCards = [
+        { 
+            title: 'Total Appointments', 
+            value: this.appointmentCount !== null ? this.appointmentCount.toString() : 'Loading...', 
+            link: '/appointments', 
+            linkText: 'View Appointments', 
+            icon: faCalendarAlt 
+        }
+    ];
+}
+
+
+loadAppointmentCount(): void {
+  const patientId = this.patient?.id; // Get patient ID from patient object
+
+  if (!patientId) {
+    console.error('Patient ID is undefined. Cannot fetch appointment count.');
+    return; // Exit if patientId is undefined
+  }
+
+  this.patientService.getAppointmentCount(patientId).subscribe(
+    (count: number) => {
+      this.appointmentCount = count;
+      console.log('Total appointment count:', count);
+      this.updateDashboardCards(); // Update the card display with the count
+    },
+    (error) => {
+      console.error('Failed to fetch appointment count:', error);
+    }
+  );
+}
+
+
+
   
 }
