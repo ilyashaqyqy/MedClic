@@ -79,6 +79,14 @@ public class DoctorServiceImpl implements DoctorService {
         return appointmentRepository.countDistinctPatientsByDoctorId(doctorId);
     }
 
+    @Override
+    public Long getAppointmentCountForDoctor(Long doctorId) {
+
+        if (!doctorRepository.existsById(doctorId)) {
+            throw new DoctorNotFoundException("Doctor not found with ID: " + doctorId);
+        }
+        return appointmentRepository.countByDoctorId(doctorId);
+    }
 
 }
 

@@ -13,5 +13,6 @@ public interface DoctorService {
 //    List<DoctorDTO> searchDoctors(String specialization, String location);
 
     Long getPatientCountForDoctor(Long doctorId);
+    Long getAppointmentCountForDoctor(Long doctorId);
 }
 
