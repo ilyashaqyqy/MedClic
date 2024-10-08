@@ -53,6 +53,11 @@ export class DoctorDialogComponent implements OnInit {
   }
 
   onSave(): void {
+    this.doctorForm.form.markAllAsTouched(); // Mark all fields as touched for validation feedback
+    if (!this.doctorForm.valid) {
+      return; // Prevent saving if the form is not valid
+    }
+    
     console.log('Form Valid:', this.doctorForm.valid);
     this.doctor.role = Role.DOCTOR;
     
@@ -68,6 +73,7 @@ export class DoctorDialogComponent implements OnInit {
       );
     }
   }
+  
 
   onCancel(): void {
     this.dialogRef.close(false);
