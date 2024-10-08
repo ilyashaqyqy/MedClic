@@ -37,6 +37,7 @@ throw new Error('Method not implemented.');
   currentSection: string = 'dashboard';
   currentSectionLabel: string = 'Dashboard';
   patientCount: number = 0;
+  appointmentCount: number = 0;
 
   menuItems = [
     { section: 'dashboard', label: 'Dashboard', icon: faStethoscope },
@@ -46,7 +47,7 @@ throw new Error('Method not implemented.');
   ];
 
   dashboardCards = [
-    { title: 'Upcoming Appointments', value: '5', link: 'appointments', icon: faCalendarAlt },
+    { title: 'Upcoming Appointments', value: this.appointmentCount, link: 'appointments', icon: faCalendarAlt },
     { title: 'Total Patients', value: this.patientCount.toString(), link: 'patient-records', icon: faClipboard }
   ];
 
@@ -69,6 +70,7 @@ throw new Error('Method not implemented.');
           this.doctor = doctor;
           this.user = doctor;
           this.getPatientCount(doctorIdNum);
+          this.getAppointmentCount(doctorIdNum);
         },
         (error) => {
           console.error('Failed to fetch doctor details:', error);
@@ -112,8 +114,22 @@ throw new Error('Method not implemented.');
       }
     });
   }
+
+
+  getAppointmentCount(id: number): void {
+    this.doctorService.getAppointmentCountForDoctor(id).subscribe({
+      next: (count) => {
+        this.appointmentCount = count; // Store the retrieved appointment count
+        this.updateDashboardCards(); // Update dashboard cards after fetching
+      },
+      error: (error) => {
+        console.error('Error fetching appointment count:', error); // Log any errors
+      }
+    });
+  }
   
   updateDashboardCards(): void {
-    this.dashboardCards[1].value = this.patientCount.toString(); // Assuming the second card is for patient count
+    this.dashboardCards[1].value = this.patientCount.toString();
+    this.dashboardCards[0].value = this.appointmentCount.toString(); // Update the card values accordingly
   }
 }
