@@ -1,3 +1,13 @@
-<div class="app-container">
+
+
+<!-- <div class="app-container">
   <router-outlet></router-outlet>
-</div>
+</div> -->
+
+
+<ng-container *ngIf="shouldShowNavbar()">
+  <app-public-navbar *ngIf="!isLoggedIn()"></app-public-navbar>
+  <app-navbar *ngIf="isLoggedIn()"></app-navbar>
+</ng-container>
+
+<router-outlet></router-outlet> 
