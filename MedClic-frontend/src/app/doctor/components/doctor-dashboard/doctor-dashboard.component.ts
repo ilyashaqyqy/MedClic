@@ -36,6 +36,7 @@ throw new Error('Method not implemented.');
   isSidebarOpen: boolean = false; // Controls the burger menu for mobile
   currentSection: string = 'dashboard';
   currentSectionLabel: string = 'Dashboard';
+  patientCount: number = 0;
 
   menuItems = [
     { section: 'dashboard', label: 'Dashboard', icon: faStethoscope },
@@ -46,7 +47,7 @@ throw new Error('Method not implemented.');
 
   dashboardCards = [
     { title: 'Upcoming Appointments', value: '5', link: 'appointments', icon: faCalendarAlt },
-    { title: 'Total Patients', value: '120', link: 'patient-records', icon: faClipboard }
+    { title: 'Total Patients', value: this.patientCount.toString(), link: 'patient-records', icon: faClipboard }
   ];
 
   constructor(
@@ -67,6 +68,7 @@ throw new Error('Method not implemented.');
         (doctor: Doctor) => {
           this.doctor = doctor;
           this.user = doctor;
+          this.getPatientCount(doctorIdNum);
         },
         (error) => {
           console.error('Failed to fetch doctor details:', error);
@@ -97,5 +99,21 @@ throw new Error('Method not implemented.');
   logout(): void {
     this.authService.logout();
     this.router.navigate(['/login']);
+  }
+
+  getPatientCount(id: number): void {
+    this.doctorService.getPatientCountForDoctor(id).subscribe({
+      next: (count) => {
+        this.patientCount = count; // Store the retrieved patient count
+        this.updateDashboardCards(); // Call a method to update the card value
+      },
+      error: (error) => {
+        console.error('Error fetching patient count:', error); // Log any errors
+      }
+    });
+  }
+  
+  updateDashboardCards(): void {
+    this.dashboardCards[1].value = this.patientCount.toString(); // Assuming the second card is for patient count
   }
 }
