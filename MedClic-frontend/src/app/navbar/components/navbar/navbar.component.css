@@ -1,0 +1,11 @@
+.sticky-navbar {
+    position: sticky; /* Change to fixed if you want it to stay fixed on top of the viewport */
+    top: 0; /* Stick to the top of the viewport */
+    z-index: 1000; /* Make sure it is above other content */
+    transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transition */
+}
+
+.scrolled {
+    background-color: white; /* Change background color on scroll */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a shadow for depth */
+}

@@ -45,6 +45,11 @@ export class PatientService {
     return this.http.get<Appointment[]>(`${this.apiapointmentUrl}/patients/${userId}`);
   }
 
+
+  getAppointmentCount(patientId: number): Observable<number> {
+    return this.http.get<number>(`${this.apiUrl}/${patientId}/appointment-count`);
+  }
+
   // getPatientByUserId(userId: number): Observable<Patient> {
   //   return this.http.get<Patient>(`${this.apiUrl}/users/${userId}`);
   // }

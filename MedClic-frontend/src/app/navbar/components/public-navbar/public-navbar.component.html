@@ -1,0 +1,43 @@
+<nav class="bg-white transition-all duration-300 ease-in-out sticky-navbar custom-margin">
+    <div class="container mx-auto px-4 flex justify-between items-center">
+      
+      <!-- Burger Menu Button -->
+      <button (click)="toggleMobileMenu()" class="md:hidden text-blue-900" aria-label="Toggle mobile menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+  
+      <!-- MedClic Logo -->
+      <div routerLink="/home" class="text-2xl font-bold text-sky-800 cursor-pointer">MedClic</div>
+  
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex space-x-6">
+        <a routerLink="/home" class="text-gray-600 hover:text-sky-600">Accueil</a>
+        <a routerLink="/about" class="text-gray-600 hover:text-sky-600">À propos</a>
+        <a routerLink="/appointments" class="text-gray-600 hover:text-sky-600">Rendez-vous</a>
+        <a routerLink="/find-doctors" class="text-gray-600 hover:text-sky-600">Médecins</a>
+        <a routerLink="/contact" class="text-gray-600 hover:text-sky-600">Contact</a>
+      </nav>
+  
+      <div class="space-x-2">
+        <a routerLink="/register">
+          <button class="bg-transparent px-4 py-2 text-blue-900 bg-white border border-blue-900 rounded-full hover:bg-blue-50">Inscription</button>
+        </a>
+        <a routerLink="/login">
+          <button class="px-4 py-2 bg-blue-900 text-white rounded-full hover:bg-blue-950">Connexion</button>
+        </a>
+      </div>
+    </div>
+  
+    <!-- Mobile Navigation -->
+    <div [ngClass]="{'hidden': !isMobileMenuOpen}" class="md:hidden transition-all duration-300 ease-in-out">
+      <a routerLink="/" class="block text-gray-600 hover:bg-blue-100 px-3 py-2 rounded-md">Accueil</a>
+      <a routerLink="/about" class="block text-gray-600 hover:bg-blue-100 px-3 py-2 rounded-md">À propos</a>
+      <a routerLink="/appointments" class="block text-gray-600 hover:bg-blue-100 px-3 py-2 rounded-md">Rendez-vous</a>
+      <a routerLink="/find-doctors" class="block text-gray-600 hover:bg-blue-100 px-3 py-2 rounded-md">Médecins</a>
+      <a routerLink="/contact" class="block text-gray-600 hover:bg-blue-100 px-3 py-2 rounded-md">Contact</a>
+      <button (click)="toggleMobileMenu()" class="block text-gray-600 hover:bg-blue-100 px-3 py-2 rounded-md">Fermer</button>
+    </div>
+  </nav>
+  
