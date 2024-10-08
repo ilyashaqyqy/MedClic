@@ -24,6 +24,7 @@ public class Patient extends User {
 
     private String address;
 
+
     @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Appointment> appointments;
 

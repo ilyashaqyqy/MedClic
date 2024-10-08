@@ -127,13 +127,15 @@ public class AppointmentServiceImpl implements AppointmentService {
             Appointment existingAppointment = optionalAppointment.get();
 
             // Update only the date and time fields
-            existingAppointment.setDate((Date) appointmentDTO.getDate());
+            existingAppointment.setDate(appointmentDTO.getDate());
             existingAppointment.setTime(appointmentDTO.getTime());
 
-            // Save the updated appointment back to the database
+            existingAppointment.setStatus(AppointmentStatus.RESCHEDULED);
+
+
             Appointment updatedAppointment = appointmentRepository.save(existingAppointment);
 
-            // Convert back to DTO using your mapper
+
             return appointmentMapper.toDTO(updatedAppointment);
         }
 

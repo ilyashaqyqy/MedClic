@@ -11,5 +11,7 @@ public interface DoctorService {
     void deleteDoctor(Long doctorId);
     List<DoctorDTO> getAllDoctors();
 //    List<DoctorDTO> searchDoctors(String specialization, String location);
+
+    Long getPatientCountForDoctor(Long doctorId);
 }
 

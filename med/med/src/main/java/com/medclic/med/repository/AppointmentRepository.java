@@ -53,4 +53,8 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
     @Query("SELECT a.time FROM Appointment a WHERE a.doctor.id = :doctorId AND a.date = :date")
     List<Time> findBookedDateTimesByDoctorAndDate(Long doctorId, java.sql.Date date);
 
+    @Query("SELECT COUNT(DISTINCT a.patient.id) FROM Appointment a WHERE a.doctor.id = :doctorId")
+    Long countDistinctPatientsByDoctorId(@Param("doctorId") Long doctorId);
+
+
 }

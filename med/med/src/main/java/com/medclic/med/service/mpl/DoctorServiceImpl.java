@@ -5,7 +5,9 @@ import com.medclic.med.exception.DoctorNotFoundException;
 import com.medclic.med.mapper.DoctorMapper;
 import com.medclic.med.model.Doctor;
 import com.medclic.med.model.Role;
+import com.medclic.med.repository.AppointmentRepository;
 import com.medclic.med.repository.DoctorRepository;
+import com.medclic.med.repository.PatientRepository;
 import com.medclic.med.service.DoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +22,14 @@ public class DoctorServiceImpl implements DoctorService {
 
     @Autowired
     private DoctorMapper doctorMapper;
+
+    @Autowired
+    private PatientRepository patientRepository;
+
+    @Autowired
+    private AppointmentRepository appointmentRepository;
+
+
 
     @Override
     public DoctorDTO getDoctorById(Long doctorId) {
@@ -62,6 +72,13 @@ public class DoctorServiceImpl implements DoctorService {
     public long countDoctors() {
         return doctorRepository.count();
     }
+
+
+    @Override
+    public Long getPatientCountForDoctor(Long doctorId) {
+        return appointmentRepository.countDistinctPatientsByDoctorId(doctorId);
+    }
+
 
 }
 
