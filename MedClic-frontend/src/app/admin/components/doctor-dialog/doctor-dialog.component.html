@@ -4,31 +4,64 @@
     <mat-form-field appearance="fill">
       <mat-label>Name</mat-label>
       <input matInput [(ngModel)]="doctor.name" name="name" required>
+      <mat-error *ngIf="doctorForm.submitted && !doctorForm.controls['name']?.valid">
+        Name is required.
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Email</mat-label>
-      <input matInput [(ngModel)]="doctor.email" name="email" required>
+      <input matInput [(ngModel)]="doctor.email" name="email" required email>
+      <mat-error *ngIf="doctorForm.submitted && !doctorForm.controls['email']?.valid">
+        <span *ngIf="doctorForm.controls['email']?.errors?.['required']">Email is required.</span>
+        <span *ngIf="doctorForm.controls['email']?.errors?.['email']">Enter a valid email.</span>
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Password</mat-label>
-      <input matInput [(ngModel)]="doctor.password" name="password" type="password" required>
+      <input matInput [(ngModel)]="doctor.password" name="password" type="password" required minlength="6">
+      <mat-error *ngIf="doctorForm.submitted && !doctorForm.controls['password']?.valid">
+        <span *ngIf="doctorForm.controls['password']?.errors?.['required']">Password is required.</span>
+        <span *ngIf="doctorForm.controls['password']?.errors?.['minlength']">Password must be at least 6 characters long.</span>
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Specialization</mat-label>
       <input matInput [(ngModel)]="doctor.specialization" name="specialization" required>
+      <mat-error *ngIf="doctorForm.submitted && !doctorForm.controls['specialization']?.valid">
+        Specialization is required.
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Years of Experience</mat-label>
-      <input matInput [(ngModel)]="doctor.yearsOfExperience" name="yearsOfExperience" type="number" required>
+      <input 
+        matInput 
+        [(ngModel)]="doctor.yearsOfExperience" 
+        name="yearsOfExperience" 
+        type="number" 
+        required 
+        min="0" 
+        max="60" 
+        [pattern]="'^[0-9]{0,2}$'"
+        (input)="doctor.yearsOfExperience = doctor.yearsOfExperience > 99 ? 99 : doctor.yearsOfExperience" />
+      <mat-error *ngIf="doctorForm.submitted && !doctorForm.controls['yearsOfExperience']?.valid">
+        <span *ngIf="doctorForm.controls['yearsOfExperience']?.errors?.['required']">Years of experience is required.</span>
+        <span *ngIf="doctorForm.controls['yearsOfExperience']?.errors?.['min']">Years of experience cannot be negative.</span>
+        <span *ngIf="doctorForm.controls['yearsOfExperience']?.errors?.['max']">Years of experience cannot exceed 50.</span>
+      </mat-error>
     </mat-form-field>
+    
 
     <mat-form-field appearance="fill">
       <mat-label>Consultation Fee</mat-label>
-      <input matInput [(ngModel)]="doctor.consultationFee" name="consultationFee" type="number" required>
+      <input matInput [(ngModel)]="doctor.consultationFee" name="consultationFee" type="number" required min="50" >
+      <mat-error *ngIf="doctorForm.submitted && !doctorForm.controls['consultationFee']?.valid">
+        <span *ngIf="doctorForm.controls['consultationFee']?.errors?.['required']">Consultation fee is required.</span>
+        <span *ngIf="doctorForm.controls['consultationFee']?.errors?.['min']">Consultation fee cannot be negative.</span>
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
@@ -38,6 +71,9 @@
           {{ location.name }}
         </mat-option>
       </mat-select>
+      <mat-error *ngIf="doctorForm.submitted && !doctorForm.controls['locationId']?.valid">
+        Location is required.
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
@@ -59,6 +95,7 @@
       <mat-label>Certifications</mat-label>
       <input matInput [(ngModel)]="doctor.certifications" name="certifications">
     </mat-form-field>
+    
   </form>
 </mat-dialog-content>
 <mat-dialog-actions>
