@@ -49,6 +49,8 @@ import { RescheduleAppointmentDialogComponent } from './appointment/reschedule-a
 import { DoctorAvailabilityComponent } from './doctor/doctor-availability/doctor-availability.component';
 import { CalendarModule } from 'angular-calendar';
 import { DoctorPatientsComponent } from './doctor/components/doctor-patients/doctor-patients.component';
+import { NavbarComponent } from './navbar/components/navbar/navbar.component';
+import { PublicNavbarComponent } from './navbar/components/public-navbar/public-navbar.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +73,8 @@ import { DoctorPatientsComponent } from './doctor/components/doctor-patients/doc
     RescheduleAppointmentDialogComponent,
     DoctorAvailabilityComponent,
     DoctorPatientsComponent,
+    NavbarComponent,
+    PublicNavbarComponent,
   ],
   imports: [
     BrowserModule,
