@@ -6,7 +6,7 @@
 <div>
   <label for="appointmentDate" class="block text-sm font-medium">Date</label>
   <input type="date" id="appointmentDate" formControlName="appointmentDate"
-         class="w-full p-4 rounded-2xl shadow-lg shadow-cyan-50 border-2 border-transparent focus:outline-none focus:ring-2 focus:ring-blue-400 placeholder-gray-400">
+         class="w-full p-4 rounded-2xl shadow-lg shadow-gray-200 border-2 border-transparent focus:outline-none focus:ring-2 focus:ring-blue-400 placeholder-gray-400">
   
   <!-- Show error message if the date is in the past -->
   <div *ngIf="scheduleForm.get('appointmentDate')?.hasError('pastDate')" class="text-red-600 text-sm mt-1">
@@ -22,14 +22,14 @@
         <div>
           <label for="appointmentTime" class="block text-sm font-medium">Time</label>
           <input type="time" id="appointmentTime" formControlName="appointmentTime"
-                 class="w-full p-4 rounded-2xl shadow-lg shadow-cyan-50 border-2 border-transparent focus:outline-none focus:ring-2 focus:ring-blue-400 placeholder-gray-400">
+                 class="w-full p-4 rounded-2xl shadow-lg shadow-gray-200 border-2 border-transparent focus:outline-none focus:ring-2 focus:ring-blue-400 placeholder-gray-400">
         </div>
       </div>
 
       <div class="mb-4">
         <label for="appointmentType" class="block text-sm font-medium">Appointment Type</label>
         <select id="appointmentType" formControlName="appointmentType"
-                class="w-full p-4 rounded-2xl shadow-lg shadow-cyan-50 border-2 border-transparent focus:outline-none focus:ring-2 focus:ring-blue-400 placeholder-gray-400">
+                class="w-full p-4 rounded-2xl shadow-lg shadow-gray-200 border-2 border-transparent focus:outline-none focus:ring-2 focus:ring-blue-400 placeholder-gray-400">
           <option value="" disabled>Select Appointment Type</option>
           <option *ngFor="let type of appointmentTypes" [value]="type">{{ type }}</option>
         </select>
@@ -38,7 +38,7 @@
       <div class="mb-4">
         <label for="appointmentReason" class="block text-sm font-medium">Reason</label>
         <select id="appointmentReason" formControlName="appointmentReason"
-                class="w-full p-4 rounded-2xl shadow-lg shadow-cyan-50 border-2 border-transparent focus:outline-none focus:ring-2 focus:ring-blue-400 placeholder-gray-400">
+                class="w-full p-4 rounded-2xl shadow-lg shadow-gray-200 border-2 border-transparent focus:outline-none focus:ring-2 focus:ring-blue-400 placeholder-gray-400">
           <option value="" disabled>Select Reason</option>
           <option *ngFor="let reason of appointmentReasons" [value]="reason">{{ reason }}</option>
         </select>
@@ -47,7 +47,7 @@
       <div class="mb-4">
         <label for="notes" class="block text-sm font-medium">Note</label>
         <textarea id="notes" formControlName="notes" rows="3"
-                  class="w-full p-4 rounded-2xl shadow-lg shadow-cyan-50 border-2 border-transparent focus:outline-none focus:ring-2 focus:ring-blue-400 placeholder-gray-400"></textarea>
+                  class="w-full p-4 rounded-2xl shadow-lg shadow-gray-200 border-2 border-transparent focus:outline-none focus:ring-2 focus:ring-blue-400 placeholder-gray-400"></textarea>
       </div>
 
       <button type="submit" [disabled]="scheduleForm.invalid"
@@ -58,7 +58,7 @@
       <button type="button"
       (click)="autoScheduleAppointment()"
       matTooltip="This button automatically schedules an appointment at the first time and date available."
-      class="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-full py-3 mt-4">
+      class="w-full bg-sky-600 hover:bg-sky-700 text-white rounded-full py-3 mt-4">
       Auto-Schedule Appointment
      </button>
 
