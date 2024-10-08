@@ -59,5 +59,11 @@ public class DoctorController {
         return new ResponseEntity<>(count, HttpStatus.OK);
     }
 
+    @GetMapping("/{doctorId}/patient-count")
+    public ResponseEntity<Long> getPatientCount(@PathVariable Long doctorId) {
+        Long patientCount = doctorService.getPatientCountForDoctor(doctorId);
+        return ResponseEntity.ok(patientCount);
+    }
+
 }
 
