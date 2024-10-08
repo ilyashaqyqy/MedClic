@@ -32,7 +32,7 @@ export class LoginComponent {
         } else if (role === 'DOCTOR') {
           this.router.navigate(['/doctor-dashboard']);
         } else {
-          this.router.navigate(['/patient-dashboard']);
+          this.router.navigate(['/find-doctors']);
         }
       },
       (error: any) => {
