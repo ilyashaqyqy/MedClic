@@ -61,4 +61,5 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
     Long countByDoctorId(@Param("doctorId") Long doctorId);
 
 
+
 }

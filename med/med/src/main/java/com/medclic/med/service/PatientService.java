@@ -12,5 +12,7 @@ public interface PatientService {
     List<PatientDTO> getAllPatients();
     Long findPatientIdByEmail(String email);
 
+    Long countAppointmentsForPatient(Long patientId);
+
 }
 

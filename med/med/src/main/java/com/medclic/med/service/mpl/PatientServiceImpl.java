@@ -67,4 +67,9 @@ public class PatientServiceImpl implements PatientService {
                 .orElse(null);
     }
 
+    @Override
+    public Long countAppointmentsForPatient(Long patientId) {
+        return patientRepository.countAppointmentsByPatientId(patientId);
+    }
+
 }

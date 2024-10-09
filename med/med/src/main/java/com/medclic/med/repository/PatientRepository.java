@@ -16,4 +16,8 @@ public interface PatientRepository extends JpaRepository<Patient, Long> {
 
 
 
+    @Query("SELECT COUNT(a) FROM Appointment a WHERE a.patient.id = :patientId")
+    Long countAppointmentsByPatientId(@Param("patientId") Long patientId);
+
+
 }
