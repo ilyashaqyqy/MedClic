@@ -10,7 +10,7 @@ public interface DoctorService {
     DoctorDTO updateDoctor(DoctorDTO doctorDTO);
     void deleteDoctor(Long doctorId);
     List<DoctorDTO> getAllDoctors();
-//    List<DoctorDTO> searchDoctors(String specialization, String location);
+
 
     Long getPatientCountForDoctor(Long doctorId);
     Long getAppointmentCountForDoctor(Long doctorId);

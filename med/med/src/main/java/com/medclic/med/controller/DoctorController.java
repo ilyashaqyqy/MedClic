@@ -28,12 +28,14 @@ public class DoctorController {
         return new ResponseEntity<>(doctorDTO, HttpStatus.OK);
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping
     public ResponseEntity<DoctorDTO> createDoctor(@RequestBody DoctorDTO doctorDTO) {
         DoctorDTO createdDoctor = doctorService.createDoctor(doctorDTO);
         return new ResponseEntity<>(createdDoctor, HttpStatus.CREATED);
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PutMapping("/{id}")
     public ResponseEntity<DoctorDTO> updateDoctor(@PathVariable Long id, @RequestBody DoctorDTO doctorDTO) {
         doctorDTO.setId(id);
@@ -41,6 +43,7 @@ public class DoctorController {
         return new ResponseEntity<>(updatedDoctor, HttpStatus.OK);
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteDoctor(@PathVariable Long id) {
         doctorService.deleteDoctor(id);

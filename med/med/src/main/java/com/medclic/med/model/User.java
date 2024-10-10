@@ -45,11 +45,6 @@ public class User implements UserDetails {
     private Set<Message> receivedMessages;
 
 
-//    @Override
-//    public Collection<? extends GrantedAuthority> getAuthorities() {
-//        return List.of();
-//    }
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
 

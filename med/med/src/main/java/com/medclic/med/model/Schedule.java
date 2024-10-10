@@ -6,7 +6,7 @@ import lombok.Setter;
 
 import java.util.Map;
 import java.util.Date;
-import java.util.List;
+
 
 
 @Getter
@@ -21,13 +21,4 @@ public class Schedule {
     @ElementCollection
     private Map<Date, TimeSlot> availability;
 
-
-
-    public void addAvailability(Date date, TimeSlot timeSlot) {
-        // Implementation here
-    }
-
-    public void removeAvailability(Date date, TimeSlot timeSlot) {
-        // Implementation here
-    }
 }

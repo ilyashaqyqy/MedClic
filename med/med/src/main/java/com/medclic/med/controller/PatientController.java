@@ -29,12 +29,15 @@ public class PatientController {
         return new ResponseEntity<>(patientDTO, HttpStatus.OK);
     }
 
+
+    @PreAuthorize("hasAuthority('PATIENT') or hasAuthority('PATIENT')")
     @PostMapping
     public ResponseEntity<PatientDTO> createPatient(@RequestBody PatientDTO patientDTO) {
         PatientDTO createdPatient = patientService.createPatient(patientDTO);
         return new ResponseEntity<>(createdPatient, HttpStatus.CREATED);
     }
 
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('PATIENT')")
     @PutMapping("/{id}")
     public ResponseEntity<PatientDTO> updatePatient(@PathVariable Long id, @RequestBody PatientDTO patientDTO) {
         patientDTO.setId(id);
@@ -42,6 +45,8 @@ public class PatientController {
         return new ResponseEntity<>(updatedPatient, HttpStatus.OK);
     }
 
+
+    @PreAuthorize("hasAuthority('ADMIN')")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletePatient(@PathVariable Long id) {
         patientService.deletePatient(id);
@@ -49,17 +54,20 @@ public class PatientController {
     }
 
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping
     public ResponseEntity<List<PatientDTO>> getAllPatients() {
         List<PatientDTO> patients = patientService.getAllPatients();
         return new ResponseEntity<>(patients, HttpStatus.OK);
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/count")
     public ResponseEntity<Long> getPatientCount() {
         long count = patientServiceImpl.countPtient();
         return new ResponseEntity<>(count, HttpStatus.OK);
     }
+
 
 
     @GetMapping("/email/{email}/id")

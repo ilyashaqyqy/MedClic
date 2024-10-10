@@ -24,18 +24,23 @@ public class AppointmentController {
     private AppointmentService appointmentService;
 
 
+
+
     @GetMapping("/{id}")
     public ResponseEntity<AppointmentDTO> getAppointmentById(@PathVariable Long id) {
         AppointmentDTO appointmentDTO = appointmentService.getAppointmentById(id);
         return new ResponseEntity<>(appointmentDTO, HttpStatus.OK);
     }
 
+    @PreAuthorize("hasAuthority('PATIENT')")
     @PostMapping
     public ResponseEntity<AppointmentDTO> createAppointment(@RequestBody AppointmentDTO appointmentDTO) {
         AppointmentDTO createdAppointment = appointmentService.createAppointment(appointmentDTO);
         return new ResponseEntity<>(createdAppointment, HttpStatus.CREATED);
     }
 
+
+    @PreAuthorize("hasAuthority('PATIENT') or hasAuthority('DOCTOR')")
     @PutMapping("/{id}")
     public ResponseEntity<AppointmentDTO> updateAppointment(@PathVariable Long id, @RequestBody AppointmentDTO appointmentDTO) {
         appointmentDTO.setId(id);
@@ -43,12 +48,15 @@ public class AppointmentController {
         return new ResponseEntity<>(updatedAppointment, HttpStatus.OK);
     }
 
+
+    @PreAuthorize("hasAuthority('PATIENT') or hasAuthority('DOCTOR')")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> cancelAppointment(@PathVariable Long id) {
         appointmentService.cancelAppointment(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
+    @PreAuthorize("hasAuthority('PATIENT') or hasAuthority('DOCTOR')")
     @GetMapping("/patients/{patientId}")
     public ResponseEntity<List<AppointmentDTO>> getAppointmentsByPatientId(@PathVariable Long patientId) {
         List<AppointmentDTO> appointments = appointmentService.getAppointmentsByPatientId(patientId);
@@ -62,6 +70,7 @@ public class AppointmentController {
     }
 
 
+    @PreAuthorize("hasAuthority('DOCTOR')")
     @PostMapping("/{id}/confirm")
     public ResponseEntity<Void> confirmAppointment(@PathVariable Long id) {
         appointmentService.confirmAppointment(id);
@@ -69,6 +78,7 @@ public class AppointmentController {
     }
 
 
+    @PreAuthorize("hasAuthority('DOCTOR') or hasAuthority('PATIENT')")
     @PutMapping("/{id}/reschedule")
     public ResponseEntity<AppointmentDTO> rescheduleAppointment(@PathVariable Long id, @RequestBody AppointmentDTO appointmentDTO) {
         // Use the service to handle rescheduling
@@ -77,6 +87,7 @@ public class AppointmentController {
     }
 
 
+    @PreAuthorize("hasAuthority('PATIENT')")
     @PostMapping("/auto-schedule")
     public ResponseEntity<AppointmentDTO> autoScheduleAppointment(
             @RequestParam Long doctorId,

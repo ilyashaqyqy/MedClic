@@ -258,8 +258,7 @@ public class AppointmentServiceImpl implements AppointmentService {
             Date sqlDate = java.sql.Date.valueOf(currentDate);
             List<Time> bookedSlots = appointmentRepository.findBookedSlotsByDoctorAndDate(doctorId, sqlDate);
 
-//            // Log the booked slots retrieved from the database
-//            System.out.println("Booked slots for " + currentDate + ": " + bookedSlots);
+
 
             List<LocalTime> availableSlotsForDay = new ArrayList<>();
 

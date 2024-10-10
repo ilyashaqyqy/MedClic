@@ -1,7 +1,6 @@
 package com.medclic.med.repository;
 
 import com.medclic.med.model.Patient;
-import com.medclic.med.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

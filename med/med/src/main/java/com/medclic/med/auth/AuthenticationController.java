@@ -28,10 +28,6 @@ public class AuthenticationController {
         return ResponseEntity.ok(service.register(request));
     }
 
-//    @GetMapping("/test")
-//    public ResponseEntity<String> testEndpoint() {
-//        return ResponseEntity.ok("Test endpoint working");
-//    }
 
 }
 
