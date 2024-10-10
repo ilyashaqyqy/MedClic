@@ -1,7 +1,6 @@
 package com.medclic.med.dto;
 
 
-import com.medclic.med.model.Role;
 import lombok.Getter;
 import lombok.Setter;
 
