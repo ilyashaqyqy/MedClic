@@ -16,6 +16,9 @@ export class AppointmentDialogComponent implements OnInit {
   appointmentReasons = ['General Health Check', 'Follow-up on Previous Issue', 'Injury or Pain'];
   successMessage: string | null = null;
 
+
+  showTimeHint = false;
+
   constructor(
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<AppointmentDialogComponent>,

@@ -4,8 +4,10 @@
       <!-- Doctor Profile Card -->
       <div class="lg:col-span-2 bg-white shadow-lg rounded-lg overflow-hidden">
         <div class="flex flex-col sm:flex-row items-center p-6 border-b border-gray-200">
-          <img [src]="doctor?.profilePhoto || '/api/placeholder/200/200'" [alt]="doctor?.name"
-               class="w-32 h-32 rounded-full object-cover mb-4 sm:mb-0 sm:mr-6 shadow">
+          <img [src]="doctor?.profilePhoto ? doctor?.profilePhoto : '/assets/images/blank-profile.png'" 
+          [alt]="doctor?.name" 
+          class="w-32 h-32 rounded-full object-cover mb-4 sm:mb-0 sm:mr-6 shadow">
+     
           <div class="flex-grow text-center sm:text-left">
             <h1 class="text-2xl font-bold text-gray-900">{{ doctor?.name }}</h1>
             <p class="text-lg text-blue-600 font-medium">{{ doctor?.specialization }}</p>

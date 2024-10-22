@@ -29,9 +29,10 @@ const routes: Routes = [
 
  // Doctor routes
 
-  { path: 'doctor-dashboard' , component: DoctorDashboardComponent, canActivate: [AuthGuard] } , 
-  // { path: 'doctor-dashboard' , component: DoctorDashboardComponent, canActivate: [AuthGuard , RoleGuard] , data: { roles: ['DOCTOR'] }} , 
-  { path: 'doctor-patients' , component: DoctorPatientsComponent , canActivate: [AuthGuard]},
+  { path: 'doctor-dashboard' , component: DoctorDashboardComponent, canActivate: [AuthGuard , RoleGuard] , data: { roles: ['DOCTOR'] } }, 
+  { path: 'doctor-dashboard' , component: DoctorDashboardComponent, canActivate: [AuthGuard , RoleGuard] , data: { roles: ['DOCTOR'] }} , 
+  { path: 'doctor-patients' , component: DoctorPatientsComponent , canActivate: [AuthGuard , RoleGuard], data: { roles: ['DOCTOR'] }} , 
+  // { path: 'doctor-patients' , component: DoctorPatientsComponent , canActivate: [AuthGuard]},
 
 
 
@@ -39,8 +40,8 @@ const routes: Routes = [
   { path: 'patient-dashboard' , component: PatientDashboardComponent , canActivate: [AuthGuard , RoleGuard] , data: { roles: ['PATIENT'] } } ,
   { path: 'find-doctors' , component: FindDoctorsComponent , canActivate: [AuthGuard]},
   { path: 'doctor-details/:id' , component: DoctorDetailsComponent , canActivate: [AuthGuard]},
-  { path: 'appointments', component: AppointmentsComponent },
-  { path: 'doctor-availability', component: DoctorAvailabilityComponent },
+  { path: 'appointments', component: AppointmentsComponent , canActivate: [AuthGuard  , RoleGuard] , data: { roles: ['PATIENT'] } },
+  { path: 'doctor-availability', component: DoctorAvailabilityComponent , canActivate: [AuthGuard]},
 
 
   // Admin routes

@@ -50,25 +50,27 @@ h1:hover {
 
 
     </style>
+
+
 </head>
 <body class="min-h-screen">
     <div class="gradient-bg min-h-screen">
-        <header class="py-4">
+        <header id="navbar" class="py-4 " >
             <div class="container mx-auto px-4 flex justify-between items-center">
                 <div class="text-2xl font-bold text-sky-800">MedClic</div>
                 <nav class="hidden md:flex space-x-6">
-                    <a href="#" class="text-gray-600 hover:text-sky-600 ">Accueil</a>
-                    <a href="#" class="text-gray-600 hover:text-sky-600 ">À propos</a>
-                    <a href="#" class="text-gray-600 hover:text-sky-600 ">Rendez-vous</a>
-                    <a href="#" class="text-gray-600 hover:text-sky-600 ">Médecins</a>
-                    <a href="#" class="text-gray-600 hover:text-sky-600 ">Contact</a>
+                    <a href="#" class="text-gray-600 hover:text-sky-600">Home</a>
+                    <a href="#" class="text-gray-600 hover:text-sky-600">About</a>
+                    <a href="#" class="text-gray-600 hover:text-sky-600">Appointments</a>
+                    <a href="#" class="text-gray-600 hover:text-sky-600">Doctors</a>
+                    <a href="#" class="text-gray-600 hover:text-sky-600">Contact</a>
                 </nav>
                 <div class="space-x-2">
                     <a href="/register">
-                        <button class="bg-transparent px-4 py-2 text-blue-900 bg-white border border-blue-900 rounded-full hover:bg-blue-50">Inscription</button>
+                        <button class="bg-transparent px-4 py-2 text-blue-900 bg-white border border-blue-900 rounded-full hover:bg-blue-50">Sign Up</button>
                     </a>
                     <a href="/login">
-                        <button class="px-4 py-2 bg-blue-900 text-white rounded-full hover:bg-blue-950">Connexion</button>
+                        <button class="px-4 py-2 bg-blue-900 text-white rounded-full hover:bg-blue-950">Log In</button>
                     </a>
                 </div>
             </div>
@@ -78,17 +80,18 @@ h1:hover {
             <div class="flex flex-col md:flex-row items-center text-center md:text-left">
                 <div class="md:w-1/2 mb-8 md:mb-0 flex flex-col justify-center items-center md:items-start">
                     <h1 class="text-7xl font-bold text-gray-800 mb-4 relative overflow-hidden">
-                        <span class="font-bold">Consultez </span> <span class="gradient-text font-bold">Les Meilleurs Médecins</span><br>
-                        <span class="font-bold">Près De Chez Vous.</span>
+                        <span class="font-bold">Consult </span> <span class="gradient-text font-bold">Top-Rated Doctors</span><br>
+                        <span class="font-bold">Near You for Expert Care.</span>
                     </h1>
                     
+                    
                     <p class="text-xl text-gray-600 mt-2">
-                        Trouvez des spécialistes dans votre région et prenez rendez-vous rapidement avec nos médecins certifiés.
+                        Find specialists in your area and quickly schedule an appointment with our certified doctors.
                     </p>
                     <!-- Book Appointment Button -->
                     <div class="mt-6">
                         <button class="px-8 py-4 bg-gradient-to-br from-sky-600 to-blue-950 text-white rounded-full hover:bg-gradient-to-br hover:from-sky-700 hover:to-blue-950 transition duration-200 ease-in-out" (click)="navigateToFindDoctor()">
-                            Prendre un Rendez-vous
+                            Book an Appointment
                         </button>
                     </div>
                 </div>
@@ -103,205 +106,204 @@ h1:hover {
 
 
     <!-- <section class="py-24 bg-gradient-to-br from-sky-50 via-white to-blue-50"> -->
-        <section class="py-24 bg-blue-50">
-        <div class="container mx-auto px-4">
-          <h2 class="text-4xl font-extrabold text-center mb-12 bg-gradient-to-r from-sky-600 to-blue-600 bg-clip-text text-transparent">Trouvez par Spécialité</h2>
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            
-            <!-- Médecin Généraliste -->
+<section class="py-24 bg-blue-50">
+    <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-extrabold text-center mb-12 bg-gradient-to-r from-sky-600 to-blue-600 bg-clip-text text-transparent">Find by Specialty</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- General Practitioner -->
             <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
-              <div class="p-8">
-                <div class="flex items-center justify-between mb-6">
-                  <h3 class="text-2xl font-bold bg-gradient-to-r from-sky-600 to-blue-600 bg-clip-text text-transparent">Médecin Généraliste</h3>
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-sky-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                  </svg>
+                <div class="p-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-2xl font-bold bg-gradient-to-r from-sky-600 to-blue-600 bg-clip-text text-transparent">General Practitioner</h3>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-sky-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                    </div>
+                    <p class="text-gray-600 mb-6">Comprehensive care for a wide range of health issues.</p>
                 </div>
-                <p class="text-gray-600 mb-6">Soins complets pour une vaste gamme de problèmes de santé.</p>
-              </div>
-              <div class="bg-gradient-to-r from-sky-100 to-blue-100 p-4">
-                <a href="#" class="group flex items-center justify-between text-sky-600  hover:text-blue-700 transition-colors duration-200">
-                  Trouver un Médecin
-                  <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                  </svg>
-                </a>
-              </div>
+                <div class="bg-gradient-to-r from-sky-100 to-blue-100 p-4">
+                    <a href="#" class="group flex items-center justify-between text-sky-600 hover:text-blue-700 transition-colors duration-200">
+                        Find a Doctor
+                        <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
+                </div>
             </div>
-            
-            <!-- Gynécologue -->
+
+            <!-- Gynecologist -->
             <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
-              <div class="p-8">
-                <div class="flex items-center justify-between mb-6">
-                  <h3 class="text-2xl font-bold bg-gradient-to-r from-sky-600 to-blue-600 bg-clip-text text-transparent">Gynécologue</h3>
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-sky-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                  </svg>
+                <div class="p-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-2xl font-bold bg-gradient-to-r from-sky-600 to-blue-600 bg-clip-text text-transparent">Gynecologist</h3>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-sky-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                        </svg>
+                    </div>
+                    <p class="text-gray-600 mb-6">Specialized care for women's health and reproductive system.</p>
                 </div>
-                <p class="text-gray-600 mb-6">Soins spécialisés pour la santé féminine et le système reproducteur.</p>
-              </div>
-              <div class="bg-gradient-to-r from-sky-100 to-blue-100 p-4">
-                <a href="#" class="group flex items-center justify-between text-sky-600  hover:text-blue-700 transition-colors duration-200">
-                  Trouver un Médecin
-                  <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                  </svg>
-                </a>
-              </div>
+                <div class="bg-gradient-to-r from-sky-100 to-blue-100 p-4">
+                    <a href="#" class="group flex items-center justify-between text-sky-600 hover:text-blue-700 transition-colors duration-200">
+                        Find a Doctor
+                        <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
+                </div>
             </div>
-      
-            <!-- Dermatologue -->
+
+            <!-- Dermatologist -->
             <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
-              <div class="p-8">
-                <div class="flex items-center justify-between mb-6">
-                  <h3 class="text-2xl font-bold bg-gradient-to-r from-sky-600 to-blue-600 bg-clip-text text-transparent">Dermatologue</h3>
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-sky-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
-                  </svg>
+                <div class="p-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-2xl font-bold bg-gradient-to-r from-sky-600 to-blue-600 bg-clip-text text-transparent">Dermatologist</h3>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-sky-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
+                        </svg>
+                    </div>
+                    <p class="text-gray-600 mb-6">Expert care for skin, hair, and nail conditions.</p>
                 </div>
-                <p class="text-gray-600 mb-6">Soins experts pour les affections de la peau, des cheveux et des ongles.</p>
-              </div>
-              <div class="bg-gradient-to-r from-sky-100 to-blue-100 p-4">
-                <a href="#" class="group flex items-center justify-between text-sky-600  hover:text-blue-700 transition-colors duration-200">
-                  Trouver un Médecin
-                  <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                  </svg>
-                </a>
-              </div>
+                <div class="bg-gradient-to-r from-sky-100 to-blue-100 p-4">
+                    <a href="#" class="group flex items-center justify-between text-sky-600 hover:text-blue-700 transition-colors duration-200">
+                        Find a Doctor
+                        <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
+                </div>
             </div>
-      
-            <!-- Pédiatre -->
+
+            <!-- Pediatrician -->
             <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
-              <div class="p-8">
-                <div class="flex items-center justify-between mb-6">
-                  <h3 class="text-2xl font-bold bg-gradient-to-r from-sky-600 to-blue-600 bg-clip-text text-transparent">Pédiatre</h3>
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-sky-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                  </svg>
+                <div class="p-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-2xl font-bold bg-gradient-to-r from-sky-600 to-blue-600 bg-clip-text text-transparent">Pediatrician</h3>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-sky-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                    </div>
+                    <p class="text-gray-600 mb-6">Specialized medical care for infants, children, and adolescents.</p>
                 </div>
-                <p class="text-gray-600 mb-6">Soins médicaux spécialisés pour les nourrissons, enfants et adolescents.</p>
-              </div>
-              <div class="bg-gradient-to-r from-sky-100 to-blue-100 p-4">
-                <a href="#" class="group flex items-center justify-between text-sky-600  hover:text-blue-700 transition-colors duration-200">
-                  Trouver un Médecin
-                  <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                  </svg>
-                </a>
-              </div>
+                <div class="bg-gradient-to-r from-sky-100 to-blue-100 p-4">
+                    <a href="#" class="group flex items-center justify-between text-sky-600 hover:text-blue-700 transition-colors duration-200">
+                        Find a Doctor
+                        <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
+                </div>
             </div>
-      
-            <!-- Neurologue -->
+
+            <!-- Neurologist -->
             <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
-              <div class="p-8">
-                <div class="flex items-center justify-between mb-6">
-                  <h3 class="text-2xl font-bold bg-gradient-to-r from-sky-600 to-blue-600 bg-clip-text text-transparent">Neurologue</h3>
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-sky-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-                  </svg>
+                <div class="p-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-2xl font-bold bg-gradient-to-r from-sky-600 to-blue-600 bg-clip-text text-transparent">Neurologist</h3>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-sky-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2v4m0 0v4m0-4h4m-4 0H8M4 12h16m0 0v4m0-4H4m4 4h8m0 0v4m-8 0H4" />
+                        </svg>
+                    </div>
+                    <p class="text-gray-600 mb-6">Diagnosis and treatment of nervous system disorders.</p>
                 </div>
-                <p class="text-gray-600 mb-6">Soins spécialisés pour les troubles du système nerveux.</p>
-              </div>
-              <div class="bg-gradient-to-r from-sky-100 to-blue-100 p-4">
-                <a href="#" class="group flex items-center justify-between text-sky-600  hover:text-blue-700 transition-colors duration-200">
-                  Trouver un Médecin
-                  <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                  </svg>
-                </a>
-              </div>
+                <div class="bg-gradient-to-r from-sky-100 to-blue-100 p-4">
+                    <a href="#" class="group flex items-center justify-between text-sky-600 hover:text-blue-700 transition-colors duration-200">
+                        Find a Doctor
+                        <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
+                </div>
             </div>
-      
-            <!-- Gastro-entérologue -->
+
+            <!-- Cardiologist -->
             <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
-              <div class="p-8">
-                <div class="flex items-center justify-between mb-6">
-                  <h3 class="text-2xl font-bold bg-gradient-to-r from-sky-600 to-blue-600 bg-clip-text text-transparent">Gastro-entérologue</h3>
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-sky-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-                  </svg>
+                <div class="p-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-2xl font-bold bg-gradient-to-r from-sky-600 to-blue-600 bg-clip-text text-transparent">Cardiologist</h3>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-sky-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7a4 4 0 000 8m0-8a4 4 0 004-4m8 0a4 4 0 00-4 4m0 0a4 4 0 01-4 4m4-4a4 4 0 000 8m0-8a4 4 0 010 8m0 0a4 4 0 100-8" />
+                        </svg>
+                    </div>
+                    <p class="text-gray-600 mb-6">Expertise in diagnosing and treating heart-related conditions.</p>
                 </div>
-                <p class="text-gray-600 mb-6">Soins spécialisés pour le système digestif et ses troubles.</p>
-              </div>
-              <div class="bg-gradient-to-r from-sky-100 to-blue-100 p-4">
-                <a href="#" class="group flex items-center justify-between text-sky-600  hover:text-blue-700 transition-colors duration-200">
-                  Trouver un Médecin
-                  <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                  </svg>
-                </a>
-              </div>
+                <div class="bg-gradient-to-r from-sky-100 to-blue-100 p-4">
+                    <a href="#" class="group flex items-center justify-between text-sky-600 hover:text-blue-700 transition-colors duration-200">
+                        Find a Doctor
+                        <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
+                </div>
             </div>
-          </div>
+
         </div>
-      </section>
-    
-    
+    </div>
+</section>
 
 
 
-
-      <section class="py-24 bg--white ">
-        <div class="container mx-auto px-4">
-          <h2 class="text-4xl font-extrabold text-center mb-12 text-sky-900">Comment ça marche</h2>
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            
-            <!-- Step 1 -->
-            <div class="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-              <div class="flex items-center justify-center w-16 h-16 bg-sky-100 text-sky-600 rounded-full mb-6 mx-auto">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-              </div>
-              <h3 class="text-xl font-semibold text-sky-900 text-center mb-4">Recherchez</h3>
-              <p class="text-gray-600 text-center">Trouvez le spécialiste dont vous avez besoin en utilisant notre outil de recherche avancé.</p>
-            </div>
-            
-            <!-- Step 2 -->
-            <div class="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-              <div class="flex items-center justify-center w-16 h-16 bg-sky-100 text-sky-600 rounded-full mb-6 mx-auto">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
-                </svg>
-              </div>
-              <h3 class="text-xl font-semibold text-sky-900 text-center mb-4">Comparez</h3>
-              <p class="text-gray-600 text-center">Examinez les profils, les avis et les disponibilités des médecins pour faire le meilleur choix.</p>
-            </div>
-      
-            <!-- Step 3 -->
-            <div class="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-              <div class="flex items-center justify-center w-16 h-16 bg-sky-100 text-sky-600 rounded-full mb-6 mx-auto">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
-              </div>
-              <h3 class="text-xl font-semibold text-sky-900 text-center mb-4">Réservez</h3>
-              <p class="text-gray-600 text-center">Prenez rendez-vous en ligne en quelques clics, à l'heure qui vous convient le mieux.</p>
-            </div>
-      
-            <!-- Step 4 -->
-            <div class="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-              <div class="flex items-center justify-center w-16 h-16 bg-sky-100 text-sky-600 rounded-full mb-6 mx-auto">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 class="text-xl font-semibold text-sky-900 text-center mb-4">Consultez</h3>
-              <p class="text-gray-600 text-center">Rencontrez votre médecin et bénéficiez des soins dont vous avez besoin.</p>
-            </div>
+<section class="py-24 bg--white ">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-extrabold text-center mb-12 text-sky-600">How Our Service Works</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        
+        <!-- Step 1 -->
+        <div class="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+          <div class="flex items-center justify-center w-16 h-16 bg-sky-100 text-sky-600 rounded-full mb-6 mx-auto">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
           </div>
-      
-          <div class="mt-16 text-center">
-            <a href="#" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full text-white bg-sky-600 hover:bg-sky-700 transition-colors duration-300">
-              Commencer maintenant
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-              </svg>
-            </a>
-          </div>
+          <h3 class="text-xl font-semibold text-sky-900 text-center mb-4">Search</h3>
+          <p class="text-gray-600 text-center">Find the specialist you need using our advanced search tool.</p>
         </div>
-      </section>
+        
+        <!-- Step 2 -->
+        <div class="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+          <div class="flex items-center justify-center w-16 h-16 bg-sky-100 text-sky-600 rounded-full mb-6 mx-auto">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-sky-900 text-center mb-4">Compare</h3>
+          <p class="text-gray-600 text-center">Review profiles, ratings, and availability of doctors to make the best choice.</p>
+        </div>
+  
+        <!-- Step 3 -->
+        <div class="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+          <div class="flex items-center justify-center w-16 h-16 bg-sky-100 text-sky-600 rounded-full mb-6 mx-auto">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-sky-900 text-center mb-4">Book</h3>
+          <p class="text-gray-600 text-center">Schedule an appointment online in just a few clicks at your preferred time.</p>
+        </div>
+  
+        <!-- Step 4 -->
+        <div class="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+          <div class="flex items-center justify-center w-16 h-16 bg-sky-100 text-sky-600 rounded-full mb-6 mx-auto">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-sky-900 text-center mb-4">Consult</h3>
+          <p class="text-gray-600 text-center">Meet your doctor and receive the care you need.</p>
+        </div>
+      </div>
+  
+      <div class="mt-16 text-center">
+        <a href="#" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full text-white bg-sky-600 hover:bg-sky-700 transition-colors duration-300">
+          Get Started Now
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+  
 
 
 
@@ -354,7 +356,7 @@ h1:hover {
         <img src="/assets/images/background.jpg" alt="Background" class="w-full h-full object-cover opacity-20" />
     </div>
     <div class="container mx-auto px-4 relative z-10">
-        <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">Nos Caractéristiques Uniques</h2>
+        <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">Our Unique Features</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div class="bg-white p-6 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 ease-in-out">
                 <div class="w-16 h-16 mx-auto mb-4 bg-sky-500 rounded-full flex items-center justify-center animate-pulse">
@@ -362,8 +364,8 @@ h1:hover {
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
                     </svg>
                 </div>
-                <h3 class="text-xl font-semibold text-center mb-2">Rendez-vous Rapides</h3>
-                <p class="text-gray-600 text-center">Obtenez un rendez-vous avec un spécialiste en quelques clics.</p>
+                <h3 class="text-xl font-semibold text-center mb-2">Quick Appointments</h3>
+                <p class="text-gray-600 text-center">Get an appointment with a specialist in just a few clicks.</p>
             </div>
             <div class="bg-white p-6 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 ease-in-out">
                 <div class="w-16 h-16 mx-auto mb-4 bg-sky-500 rounded-full flex items-center justify-center animate-certification">
@@ -371,8 +373,8 @@ h1:hover {
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                 </div>
-                <h3 class="text-xl font-semibold text-center mb-2">Médecins Certifiés</h3>
-                <p class="text-gray-600 text-center">Tous nos médecins sont certifiés et hautement qualifiés.</p>
+                <h3 class="text-xl font-semibold text-center mb-2">Certified Doctors</h3>
+                <p class="text-gray-600 text-center">All our doctors are certified and highly qualified.</p>
             </div>
             <div class="bg-white p-6 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 ease-in-out">
                 <div class="w-16 h-16 mx-auto mb-4 bg-sky-500 rounded-full flex items-center justify-center animate-spin">
@@ -381,7 +383,7 @@ h1:hover {
                     </svg>
                 </div>
                 <h3 class="text-xl font-semibold text-center mb-2">24/7 Support</h3>
-                <p class="text-gray-600 text-center">Notre équipe de support est disponible à tout moment pour vous aider.</p>
+                <p class="text-gray-600 text-center">Our support team is available anytime to assist you.</p>
             </div>
         </div>
     </div>
@@ -392,114 +394,102 @@ h1:hover {
 
 
 
-    
-
-
 
     
-
-    
-
 
 
 
     
 <section class="py-24 bg-gradient-to-b from-sky-50 to-white">
     <div class="container mx-auto px-4">
-      <h2 class="text-4xl font-extrabold text-center mb-12 text-sky-900">Témoignages de nos patients</h2>
+      <h2 class="text-4xl font-extrabold text-center mb-12 text-sky-900">Patient Testimonials</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         
         <!-- Testimonial 1 -->
         <div class="bg-white rounded-xl shadow-lg p-8 transition-all duration-300 hover:shadow-xl">
-          <div class="flex items-center mb-6">
-            <img src="https://img.freepik.com/free-photo/young-beautiful-woman-looking-camera-trendy-girl-casual-summer-white-t-shirt-jeans-shorts-positive-female-shows-facial-emotions-funny-model-isolated-yellow_158538-15796.jpg?t=st=1727949056~exp=1727952656~hmac=7cb4ed1c4e119b4194432d4a99916d404172acefc7da9fc31a8515e75a5c260c&w=740" alt="Portrait de Marie" class="w-16 h-16 rounded-full mr-4 object-cover" />
-            <div>
-              <h3 class="text-xl font-semibold text-sky-900">Marie Dupont</h3>
-              <p class="text-gray-600">Patiente en gynécologie</p>
+            <div class="flex items-center mb-6">
+                <img src="https://img.freepik.com/free-photo/young-beautiful-woman-looking-camera-trendy-girl-casual-summer-white-t-shirt-jeans-shorts-positive-female-shows-facial-emotions-funny-model-isolated-yellow_158538-15796.jpg?t=st=1727949056~exp=1727952656~hmac=7cb4ed1c4e119b4194432d4a99916d404172acefc7da9fc31a8515e75a5c260c&w=740" alt="Portrait of Marie" class="w-16 h-16 rounded-full mr-4 object-cover" />
+                <div>
+                    <h3 class="text-xl font-semibold text-sky-900">Marie Dupont</h3>
+                    <p class="text-gray-600">Gynecology Patient</p>
+                </div>
             </div>
-          </div>
-          <p class="text-gray-700 mb-4">"J'ai trouvé un excellent gynécologue grâce à ce site. La prise de rendez-vous était simple et rapide. Je recommande vivement ce service à toutes les femmes !"</p>
-          <div class="flex text-yellow-400">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-            </svg>
-          </div>
+            <p class="text-gray-700 mb-4">"I found an excellent gynecologist through this site. The appointment booking was simple and quick. I highly recommend this service to all women!"</p>
+            <div class="flex text-yellow-400">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+            </div>
         </div>
         
         <!-- Testimonial 2 -->
         <div class="bg-white rounded-xl shadow-lg p-8 transition-all duration-300 hover:shadow-xl">
-          <div class="flex items-center mb-6">
-            <img src="https://img.freepik.com/free-photo/portrait-man-laughing_23-2148859448.jpg?size=338&ext=jpg&ga=GA1.1.2008272138.1726272000&semt=ais_hybrid" alt="Client" alt="Portrait de Pierre" class="w-16 h-16 rounded-full mr-4 object-cover" />
-            <div>
-              <h3 class="text-xl font-semibold text-sky-900">Pierre Martin</h3>
-              <p class="text-gray-600">Patient en dermatologie</p>
+            <div class="flex items-center mb-6">
+                <img src="https://img.freepik.com/free-photo/portrait-man-laughing_23-2148859448.jpg?size=338&ext=jpg&ga=GA1.1.2008272138.1726272000&semt=ais_hybrid" alt="Portrait of Pierre" class="w-16 h-16 rounded-full mr-4 object-cover" />
+                <div>
+                    <h3 class="text-xl font-semibold text-sky-900">Pierre Martin</h3>
+                    <p class="text-gray-600">Dermatology Patient</p>
+                </div>
             </div>
-          </div>
-          <p class="text-gray-700 mb-4">"Le dermatologue que j'ai consulté était très professionnel et attentif. Le processus de réservation en ligne était fluide et pratique. Je suis très satisfait du service !"</p>
-          <div class="flex text-yellow-400">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-            </svg>
-          </div>
+            <p class="text-gray-700 mb-4">"Thanks to this platform, I was able to find a dermatologist quickly and easily. The staff were very welcoming and attentive!"</p>
+            <div class="flex text-yellow-400">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+            </div>
         </div>
   
         <!-- Testimonial 3 -->
         <div class="bg-white rounded-xl shadow-lg p-8 transition-all duration-300 hover:shadow-xl">
-          <div class="flex items-center mb-6">
-            <img src="https://img.freepik.com/free-photo/portrait-modern-man_23-2147960990.jpg?ga=GA1.1.1707980714.1717492988&semt=ais_hybrid" alt="Client" alt="Portrait de Sophie" class="w-16 h-16 rounded-full mr-4 object-cover" />
-            <div>
-              <h3 class="text-xl font-semibold text-sky-900">Sophie Lefebvre</h3>
-              <p class="text-gray-600">Patiente en pédiatrie</p>
+            <div class="flex items-center mb-6">
+                <img src="https://img.freepik.com/free-photo/happy-asian-girl-student_1368-58849.jpg?size=338&ext=jpg&ga=GA1.1.2008272138.1726272000&semt=ais_hybrid" alt="Portrait of Anne" class="w-16 h-16 rounded-full mr-4 object-cover" />
+                <div>
+                    <h3 class="text-xl font-semibold text-sky-900">Anne Leroy</h3>
+                    <p class="text-gray-600">General Medicine Patient</p>
+                </div>
             </div>
-          </div>
-          <p class="text-gray-700 mb-4">"En tant que mère, trouver un bon pédiatre est crucial. Ce site m'a permis de trouver le parfait médecin pour mes enfants. Le service client est également excellent !"</p>
-          <div class="flex text-yellow-400">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-            </svg>
-          </div>
+            <p class="text-gray-700 mb-4">"The doctors were attentive and understanding. The online appointment booking was very convenient. I highly recommend this site for all your medical needs!"</p>
+            <div class="flex text-yellow-400">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+            </div>
         </div>
-      </div>
+    </div>
   
       <div class="mt-16 text-center">
         <a href="#" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full text-white bg-sky-600 hover:bg-sky-700 transition-colors duration-300">
-          Voir plus de témoignages
+            See more testimonials
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
           </svg>
@@ -511,27 +501,36 @@ h1:hover {
 
 
 
+  <style>
+    /* Hide the background image on screens smaller than 768px (adjust as needed) */
+    @media (max-width: 768px) {
+        .hide-background {
+            background-image: none; /* Remove the background image */
+        }
+    }
+</style>
 
   <!-- <section class="py-20 bg-gradient-to-b from-sky-50 to-white"> -->
-    <div class="bg-sky-900 shadow-2xl overflow-hidden" style="background-image: url('assets/images/young.jpg'); background-size: cover; background-position: center; height: 440px; position: relative;">
+    <div class="bg-sky-900 shadow-2xl overflow-hidden hide-background" style="background-image: url('assets/images/young.jpg'); background-size: cover; background-position: center; height: 440px; position: relative;">
         <!-- Overlay for the gradient -->
-        <div style="position: absolute; top: 0; left: 0; bottom: 0; width: 70%; background: linear-gradient(to right, rgba(58, 97, 198, 0.5), rgba(7, 18, 141, 0));"></div>
-    
+        <div style="position: absolute; top: 0; left: 0; bottom: 0; width: 70%; background: linear-gradient(to right, rgba(9, 120, 205, 0.363), rgba(7, 18, 141, 0));"></div>
+
         <!-- Left-aligned Content -->
         <div class="flex items-center justify-start h-full relative z-10 ml-8">
-            <div class="bg-gradient-to-r from-sky-600 to-blue-900 rounded-lg p-8  shadow-lg text-white" style="width: 50%;">
-                <h2 class="text-3xl font-extrabold mb-6">Prêt à prendre soin de votre santé ?</h2>
-                <p class="text-xl mb-8">Rejoignez MedClic aujourd'hui et accédez à des soins de qualité en quelques clics.</p>
+            <div class="bg-gradient-to-r from-sky-700 to-blue-900-light-900 rounded-lg p-8 shadow-2xl text-white" style="width: 50%;">
+                <h2 class="text-3xl font-extrabold mb-6">Ready to take care of your health?</h2>
+                <p class="text-xl mb-8">Join MedClic today and access quality care in just a few clicks.</p>
                 <div class="flex flex-col sm:flex-row gap-4">
                     <a href="/register" class="px-6 py-3 bg-white text-sky-900 rounded-md hover:bg-sky-100 transition duration-300">
-                        S'inscrire gratuitement
+                        Sign up for free
                     </a>
                     <a href="/doctors" class="px-6 py-3 bg-sky-600 text-white rounded-md hover:bg-sky-700 transition duration-300">
-                        Trouver un médecin
+                        Find a doctor
                     </a>
                 </div>
             </div>
         </div>
+        
     </div>
     
     
@@ -544,60 +543,61 @@ h1:hover {
   
 
 
-    <footer class="bg-blue-950 text-white py-12">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div>
-                    <h3 class="text-2xl font-bold mb-4">MedClic</h3>
-                    <p class="mb-4">Votre santé, notre priorité. Trouvez les meilleurs médecins près de chez vous.</p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-white hover:text-blue-400 transition duration-300">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
-                            </svg>
-                        </a>
-                        <a href="#" class="text-white hover:text-blue-400 transition duration-300">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
-                            </svg>
-                        </a>
-                        <a href="#" class="text-white hover:text-blue-400 transition duration-300">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" />
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Liens rapides</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="hover:text-blue-400 transition duration-300">Accueil</a></li>
-                        <li><a href="#" class="hover:text-blue-400 transition duration-300">Recherche de médecins</a></li>
-                        <li><a href="#" class="hover:text-blue-400 transition duration-300">Prendre un rendez-vous</a></li>
-                        <li><a href="#" class="hover:text-blue-400 transition duration-300">Nos services</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Spécialités</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="hover:text-blue-400 transition duration-300">Médecine générale</a></li>
-                        <li><a href="#" class="hover:text-blue-400 transition duration-300">Cardiologie</a></li>
-                        <li><a href="#" class="hover:text-blue-400 transition duration-300">Dermatologie</a></li>
-                        <li><a href="#" class="hover:text-blue-400 transition duration-300">Pédiatrie</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Contactez-nous</h4>
-                    <p class="mb-2">123 Rue de la Santé, 75001 Paris</p>
-                    <p class="mb-2">Téléphone: +33 1 23 45 67 89</p>
-                    <p class="mb-2">Email: contact medclic.fr</p>
+<footer class="bg-blue-950 text-white py-12">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+                <h3 class="text-2xl font-bold mb-4">MedClic</h3>
+                <p class="mb-4">Your health, our priority. Find the best doctors near you.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-white hover:text-blue-400 transition duration-300">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
+                        </svg>
+                    </a>
+                    <a href="#" class="text-white hover:text-blue-400 transition duration-300">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+                        </svg>
+                    </a>
+                    <a href="#" class="text-white hover:text-blue-400 transition duration-300">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" />
+                        </svg>
+                    </a>
                 </div>
             </div>
-            <div class="mt-8 pt-8 border-t border-gray-700 text-center">
-                <p>&copy; 2024 MedClic. Tous droits réservés.</p>
+            <div>
+                <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-blue-400 transition duration-300">Home</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition duration-300">Doctor Search</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition duration-300">Book an Appointment</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition duration-300">Our Services</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-semibold mb-4">Specialties</h4>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-blue-400 transition duration-300">General Medicine</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition duration-300">Cardiology</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition duration-300">Dermatology</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition duration-300">Pediatrics</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-semibold mb-4">Contact Us</h4>
+                <p class="mb-4">123 Main Street, Anytown, USA</p>
+                <p class="mb-4">Email: <a href="mailto:info@medclic.com" class="hover:text-blue-400 transition duration-300">medclic.com</a></p>
+                <p class="mb-4">Phone: <a href="tel:+123456789" class="hover:text-blue-400 transition duration-300">+1 (234) 567-89</a></p>
             </div>
         </div>
-    </footer>
+        <div class="text-center mt-12">
+            <p class="text-sm">&copy; 2024 MedClic. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
 </body>
 </html>
 

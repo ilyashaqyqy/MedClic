@@ -2,7 +2,7 @@
 <!-- <app-patient-dashboard *ngIf="isLoggedIn"></app-patient-dashboard> -->
 
 
-<div class="bg-gradient-to-b from-white to-blue-50 p-6 rounded-lg shadow-md">
+<div class="bg-gray-30 p-6 rounded-lg shadow-md">
     <!-- <h2 class="text-3xl font-bold mb-6 text-blue-800">Find Doctors</h2> -->
     
   <!-- Search Bar, Specialization, and Location Filter in the same row -->
@@ -58,7 +58,7 @@
          class="group relative w-80 h-72 bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden before:absolute before:top-0 before:left-0 before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-r from-sky-100 to-blue-200 before:transition-all before:duration-500 before:content-[''] hover:before: hover:before:h-72 hover:before:w-80 hover:before:scale-95 hover:before:rounded-b-2xl">
       
       <!-- Doctor Profile Image -->
-      <div class="w-28 h-28 bg-blue-300 mt-8 rounded-full border-4 border-slate-50 z-10 transition-all duration-500 group-hover:scale-150 group-hover:-translate-x-24 group-hover:-translate-y-20">
+      <div class="w-28 h-28 bg-blue-300 mt-8 rounded-full border-4 border-slate-50 z-10 ">
         <img [src]="doctor.profilePhoto || '/api/placeholder/150/150'" 
              alt="Doctor's profile photo" 
              class="w-full h-full object-cover rounded-full"
@@ -67,7 +67,7 @@
       </div>
       
       <!-- Doctor Information -->
-      <div class="z-10 transition-all duration-500 group-hover:-translate-y-10">
+      <div class="z-10">
         <span class="text-2xl font-semibold">{{ doctor.name }}</span>
         <p class="text-sm text-gray-600">{{ doctor.specialization }}</p>
         <div class="flex items-center justify-center mt-2 text-xs text-gray-500">

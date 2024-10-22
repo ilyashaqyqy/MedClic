@@ -218,3 +218,13 @@
       width: 100%;
     }
   } */
+
+
+  #navbar {
+    transition: box-shadow 0.3s ease-in-out;
+  }
+
+  .bg-light {
+    background-color: rgb(255, 255, 255); /* Slightly transparent white */
+    transition: background-color 0.3s ease-in-out; /* Smooth transition for the background */
+  }

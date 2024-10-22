@@ -53,27 +53,27 @@ export class DoctorDialogComponent implements OnInit {
   }
 
   onSave(): void {
-    this.doctorForm.form.markAllAsTouched(); // Mark all fields as touched for validation feedback
-    if (!this.doctorForm.valid) {
-      return; // Prevent saving if the form is not valid
-    }
-    
-    console.log('Form Valid:', this.doctorForm.valid);
-    this.doctor.role = Role.DOCTOR;
-    
-    if (this.doctor.id) {
-      this.doctorService.updateDoctor(this.doctor).subscribe(
-        () => this.dialogRef.close(true),
-        error => console.error('Error updating doctor', error)
-      );
-    } else {
-      this.doctorService.registerDoctor(this.doctor).subscribe(
-        () => this.dialogRef.close(true),
-        error => console.error('Error creating doctor', error)
-      );
-    }
+  this.doctorForm.form.markAllAsTouched(); // Mark all fields as touched for validation feedback
+  if (!this.doctorForm.valid) {
+    return; // Prevent saving if the form is not valid
   }
   
+  console.log('Form Valid:', this.doctorForm.valid);
+  this.doctor.role = Role.DOCTOR;
+  
+  if (this.doctor.id) {
+    this.doctorService.updateDoctor(this.doctor).subscribe(
+      () => this.dialogRef.close(true),
+      error => console.error('Error updating doctor', error)
+    );
+  } else {
+    this.doctorService.registerDoctor(this.doctor).subscribe(
+      () => this.dialogRef.close(true),
+      error => console.error('Error creating doctor', error)
+    );
+  }
+}
+
 
   onCancel(): void {
     this.dialogRef.close(false);

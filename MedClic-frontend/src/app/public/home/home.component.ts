@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -54,4 +54,24 @@ export class HomeComponent {
     // Implement navigation to sign up page
     console.log('Navigating to sign up page');
   }
+
+
+
+  @HostListener('window:scroll', [])
+  onWindowScroll(): void {
+    const navbar = document.getElementById('navbar');
+    if (navbar) {
+      if (window.pageYOffset > 0) {
+        navbar.classList.add('shadow-lg');
+        navbar.classList.add('bg-light');  // Add your background color class here
+      } else {
+        navbar.classList.remove('shadow-lg');
+        navbar.classList.remove('bg-light');  // Remove the background color class here
+      }
+    }
+  }
+  
+  
+
+  
 }
